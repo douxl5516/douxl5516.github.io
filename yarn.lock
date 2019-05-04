@@ -1005,6 +1005,11 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
+get-stdin@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
+  integrity sha1-uWjGsKBDhDJJAui/Gl3zJXmkUP4=
+
 get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
@@ -1261,15 +1266,15 @@ hexo-renderer-ejs@^0.3.1:
     ejs "^2.3.4"
     object-assign "^4.0.1"
 
-hexo-renderer-marked@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/hexo-renderer-marked/-/hexo-renderer-marked-0.3.2.tgz#d6a37af9ff195e30f9ef6ede1a06ea1fe4322966"
-  integrity sha512-joSLeHB0YRkuViIPQlRz4A+zfJKPNHT+rABFgPHiT1zL9eeTUPxoLL4h7kcgOwRLAontVScaxP2Sie15mNitFg==
+hexo-renderer-kramed@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/hexo-renderer-kramed/-/hexo-renderer-kramed-0.1.4.tgz#bf858485b44618ea1694a6abc2cccbd745478c0f"
+  integrity sha1-v4WEhbRGGOoWlKarwszL10VHjA8=
   dependencies:
-    hexo-util "^0.6.2"
-    marked "^0.3.9"
-    object-assign "^4.1.1"
-    strip-indent "^2.0.0"
+    hexo-util "^0.6.0"
+    kramed "^0.5.6"
+    object-assign "^4.1.0"
+    strip-indent "^1.0.1"
 
 hexo-renderer-stylus@^0.3.3:
   version "0.3.3"
@@ -1294,7 +1299,7 @@ hexo-server@^0.3.3:
     opn "^5.3.0"
     serve-static "^1.13.2"
 
-hexo-util@^0.6.0, hexo-util@^0.6.2, hexo-util@^0.6.3:
+hexo-util@^0.6.0, hexo-util@^0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/hexo-util/-/hexo-util-0.6.3.tgz#16a2ade457bef955af0dfd22a3fe6f0a49a9137c"
   integrity sha512-zPxaqCWZz3/25SAB4FlrRtWktJ+Pr+vBiv/nyHpXKgXPt1m70liViKlRwWLqDmRjJ72x6/k4qCEeXHajvcGHUw==
@@ -1664,6 +1669,11 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
   integrity sha512-s5kLOcnH0XqDO+FvuaLX8DDjZ18CGFk7VygH40QoKPUQhW4e2rvM0rwUq0t8IQDOwYSeLK01U90OjzBTme2QqA==
 
+kramed@^0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/kramed/-/kramed-0.5.6.tgz#5c37979bcbb59cbb7a8d231049409298857b5162"
+  integrity sha1-XDeXm8u1nLt6jSMQSUCSmIV7UWI=
+
 lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
@@ -1782,11 +1792,6 @@ markdown@~0.5.0:
   integrity sha1-KCBbVlqK51kt4gdGPWY33BgnIrI=
   dependencies:
     nopt "~2.1.1"
-
-marked@^0.3.9:
-  version "0.3.19"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
-  integrity sha512-ea2eGWOqNxPcXv8dyERdSr/6FmzvWwzjMxpfGB/sbMccXoct+xY+YukPD+QTUZwyvK7BZwcr4m21WBOW41pAkg==
 
 math-random@^1.0.1:
   version "1.0.4"
@@ -2637,6 +2642,13 @@ strip-ansi@^4.0.0:
   integrity sha1-qEeQIusaw2iocTibY1JixQXuNo8=
   dependencies:
     ansi-regex "^3.0.0"
+
+strip-indent@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/strip-indent/-/strip-indent-1.0.1.tgz#0c7962a6adefa7bbd4ac366460a638552ae1a0a2"
+  integrity sha1-DHlipq3vp7vUrDZkYKY4VSrhoKI=
+  dependencies:
+    get-stdin "^4.0.1"
 
 strip-indent@^2.0.0:
   version "2.0.0"
