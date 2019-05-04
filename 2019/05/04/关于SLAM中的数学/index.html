@@ -452,58 +452,111 @@
 <ul>
 <li>LP范数不是一个范数，而是一组范数。定义如下：</li>
 </ul>
-<p>$$<br>L_p=\Vert x \Vert_p=\sqrt[p]{\sum_{i=1}^{n}{x_i^p}},x=(x_1,x_2,\dots,x_n)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+L_p=\Vert x \Vert_p=\sqrt[p]{\sum_{i=1}^{n}{x_i^p}},x=(x_1,x_2,\dots,x_n)</script><ul>
 <li>L0范数表示向量中非零元素的个数。</li>
 <li>L1范数表示向量x中非零元素的绝对值之和。定义如下：</li>
 </ul>
-<p>$$<br>L_1=\Vert x \Vert_1=\sum_{i=1}^{n}{|x_i|},x=(x_1,x_2,\dots,x_n)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+L_1=\Vert x \Vert_1=\sum_{i=1}^{n}{|x_i|},x=(x_1,x_2,\dots,x_n)</script><ul>
 <li><p>L2范数表示向量元素的平方和再开平方，即欧氏距离。</p>
 <p>二范数指矩阵A的2范数，就是A的转置共轭矩阵与矩阵A的积的最大特征根的平方根值，是指空间上两个向量矩阵的直线距离。类似于求棋盘上两点间的直线距离。</p>
 <p>定义如下：</p>
 </li>
 </ul>
-<p>$$<br>L_2=\Vert x \Vert_2=\sqrt{\sum_{i=1}^{n}{x_i^2}},x=(x_1,x_2,\dots,x_n)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+L_2=\Vert x \Vert_2=\sqrt{\sum_{i=1}^{n}{x_i^2}},x=(x_1,x_2,\dots,x_n)</script><ul>
 <li><a href="https://baike.baidu.com/item/%E8%8C%83%E6%95%B0/10856788?fr=aladdin" target="_blank" rel="noopener">百度百科</a></li>
 <li><a href="https://blog.csdn.net/a493823882/article/details/80569888" target="_blank" rel="noopener">几种范数</a></li>
 </ul>
-<h2 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h2><p>即对于一般标量函数$f(x)$ , 其中向量为$x=(x_1,x_2,\dots,x_n)$，导数为：<br>$$<br>\frac{\partial{f}}{\partial{x}}=(\frac{\partial{f}}{\partial{x_1}},\dots,\frac{\partial{f}}{\partial{x_2}})<br>$$</p>
-<h2 id="雅可比矩阵"><a href="#雅可比矩阵" class="headerlink" title="雅可比矩阵"></a>雅可比矩阵</h2><blockquote>
+<h2 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h2><p>即对于一般标量函数$f(x)$ , 其中向量为$x=(x_1,x_2,\dots,x_n)$，导数为：</p>
+<script type="math/tex; mode=display">
+\frac{\partial{f}}{\partial{x}}=(\frac{\partial{f}}{\partial{x_1}},\dots,\frac{\partial{f}}{\partial{x_2}})</script><h2 id="雅可比矩阵"><a href="#雅可比矩阵" class="headerlink" title="雅可比矩阵"></a>雅可比矩阵</h2><blockquote>
 <p>在向量微积分中，雅可比矩阵(Jacobi Matrix)是一阶偏导数以一定方式排列成的矩阵，其行列式称为雅可比行列式。雅可比矩阵的重要性在于它体现了一个可微方程与给出点的最优线性逼近。因此，雅可比矩阵类似于多元函数的导数。</p>
 </blockquote>
-<p>$$<br>J(f)=\left|\frac{\partial{(f_1,\dots,f_n)}}{\partial{(x_1,\dots,x_n)}}\right|=<br>\left|\begin{matrix}<br>\frac{\partial{f_1}}{\partial{x_1}}&amp;\dots&amp;\frac{\partial{f_1}}{\partial{x_n}}\<br>\vdots&amp;\ddots&amp;\vdots\<br>\frac{\partial{f_n}}{\partial{x_1}}&amp;\dots&amp;\frac{\partial{f_n}}{\partial{x_n}}\<br>\end{matrix}\right|<br>$$</p>
-<p>若m=n，则雅可比矩阵为<strong>方阵</strong>，方阵的行列式为<strong>雅可比行列式</strong>。</p>
+<script type="math/tex; mode=display">
+J(f)=\left|\frac{\partial{(f_1,\dots,f_n)}}{\partial{(x_1,\dots,x_n)}}\right|=
+\left|\begin{matrix}
+\frac{\partial{f_1}}{\partial{x_1}}&\dots&\frac{\partial{f_1}}{\partial{x_n}}\\
+\vdots&\ddots&\vdots\\
+\frac{\partial{f_n}}{\partial{x_1}}&\dots&\frac{\partial{f_n}}{\partial{x_n}}\\
+\end{matrix}\right|</script><p>若m=n，则雅可比矩阵为<strong>方阵</strong>，方阵的行列式为<strong>雅可比行列式</strong>。</p>
 <ul>
 <li><a href="https://baike.baidu.com/item/%E9%9B%85%E5%8F%AF%E6%AF%94%E7%9F%A9%E9%98%B5/10753754?fr=aladdin" target="_blank" rel="noopener">雅可比矩阵</a></li>
 </ul>
 <h2 id="海森矩阵"><a href="#海森矩阵" class="headerlink" title="海森矩阵"></a>海森矩阵</h2><blockquote>
 <p>黑塞矩阵（Hessian Matrix），又译作海森矩阵、海瑟矩阵、海塞矩阵等，是一个多元函数的二阶偏导数构成的方阵，描述了函数的局部曲率。黑塞矩阵最早于19世纪由德国数学家Ludwig Otto Hesse提出，并以其名字命名。黑塞矩阵常用于牛顿法解决优化问题，利用黑塞矩阵可判定多元函数的极值问题。在工程实际问题的优化设计中，所列的目标函数往往很复杂，为了使问题简化，常常将目标函数在某点邻域展开成泰勒多项式来逼近原函数，此时函数在某点泰勒展开式的矩阵形式中会涉及到黑塞矩阵。</p>
 </blockquote>
-<p>$$<br>H(f)=\left[\begin{matrix}<br>\frac{\partial^2{f}}{\partial{x_1^2}}&amp;\frac{\partial^2{f}}{\partial{x_1}\partial{x_2}}&amp;\dots&amp;\frac{\partial^2{f}}{\partial{x_1}\partial{x_n}}\</p>
-<p>\frac{\partial^2{f}}{\partial{x_2}\partial{x_1}}&amp;\frac{\partial^2{f}}{\partial{x_2^2}}&amp;\dots&amp;\frac{\partial^2{f}}{\partial{x_2}\partial{x_n}}\</p>
-<p>\vdots&amp;\vdots&amp;\ddots&amp;\vdots\</p>
-<p>\frac{\partial^2{f}}{\partial{x_n}\partial{x_1}}&amp;\frac{\partial^2{f}}{\partial{x_n}\partial{x_2}}&amp;\dots&amp;\frac{\partial^2{f}}{\partial{x_n^2}}\</p>
-<p>\end{matrix}\right]<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+H(f)=\left[\begin{matrix}
+\frac{\partial^2{f}}{\partial{x_1^2}}&\frac{\partial^2{f}}{\partial{x_1}\partial{x_2}}&\dots&\frac{\partial^2{f}}{\partial{x_1}\partial{x_n}}\\
+
+\frac{\partial^2{f}}{\partial{x_2}\partial{x_1}}&\frac{\partial^2{f}}{\partial{x_2^2}}&\dots&\frac{\partial^2{f}}{\partial{x_2}\partial{x_n}}\\
+
+\vdots&\vdots&\ddots&\vdots\\
+
+\frac{\partial^2{f}}{\partial{x_n}\partial{x_1}}&\frac{\partial^2{f}}{\partial{x_n}\partial{x_2}}&\dots&\frac{\partial^2{f}}{\partial{x_n^2}}\\
+
+\end{matrix}\right]</script><ul>
 <li><a href="https://baike.baidu.com/item/%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%98%B5/2248782?fr=aladdin" target="_blank" rel="noopener">海森矩阵</a></li>
 </ul>
 <h2 id="泰勒公式"><a href="#泰勒公式" class="headerlink" title="泰勒公式"></a>泰勒公式</h2><blockquote>
 <p>数学中，泰勒公式是一个用函数在某点的信息描述其附近取值的公式。如果函数足够平滑的话，在已知函数在某一点的各阶导数值的情况之下，泰勒公式可以用这些导数值做系数构建一个多项式来近似函数在这一点的邻域中的值。泰勒公式还给出了这个多项式和实际的函数值之间的偏差。</p>
 </blockquote>
-<p>$$<br>f(x)=\frac{f(a)}{0!}+\frac{f’(a)}{1!}(x-a)+\frac{f’’(a)}{2!}(x-a)^2+\dots+\frac{f^n(a)}{n!}(x-a)^n+R_n(x)<br>$$</p>
-<h2 id="李代数"><a href="#李代数" class="headerlink" title="李代数"></a>李代数</h2><p>首先特殊正交群SO(3)可以代表旋转矩阵，SE(3)可以代表欧式变换矩阵。矩阵对于乘法封闭，对于加法不封闭，所以具有群的特性。</p>
+<script type="math/tex; mode=display">
+f(x)=\frac{f(a)}{0!}+\frac{f'(a)}{1!}(x-a)+\frac{f''(a)}{2!}(x-a)^2+\dots+\frac{f^n(a)}{n!}(x-a)^n+R_n(x)</script><h2 id="李代数"><a href="#李代数" class="headerlink" title="李代数"></a>李代数</h2><p>首先特殊正交群SO(3)可以代表旋转矩阵，SE(3)可以代表欧式变换矩阵。矩阵对于乘法封闭，对于加法不封闭，所以具有群的特性。</p>
 <p>李群是指具有连续(光滑)性质的群。</p>
 <ul>
-<li><p>外积<br>$$<br>\boldsymbol{a}\times\boldsymbol{b}=<br>\left[<br>\begin{matrix}<br>\boldsymbol{i}&amp;\boldsymbol{j}&amp;\boldsymbol{k}\<br>a_1&amp;a_2&amp;a_3\<br>b_1&amp;b_2&amp;b_3\<br>\end{matrix}<br>\right]=<br>\left[<br>\begin{matrix}<br>a_2b_3-a_3b_2\<br>a_3b_1-a_1b_3\<br>a_1b_2-a_2b_1\<br>\end{matrix}<br>\right]=<br>\left[<br>\begin{matrix}<br>0&amp;-a_3&amp;a_2\<br>a_3&amp;0&amp;-a_1\<br>-a_2&amp;a_1&amp;0\<br>\end{matrix}<br>\right]\boldsymbol{b}\triangleq\boldsymbol{a}^{\wedge}\boldsymbol{b}<br>$$<br>相应的，有<br>$$<br>\boldsymbol{a}=[a_1\boldsymbol{i},a_2\boldsymbol{j},a_3\boldsymbol{k}],\<br>\boldsymbol{a}^{\wedge}=\boldsymbol{A}=\left[<br>\begin{matrix}<br>0&amp;-a_3&amp;a_2\<br>a_3&amp;0&amp;-a_1\<br>-a_2&amp;a_1&amp;0\<br>\end{matrix}<br>\right],\\boldsymbol{A}^{\vee}=\boldsymbol{a}<br>$$</p>
-</li>
-<li><p>特殊正交群 $SO(3)$<br>$$<br>SO(3)={R\in\mathbb{R}^{3\times3}|RR^T=I,\det(R)=1}<br>$$</p>
-</li>
-<li><p>特殊欧式群$SE(3)$<br>$$<br>SE(3)={T=\left[<br>\begin{matrix}<br>R&amp;t\<br>0^T&amp;1\<br>\end{matrix}<br>\right]\in\mathbb{R}^{4\times4}|R\in SO(3),t\in \mathbb{R}^3}<br>$$</p>
-</li>
+<li><p>外积</p>
+<script type="math/tex; mode=display">
+\boldsymbol{a}\times\boldsymbol{b}=
+\left[
+\begin{matrix}
+\boldsymbol{i}&\boldsymbol{j}&\boldsymbol{k}\\
+a_1&a_2&a_3\\
+b_1&b_2&b_3\\
+\end{matrix}
+\right]=
+\left[
+\begin{matrix}
+a_2b_3-a_3b_2\\
+a_3b_1-a_1b_3\\
+a_1b_2-a_2b_1\\
+\end{matrix}
+\right]=
+\left[
+\begin{matrix}
+0&-a_3&a_2\\
+a_3&0&-a_1\\
+-a_2&a_1&0\\
+\end{matrix}
+\right]\boldsymbol{b}\triangleq\boldsymbol{a}^{\wedge}\boldsymbol{b}</script><p>相应的，有</p>
+<script type="math/tex; mode=display">
+\boldsymbol{a}=[a_1\boldsymbol{i},a_2\boldsymbol{j},a_3\boldsymbol{k}],\\
+\boldsymbol{a}^{\wedge}=\boldsymbol{A}=\left[
+\begin{matrix}
+0&-a_3&a_2\\
+a_3&0&-a_1\\
+-a_2&a_1&0\\
+\end{matrix}
+\right],\\\boldsymbol{A}^{\vee}=\boldsymbol{a}</script></li>
+<li><p>特殊正交群 $SO(3)$</p>
+<script type="math/tex; mode=display">
+SO(3)=\{R\in\mathbb{R}^{3\times3}|RR^T=I,\det(R)=1\}</script></li>
+<li><p>特殊欧式群$SE(3)$</p>
+<script type="math/tex; mode=display">
+SE(3)=\{T=\left[
+\begin{matrix}
+R&t\\
+0^T&1\\
+\end{matrix}
+\right]\in\mathbb{R}^{4\times4}|R\in SO(3),t\in \mathbb{R}^3\}</script></li>
 <li><p>李代数$\mathfrak{so}(3)$</p>
-<p>在对$RR^T=I$进行求导及整理之后，可以得到$R(t)^{‘}R(t)^T$是一个反对称矩阵，那么就用一个$\phi(t)\in\mathbb{R}^3$与之对应。有：<br>$$<br>R(t)^{‘}R(t)^T=\phi(t)^{\wedge}<br>$$<br>之后求解微分方程，可以得到：<br>$$<br>R(t)=exp(\phi^{\wedge}t)<br>$$<br>实际求解时利用到指数映射和对数映射。</p>
+<p>在对$RR^T=I$进行求导及整理之后，可以得到$R(t)^{‘}R(t)^T$是一个反对称矩阵，那么就用一个$\phi(t)\in\mathbb{R}^3$与之对应。有：</p>
+<script type="math/tex; mode=display">
+R(t)^{'}R(t)^T=\phi(t)^{\wedge}</script><p>之后求解微分方程，可以得到：</p>
+<script type="math/tex; mode=display">
+R(t)=exp(\phi^{\wedge}t)</script><p>实际求解时利用到指数映射和对数映射。</p>
 </li>
 </ul>
 <h2 id="奇异值分解"><a href="#奇异值分解" class="headerlink" title="奇异值分解"></a>奇异值分解</h2><p><a href="https://www.cnblogs.com/lzllovesyl/p/5243370.html" target="_blank" rel="noopener">参考资料</a></p>
