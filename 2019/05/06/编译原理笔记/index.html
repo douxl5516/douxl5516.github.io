@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="编译原理课程笔记">
+<meta name="keywords" content="编译原理,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译原理笔记">
+<meta property="og:url" content="https://douxl5516.github.io/2019/05/06/编译原理笔记/index.html">
+<meta property="og:site_name" content="平崖">
+<meta property="og:description" content="编译原理课程笔记">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T04:24:19.172Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编译原理笔记">
+<meta name="twitter:description" content="编译原理课程笔记">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://douxl5516.github.io/2019/05/06/编译原理笔记/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>编译原理笔记 | 平崖</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">平崖</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">平崖远望，踽踽独行。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-notes">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/notes/" rel="section"><i class="menu-item-icon fa fa-fw fa-file-text"></i> <br>札记</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://douxl5516.github.io/2019/05/06/编译原理笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="窦星磊">
+      <meta itemprop="description" content="平崖远望，踽踽独行。">
+      <meta itemprop="image" content="/images/sky_lanterns.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="平崖">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">编译原理笔记
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-06 12:19:55 / 修改时间：12:24:19" itemprop="dateCreated datePublished" datetime="2019-05-06T12:19:55+08:00">2019-05-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编译原理/" itemprop="url" rel="index"><span itemprop="name">编译原理</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            <div class="post-description">编译原理课程笔记</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h1><h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><h3 id="什么是编译"><a href="#什么是编译" class="headerlink" title="什么是编译"></a>什么是编译</h3><p>将高级语言翻译成汇编语言或机器语言的过程。</p>
+<h3 id="编译系统的结构"><a href="#编译系统的结构" class="headerlink" title="编译系统的结构"></a>编译系统的结构</h3><p>字符流 词法分析器 语法分析器 语义分析器 中间代码生成器 机器无关代码优化器 目标代码生成器 机器相关代码优化器</p>
+<h3 id="词法分析概述"><a href="#词法分析概述" class="headerlink" title="词法分析概述"></a>词法分析概述</h3><p>任务：扫描字符，确定单词类型，转换为统一的机内表示。</p>
+<h3 id="语法分析概述"><a href="#语法分析概述" class="headerlink" title="语法分析概述"></a>语法分析概述</h3><p>任务：从词法分析器输出的token序列中识别出各类短语，并构造语法分析树。<br>语法分析树描述了句子的语法结构。</p>
+<h3 id="语义分析概述"><a href="#语义分析概述" class="headerlink" title="语义分析概述"></a>语义分析概述</h3><p>任务：</p>
+<ul>
+<li>收集标志符的属性信息<ul>
+<li>属种</li>
+<li>类型</li>
+<li>存储位置、长度</li>
+<li>值</li>
+<li>作用域</li>
+<li>参数和返回值信息</li>
+</ul>
+</li>
+<li>语义检查<ul>
+<li>变量或过程未经声明就使用</li>
+<li>变量或过程名重复声明</li>
+<li>运算分量类型不匹配</li>
+<li>操作数之类类型不匹配</li>
+</ul>
+</li>
+</ul>
+<h3 id="中间代码生成"><a href="#中间代码生成" class="headerlink" title="中间代码生成"></a>中间代码生成</h3><p>中间表示形式：</p>
+<ul>
+<li>三地址码（四元式表示）</li>
+<li>语法树</li>
+</ul>
+<h3 id="目标代码生成"><a href="#目标代码生成" class="headerlink" title="目标代码生成"></a>目标代码生成</h3><p>目标代码生成以中间代码作为输入，生成目标代码。</p>
+<p>任务：合理分配寄存器</p>
+<h3 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h3><p>等价程序变换，使运行更快，占用空间更少。</p>
+<h2 id="语言及其文法"><a href="#语言及其文法" class="headerlink" title="语言及其文法"></a>语言及其文法</h2><h3 id="字母表"><a href="#字母表" class="headerlink" title="字母表"></a>字母表</h3><p>字母表$\sum$是一个有穷符号集合</p>
+<h3 id="字母表上的运算"><a href="#字母表上的运算" class="headerlink" title="字母表上的运算"></a>字母表上的运算</h3><ul>
+<li>乘积：两个集合中的元素相拼接</li>
+<li>n次幂：长度为n的符号串构成的集合</li>
+<li>正闭包</li>
+<li>克林闭包：正闭包基础上加一个空串</li>
+</ul>
+<h3 id="串"><a href="#串" class="headerlink" title="串"></a>串</h3><ul>
+<li>串：字母表上的符号的有穷序列</li>
+<li>长度：串中符号的个数</li>
+<li>空串：长度为0的串</li>
+</ul>
+<h3 id="串的运算"><a href="#串的运算" class="headerlink" title="串的运算"></a>串的运算</h3><ul>
+<li>连接：y串附加到x串后</li>
+<li>幂</li>
+</ul>
+<h3 id="文法"><a href="#文法" class="headerlink" title="文法"></a>文法</h3><p>G=($V_T$,$V_N$,S,P)</p>
+<ul>
+<li>$V_T$是有限的终极符集合（文法定义的语言的基本符号）</li>
+<li>$V_N$是有限的非终极符集合（表示语法成分的符号，也称语法变量）</li>
+<li>S是开始符，$S \in V_N$（表示该文法中最大的语法成分）</li>
+<li>P是产生式（规则）的集合（将终结符和非终结符结合成串的方法，左部至少包含一个非终极符）</li>
+</ul>
+<h4 id="约定"><a href="#约定" class="headerlink" title="约定"></a>约定</h4><ul>
+<li>文法简写可只写产生式</li>
+<li>终结符、非终结符、文法符号、终结符号串、文法符号串</li>
+</ul>
+<h3 id="推导和规约"><a href="#推导和规约" class="headerlink" title="推导和规约"></a>推导和规约</h3><p>推导：$\Rightarrow$，用产生式的右部替换产生式的左部</p>
+<ul>
+<li>一步或多步推导：$\Rightarrow^+$</li>
+<li>零步或多步推导：$\Rightarrow^*$</li>
+</ul>
+<p>规约：用产生式的左部替换产生式的右部</p>
+<h3 id="句型"><a href="#句型" class="headerlink" title="句型"></a>句型</h3><p>若$S\Rightarrow^<em>\alpha，\alpha \in (V_T \cup V_N)^</em>$，$\alpha$是文法$G$的一个句型。</p>
+<p>句型中可包含终结符、非终结符、空串。</p>
+<h3 id="句子"><a href="#句子" class="headerlink" title="句子"></a>句子</h3><p>若$S\Rightarrow^<em>\beta,\beta \in V_T^</em>$，$\beta$是文法$G$的一个句子。</p>
+<p>句子是特殊的句型，它不包含非终结符。</p>
+<h3 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h3><p>语言为所有句子的集合</p>
+<p>$L(G)=\left\{ \beta | S \Rightarrow^+\beta ,\beta \in V_T^* \right\}$</p>
+<h3 id="文法的种类"><a href="#文法的种类" class="headerlink" title="文法的种类"></a>文法的种类</h3><h4 id="0型文法：无限制文法-短语结构文法"><a href="#0型文法：无限制文法-短语结构文法" class="headerlink" title="0型文法：无限制文法/短语结构文法"></a>0型文法：无限制文法/短语结构文法</h4><p>要求左部至少包含一个非终结符</p>
+<h4 id="1型文法：上下文有关文法-CSG"><a href="#1型文法：上下文有关文法-CSG" class="headerlink" title="1型文法：上下文有关文法(CSG)"></a>1型文法：上下文有关文法(CSG)</h4><p>在0型文法基础上，进一步要求左部符号个数不多于右部符号个数</p>
+<p>CSG有段不包含空产生式</p>
+<h4 id="2型文法：上下文无关文法-CFG"><a href="#2型文法：上下文无关文法-CFG" class="headerlink" title="2型文法：上下文无关文法(CFG)"></a>2型文法：上下文无关文法(CFG)</h4><p>产生式左部为非终结符</p>
+<h4 id="3型文法：正则文法-RG"><a href="#3型文法：正则文法-RG" class="headerlink" title="3型文法：正则文法(RG)"></a>3型文法：正则文法(RG)</h4><p>右线性文法：$A\rightarrow wB$或$A\rightarrow w$</p>
+<p>左线性文法：$A\rightarrow Bw$或$A\rightarrow w$</p>
+<h4 id="四种文法"><a href="#四种文法" class="headerlink" title="四种文法"></a>四种文法</h4><ul>
+<li>逐级限制</li>
+<li>逐级包含</li>
+</ul>
+<h3 id="短语（相对于句型而言；由非终极符经过至少一次推导产生的）"><a href="#短语（相对于句型而言；由非终极符经过至少一次推导产生的）" class="headerlink" title="短语（相对于句型而言；由非终极符经过至少一次推导产生的）"></a>短语（相对于句型而言；由非终极符经过至少一次推导产生的）</h3><p>分析树中每棵子树的边缘</p>
+<p>设S是文法的开始符，有$S\Rightarrow^*\alpha_1A\alpha_2$，如果有$A\Rightarrow^+\beta$则称$\beta$是句型$\alpha_1\beta\alpha_2$的一个短语。</p>
+<h3 id="简单短语（非终极符本身，或由非终极符经过至少一次推导产生的）"><a href="#简单短语（非终极符本身，或由非终极符经过至少一次推导产生的）" class="headerlink" title="简单短语（非终极符本身，或由非终极符经过至少一次推导产生的）"></a>简单短语（非终极符本身，或由非终极符经过至少一次推导产生的）</h3><p>子树只有父子两代结点，这棵字数的边缘称简单短语</p>
+<p>设S是文法的开始符，有$S\Rightarrow^*\alpha_1A\alpha_2$，如果有$A\Rightarrow\beta$则称$\beta$是句型$\alpha_1\beta\alpha_2$的一个简单短语。</p>
+<h3 id="句柄"><a href="#句柄" class="headerlink" title="句柄"></a>句柄</h3><p>句型中的最左简单短语称为句柄。</p>
+<h3 id="二义性文法"><a href="#二义性文法" class="headerlink" title="二义性文法"></a>二义性文法</h3><p>若一个文法能为一个句子生成多棵分析树，则这个文法是二义性的。<br>不能判断一个文法是否是二义性的，单可给出一组规则，使其构造出的文法是不具有二义性的。</p>
+<h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>$r|s$<br>$rs$<br>$r^*$<br>$r^+$</p>
+<p>正则定义即用变量名代表一个正则表达式。</p>
+<h3 id="有穷自动机-Finite-Automata-FA"><a href="#有穷自动机-Finite-Automata-FA" class="headerlink" title="有穷自动机(Finite Automata,FA)"></a>有穷自动机(Finite Automata,FA)</h3><p>具有有穷个状态，根据当前的状态和输入确定之后到达的状态。</p>
+<p>串x，对于自动机存在对于串x从初始状态到终止状态的转换序列，则串被自动机接收。</p>
+<ul>
+<li>最长子串匹配原则：在到达某个终态后，只要输入带上还有符号，则FA继续前进，以便寻求最可能长的匹配。</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编译原理/" rel="tag"># 编译原理</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/04/关于SLAM中的数学/" rel="next" title="关于SLAM中的数学">
+                <i class="fa fa-chevron-left"></i> 关于SLAM中的数学
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/sky_lanterns.jpg" alt="窦星磊">
+            
+              <p class="site-author-name" itemprop="name">窦星磊</p>
+              <div class="site-description motion-element" itemprop="description">平崖远望，踽踽独行。</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/douxl5516" title="GitHub &rarr; https://github.com/douxl5516" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:douxl5516@163.com" title="E-Mail &rarr; mailto:douxl5516@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编译原理"><span class="nav-number">1.</span> <span class="nav-text">编译原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#绪论"><span class="nav-number">1.1.</span> <span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是编译"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译系统的结构"><span class="nav-number">1.1.2.</span> <span class="nav-text">编译系统的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#词法分析概述"><span class="nav-number">1.1.3.</span> <span class="nav-text">词法分析概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法分析概述"><span class="nav-number">1.1.4.</span> <span class="nav-text">语法分析概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语义分析概述"><span class="nav-number">1.1.5.</span> <span class="nav-text">语义分析概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中间代码生成"><span class="nav-number">1.1.6.</span> <span class="nav-text">中间代码生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标代码生成"><span class="nav-number">1.1.7.</span> <span class="nav-text">目标代码生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码优化"><span class="nav-number">1.1.8.</span> <span class="nav-text">代码优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语言及其文法"><span class="nav-number">1.2.</span> <span class="nav-text">语言及其文法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字母表"><span class="nav-number">1.2.1.</span> <span class="nav-text">字母表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字母表上的运算"><span class="nav-number">1.2.2.</span> <span class="nav-text">字母表上的运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#串"><span class="nav-number">1.2.3.</span> <span class="nav-text">串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#串的运算"><span class="nav-number">1.2.4.</span> <span class="nav-text">串的运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文法"><span class="nav-number">1.2.5.</span> <span class="nav-text">文法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#约定"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">约定</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推导和规约"><span class="nav-number">1.2.6.</span> <span class="nav-text">推导和规约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#句型"><span class="nav-number">1.2.7.</span> <span class="nav-text">句型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#句子"><span class="nav-number">1.2.8.</span> <span class="nav-text">句子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语言"><span class="nav-number">1.2.9.</span> <span class="nav-text">语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文法的种类"><span class="nav-number">1.2.10.</span> <span class="nav-text">文法的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#0型文法：无限制文法-短语结构文法"><span class="nav-number">1.2.10.1.</span> <span class="nav-text">0型文法：无限制文法/短语结构文法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1型文法：上下文有关文法-CSG"><span class="nav-number">1.2.10.2.</span> <span class="nav-text">1型文法：上下文有关文法(CSG)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2型文法：上下文无关文法-CFG"><span class="nav-number">1.2.10.3.</span> <span class="nav-text">2型文法：上下文无关文法(CFG)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3型文法：正则文法-RG"><span class="nav-number">1.2.10.4.</span> <span class="nav-text">3型文法：正则文法(RG)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四种文法"><span class="nav-number">1.2.10.5.</span> <span class="nav-text">四种文法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#短语（相对于句型而言；由非终极符经过至少一次推导产生的）"><span class="nav-number">1.2.11.</span> <span class="nav-text">短语（相对于句型而言；由非终极符经过至少一次推导产生的）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单短语（非终极符本身，或由非终极符经过至少一次推导产生的）"><span class="nav-number">1.2.12.</span> <span class="nav-text">简单短语（非终极符本身，或由非终极符经过至少一次推导产生的）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#句柄"><span class="nav-number">1.2.13.</span> <span class="nav-text">句柄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二义性文法"><span class="nav-number">1.2.14.</span> <span class="nav-text">二义性文法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析"><span class="nav-number">1.3.</span> <span class="nav-text">词法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.3.1.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有穷自动机-Finite-Automata-FA"><span class="nav-number">1.3.2.</span> <span class="nav-text">有穷自动机(Finite Automata,FA)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">窦星磊</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
