@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="平崖">
 <meta property="og:description" content="manjaro xface系统配置">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-09T12:33:36.684Z">
+<meta property="og:updated_time" content="2019-05-09T15:52:40.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="manjaro装机配置">
 <meta name="twitter:description" content="manjaro xface系统配置">
@@ -405,7 +405,7 @@
                 
               
 
-              <time title="创建时间：2019-05-09 14:12:51 / 修改时间：20:33:36" itemprop="dateCreated datePublished" datetime="2019-05-09T14:12:51+08:00">2019-05-09</time>
+              <time title="创建时间：2019-05-09 14:12:51 / 修改时间：23:52:40" itemprop="dateCreated datePublished" datetime="2019-05-09T14:12:51+08:00">2019-05-09</time>
             
 
             
@@ -467,7 +467,7 @@
         <h2 id="配置镜像源"><a href="#配置镜像源" class="headerlink" title="配置镜像源:"></a>配置镜像源:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure>
 <p>打开配置文件sudo nano /etc/pacman.conf在文件末尾添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure></p>
 <h2 id="导入GPG-Key"><a href="#导入GPG-Key" class="headerlink" title="导入GPG Key"></a>导入GPG Key</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy</span><br><span class="line">sudo pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
-<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S vim cmake firefox-i18n-zh-cn gdb nodejs fcitx-im fcitx-configtool fcitx-sogoupinyin yarn visual-studio-code-bin</span><br><span class="line">sudo pacman -S google-chrome deepin.com.qq.office netease-cloud-music typora vlc wewechat wps-office ttf-wps-fonts</span><br><span class="line">sudo pacman -S mysql eclipse-jee opencv webstorm clion pycharm-professional intellij-idea-ultimate-edition qtcreator qt4</span><br></pre></td></tr></table></figure>
+<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S vim cmake firefox-i18n-zh-cn gdb nodejs fcitx-im fcitx-configtool fcitx-sogoupinyin yarn visual-studio-code-bin texmaker </span><br><span class="line">sudo pacman -S google-chrome deepin.com.qq.office netease-cloud-music typora vlc wewechat wps-office ttf-wps-fonts</span><br><span class="line">sudo pacman -S mysql eclipse-jee opencv webstorm clion pycharm-professional intellij-idea-ultimate-edition qtcreator qt4 maven android-studio nginx</span><br></pre></td></tr></table></figure>
 <h2 id="配置搜狗环境"><a href="#配置搜狗环境" class="headerlink" title="配置搜狗环境"></a>配置搜狗环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim ~/.xprofile</span><br></pre></td></tr></table></figure>
 <p>添加以下内容</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GTK_IM_MODULE=fcitx</span><br><span class="line"><span class="built_in">export</span> QT_IM_MODULE=fcitx</span><br><span class="line"><span class="built_in">export</span> XMODIFIERS=<span class="string">"@im=fcitx"</span></span><br></pre></td></tr></table></figure>
@@ -483,7 +483,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"></span><br><span class="line">[install]</span><br><span class="line">trusted-host=mirrors.aliyun.com</span><br></pre></td></tr></table></figure>
 <h2 id="python-包"><a href="#python-包" class="headerlink" title="python 包"></a>python 包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install -i https://pypi.tuna.tsinghua.edu.cn/simple numpy pandas sklearn matplotlib requests minepy</span><br></pre></td></tr></table></figure>
 <h2 id="配置git"><a href="#配置git" class="headerlink" title="配置git"></a>配置git</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;douxl5516@163.com&quot;</span><br><span class="line">git config --global user.name &quot;douxl5516&quot;</span><br><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
-<h2 id="time"><a href="#time" class="headerlink" title="time"></a>time</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-local-rtc 1</span><br></pre></td></tr></table></figure>
+<h2 id="与windows时间同步"><a href="#与windows时间同步" class="headerlink" title="与windows时间同步"></a>与windows时间同步</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-local-rtc 1</span><br></pre></td></tr></table></figure>
 <h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;douxl5516@163.com&quot;</span><br></pre></td></tr></table></figure>
 
       
@@ -534,6 +534,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/09/大学生创新创业训练项目总结/" rel="prev" title="大学生创新创业训练项目总结">
+                大学生创新创业训练项目总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -604,7 +608,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -633,7 +637,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -678,7 +686,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -742,7 +758,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置镜像源"><span class="nav-number">1.</span> <span class="nav-text">配置镜像源:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入GPG-Key"><span class="nav-number">2.</span> <span class="nav-text">导入GPG Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装软件"><span class="nav-number">3.</span> <span class="nav-text">安装软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置搜狗环境"><span class="nav-number">4.</span> <span class="nav-text">配置搜狗环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置firefox"><span class="nav-number">5.</span> <span class="nav-text">配置firefox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置yarn"><span class="nav-number">6.</span> <span class="nav-text">配置yarn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁用pcspkr"><span class="nav-number">7.</span> <span class="nav-text">禁用pcspkr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs包"><span class="nav-number">8.</span> <span class="nav-text">nodejs包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip"><span class="nav-number">9.</span> <span class="nav-text">pip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-包"><span class="nav-number">10.</span> <span class="nav-text">python 包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置git"><span class="nav-number">11.</span> <span class="nav-text">配置git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#time"><span class="nav-number">12.</span> <span class="nav-text">time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH"><span class="nav-number">13.</span> <span class="nav-text">SSH</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置镜像源"><span class="nav-number">1.</span> <span class="nav-text">配置镜像源:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入GPG-Key"><span class="nav-number">2.</span> <span class="nav-text">导入GPG Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装软件"><span class="nav-number">3.</span> <span class="nav-text">安装软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置搜狗环境"><span class="nav-number">4.</span> <span class="nav-text">配置搜狗环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置firefox"><span class="nav-number">5.</span> <span class="nav-text">配置firefox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置yarn"><span class="nav-number">6.</span> <span class="nav-text">配置yarn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁用pcspkr"><span class="nav-number">7.</span> <span class="nav-text">禁用pcspkr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs包"><span class="nav-number">8.</span> <span class="nav-text">nodejs包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip"><span class="nav-number">9.</span> <span class="nav-text">pip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-包"><span class="nav-number">10.</span> <span class="nav-text">python 包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置git"><span class="nav-number">11.</span> <span class="nav-text">配置git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与windows时间同步"><span class="nav-number">12.</span> <span class="nav-text">与windows时间同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH"><span class="nav-number">13.</span> <span class="nav-text">SSH</span></a></li></ol></div>
             
 
           </div>
