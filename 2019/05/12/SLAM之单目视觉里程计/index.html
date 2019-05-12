@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://douxl5516.github.io/2019/05/12/SLAM之单目视觉里程计/01.jpg">
 <meta property="og:image" content="https://douxl5516.github.io/2019/05/12/SLAM之单目视觉里程计/02.jpg">
-<meta property="og:updated_time" content="2019-05-12T12:01:48.724Z">
+<meta property="og:updated_time" content="2019-05-12T12:07:08.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SLAM之单目视觉里程计">
 <meta name="twitter:description" content="单目SLAM中涉及到的第一部分，单目视觉里程计。">
@@ -408,7 +408,7 @@
                 
               
 
-              <time title="创建时间：2019-05-12 09:15:10 / 修改时间：20:01:48" itemprop="dateCreated datePublished" datetime="2019-05-12T09:15:10+08:00">2019-05-12</time>
+              <time title="创建时间：2019-05-12 09:15:10 / 修改时间：20:07:08" itemprop="dateCreated datePublished" datetime="2019-05-12T09:15:10+08:00">2019-05-12</time>
             
 
             
@@ -485,9 +485,9 @@
 <script type="math/tex; mode=display">
 \left\{\begin{array}{l}{u=\frac{x}{d x}+u_{0}} \\ {v=\frac{y}{d y}+v_{0}}\end{array}\right.</script><p>即：</p>
 <script type="math/tex; mode=display">
-\left[ \begin{array}{c}{u} \\ {v} \\ {1}\end{array}\right]=\left[ \begin{array}{ccc}{\frac{1}{d x}} & {0} & {u_{0}} \\ {0} & {\frac{1}{d y}} & {v_{0}} \\ {0} & {0} & {1}\end{array}\right] \left[ \begin{array}{l}{x} \\ {y} \\ {1}\end{array}\right]</script><p><strong>相机坐标系</strong>：相机坐标系原点位于光心。如图所示，相机光心为点$O$ ，$Z_{c}$与像平面垂直，为相机的光轴，$X_{c}, Y_{c}$分别与$x,y$轴相平行，焦距大小为线段$O O_{1}$ 的长度，<br>则将$O-X_{c} Y_{c} Z_{c}$ 坐标系称作相机坐标系。</p>
+\left[ \begin{array}{c}{u} \\ {v} \\ {1}\end{array}\right]=\left[ \begin{array}{ccc}{\frac{1}{d x}} & {0} & {u_{0}} \\ {0} & {\frac{1}{d y}} & {v_{0}} \\ {0} & {0} & {1}\end{array}\right] \left[ \begin{array}{l}{x} \\ {y} \\ {1}\end{array}\right]</script><p><strong>相机坐标系</strong>：相机坐标系原点位于光心。如图所示，相机光心为点$O$ ，$Z_{c}$与像平面垂直，为相机的光轴，$X_{c}, Y_{c}$分别与$x,y$轴相平行，焦距大小为线段$O O_{1}$ 的长度，则将$O-X_{c} Y_{c} Z_{c}$ 坐标系称作相机坐标系。</p>
 <p><img src="/2019/05/12/SLAM之单目视觉里程计/02.jpg" alt="相机坐标系"></p>
-<p><strong>世界坐标系</strong>:世界坐标系可以对场景的中的任何物体进行描述，同时能表示出相机坐标。如上图中，将坐标系$O_{w}-X_{w} Y_{w} Z_{w}$称为世界坐标系，其与相机坐标系的相互变换可以通过$3<em> 1$ 的平移向量$t$以及$3</em>3$ 的旋转矩阵$ R $来表示，设点 $P$ 在世界坐标系中的齐次坐标为$\left(X_{w}, Y_{w}, Z_{w}, 1\right)^{T}$，在相机坐标系中的齐次坐标为$\left(X_{c}, Y_{c}, Z_{c}, 1\right)^{T}$，那么二者的转换关系为： </p>
+<p><strong>世界坐标系</strong>:世界坐标系可以对场景的中的任何物体进行描述，同时能表示出相机坐标。如上图中，将坐标系$O_{w}-X_{w} Y_{w} Z_{w}$称为世界坐标系，其与相机坐标系的相互变换可以通过 $3 \times 1$ 的平移向量 $t$ 以及 $ 3\times 3 $ 的旋转矩阵 $ R $ 来表示，设点 $ P $ 在世界坐标系中的齐次坐标为 $\left(X_{w}, Y_{w}, Z_{w}, 1\right)^{T}$，在相机坐标系中的齐次坐标为$\left(X_{c}, Y_{c}, Z_{c}, 1\right)^{T}​$ ，那么二者的转换关系为： </p>
 <script type="math/tex; mode=display">
 \left[ \begin{array}{c}{X_{c}} \\ {Y_{c}} \\ {Z_{c}} \\ {1}\end{array}\right]=\left[ \begin{array}{cc}{R} & {t} \\ {0^{T}} & {1}\end{array}\right] \left[ \begin{array}{c}{X_{w}} \\ {Y_{w}} \\ {Z_{w}} \\ {1}\end{array}\right]=M_{1} \left[ \begin{array}{c}{X_{w}} \\ {Y_{w}} \\ {Z_{w}} \\ {1}\end{array}\right]</script><h2 id="针孔相机模型"><a href="#针孔相机模型" class="headerlink" title="针孔相机模型"></a>针孔相机模型</h2><p>针孔相机模型是将空间坐标映射到图像点的模型。</p>
 <p>请阅读: 视觉SLAM十四讲 5.1.1</p>
