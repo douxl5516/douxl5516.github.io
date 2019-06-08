@@ -438,6 +438,19 @@
           
             
             
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/06/编译原理笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/06/编译原理笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -533,7 +546,7 @@
 <h3 id="句子"><a href="#句子" class="headerlink" title="句子"></a>句子</h3><p>若$S\Rightarrow^<em>\beta,\beta \in V_T^</em>$，$\beta$是文法$G$的一个句子。</p>
 <p>句子是特殊的句型，它不包含非终结符。</p>
 <h3 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h3><p>语言为所有句子的集合</p>
-<p>$L(G)=\left\{ \beta | S \Rightarrow^+\beta ,\beta \in V_T^* \right\}$</p>
+<p>$L(G)=\left{ \beta | S \Rightarrow^+\beta ,\beta \in V_T^* \right}$</p>
 <h3 id="文法的种类"><a href="#文法的种类" class="headerlink" title="文法的种类"></a>文法的种类</h3><h4 id="0型文法：无限制文法-短语结构文法"><a href="#0型文法：无限制文法-短语结构文法" class="headerlink" title="0型文法：无限制文法/短语结构文法"></a>0型文法：无限制文法/短语结构文法</h4><p>要求左部至少包含一个非终结符</p>
 <h4 id="1型文法：上下文有关文法-CSG"><a href="#1型文法：上下文有关文法-CSG" class="headerlink" title="1型文法：上下文有关文法(CSG)"></a>1型文法：上下文有关文法(CSG)</h4><p>在0型文法基础上，进一步要求左部符号个数不多于右部符号个数</p>
 <p>CSG有段不包含空产生式</p>
@@ -628,6 +641,10 @@
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
 
   
 
@@ -991,6 +1008,36 @@
   
 
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'BKhIKLqbMQrNxHuw54cvmAs1-gzGzoHsz',
+    appKey: 'bMi0lo4hOd8qxgpi4OcTw70q',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
 
 
   
