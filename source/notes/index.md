@@ -2,6 +2,7 @@
 title: 随笔
 date: 2018-08-01 10:24:00
 mathjax: false
+comments: false
 ---
 # 2019
 ## 5月7日
