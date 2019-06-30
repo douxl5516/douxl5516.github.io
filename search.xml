@@ -3,15 +3,15 @@
   <entry>
     <title><![CDATA[SfM和SLAM项目总结]]></title>
     <url>%2F2019%2F06%2F28%2FSfM%E5%92%8CSLAM%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[前言：2019年6月27日，我进行了网易伏羲实验室虚拟人方向的电话面试。在电话中，我支支吾吾连自己的项目都讲不清楚。不管最后面试结果如何，自己做过的东西起码自己要懂。 [TOC] 张正友标定法A Flexible New Technique for Camera Calibration 摘要：张正友标定法只需要相机观察几个（至少两个）不同方向上显示的平面图案。相机或平面图案都可以自由移动。且相机或标定板的运动不需要知道。张正友标定法对径向透镜畸变进行了建模。该方法由一个封闭形式的解组成，然后根据最大似然准则进行非线性改进。 符号规定 符号 含义 $m=[u,v]^T$ 二维点 SfM本质矩阵三角化PnPSLAMORB_SLAM流程g2o图优化数据可视化VTK、PangolinTower]]></content>
+    <content type="text"><![CDATA[前言：2019年6月27日，我进行了网易伏羲实验室虚拟人方向的电话面试。在电话中，我支支吾吾连自己的项目都讲不清楚。不管最后面试结果如何，自己做过的东西起码自己要懂。 [TOC] 张正友标定法A Flexible New Technique for Camera Calibration 摘要：张正友标定法只需要相机观察几个（至少两个）不同方向上显示的平面图案。相机或平面图案都可以自由移动。且相机或标定板的运动不需要知道。张正友标定法对径向透镜畸变进行了建模。该方法由一个封闭形式的解组成，然后根据最大似然准则进行非线性改进。 数学推导 符号 含义 $m=[u,v]^T$ 二维点 $M=[X,Y,Z]^T$ 三维点 $\widetilde{m}=[u,v,1]^T$ 二维点齐次坐标 $\widetilde{M}=[X,Y,Z,1]^T$ 三维点齐次坐标 针孔相机模型三维点到二维点投影矩阵 s\widetilde{\bf{m}}=\bf{A[R\quad t]\widetilde{M}}, \quad A=\left[\begin{matrix}\alpha &\gamma & u_0\\0 & \beta & v_0\\ 0& 0& 1\end{matrix}\right]其中： 符号 含义 s 随机尺度因子 SfM本质矩阵三角化PnPSLAMORB_SLAM流程g2o图优化数据可视化VTK、PangolinTower]]></content>
       <categories>
         <category>SLAM</category>
       </categories>
       <tags>
+        <tag>SfM</tag>
         <tag>SLAM</tag>
         <tag>机器视觉</tag>
         <tag>单目</tag>
-        <tag>SfM</tag>
       </tags>
   </entry>
   <entry>
