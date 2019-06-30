@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SfM和SLAM项目总结]]></title>
+    <url>%2F2019%2F06%2F28%2FSfM%E5%92%8CSLAM%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[前言：2019年6月27日，我进行了网易伏羲实验室虚拟人方向的电话面试。在电话中，我支支吾吾连自己的项目都讲不清楚。不管最后面试结果如何，自己做过的东西起码自己要懂。 [TOC] 张正友标定法A Flexible New Technique for Camera Calibration 摘要：张正友标定法只需要相机观察几个（至少两个）不同方向上显示的平面图案。相机或平面图案都可以自由移动。且相机或标定板的运动不需要知道。张正友标定法对径向透镜畸变进行了建模。该方法由一个封闭形式的解组成，然后根据最大似然准则进行非线性改进。 符号规定 符号 含义 $m=[u,v]^T$ 二维点 SfM本质矩阵三角化PnPSLAMORB_SLAM流程g2o图优化数据可视化VTK、PangolinTower]]></content>
+      <categories>
+        <category>SLAM</category>
+      </categories>
+      <tags>
+        <tag>SLAM</tag>
+        <tag>机器视觉</tag>
+        <tag>单目</tag>
+        <tag>SfM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[前缀和、差分、线段树与树状数组]]></title>
     <url>%2F2019%2F06%2F08%2F%E5%89%8D%E7%BC%80%E5%92%8C%E3%80%81%E5%B7%AE%E5%88%86%E3%80%81%E7%BA%BF%E6%AE%B5%E6%A0%91%E4%B8%8E%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%2F</url>
     <content type="text"><![CDATA[树状数组 时间复杂度：O（n） 适用于：单点更新，区间查询 理解 C[1] = C[0001] = A[1];C[2] = C[0010] = A[1]+A[2];C[3] = C[0011] = A[3];C[4] = C[0100] = A[1]+A[2]+A[3]+A[4];C[5] = C[0101] = A[5];C[6] = C[0110] = A[5]+A[6];C[7] = C[0111] = A[7];C[8] = C[1000] = A[1]+A[2]+A[3]+A[4]+A[5]+A[6]+A[7]+A[8]; 即： $C[i]=A[i-2^k+1]+A[i-2^k+2]+\dots+A[i];$ $k$为 $i$ 的二进制中从最低位到高位连续零的长度。 $2^k$可通过$i\&amp;-i$获得。 补码为原码取反后加1，如果将补码+1进位，那么最末尾的1和原码最右边的1一定是同一个位置 lowbit123inline int lowbit(x)&#123; return x&amp;(-x);&#125; 单点更新12345678910void update(int *arr,int index,int diff,int len)&#123; /* * arr：树状数组 * index：待更新的位置 * diff：改变的值 * len：树状数组长度 */ for(int i=index;i&lt;=len;i+=lowbit(i)) arr[i] += diff;&#125; 区间查询12345678910int getsum(int *arr,int x)&#123; /* * arr：树状数组 * x：求从1到x的和 */ int ans = 0; for(int i=x;i;i-=lowbit(i)) ans += arr[i]; return ans;&#125; 样例1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;string&gt;#include&lt;cmath&gt;using namespace std;int lowbit(const int t) &#123; return t &amp; (-t);&#125;void insert(int t, int d) &#123; while (t &lt;= n)&#123; a[t] += d; t = t + lowbit(t); &#125;&#125;int getSum(int t) &#123; int sum = 0; while (t &gt; 0)&#123; sum += a[t]; t = t - lowbit(t); &#125; return sum;&#125;int main() &#123; int t, k, d; scanf("%d", &amp;t); k= 1; while (t--)&#123; memset(a, 0, sizeof(a)); scanf("%d", &amp;n); for (int i = 1; i &lt;= n; ++i) &#123; scanf("%d", &amp;d); insert(i, d); &#125; string str; printf("Case %d:\n", k++); while (cin &gt;&gt; str) &#123; if (str == "End") break; int x, y; scanf("%d %d", &amp;x, &amp;y); if (str == "Query") printf("%lld\n", getSum(y) - getSum(x - 1)); else if (str == "Add") insert(x, y); else if (str == "Sub") insert(x, -y); &#125; &#125; return 0;&#125; 线段树模板一、RMQ，查询区间最值下标12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#include&lt;iostream&gt; using namespace std; #define MAXN 100 #define MAXIND 256 //线段树节点个数 //构建线段树,目的:得到M数组. void build(int node, int b, int e, int M[], int A[]) &#123; if (b == e) M[node] = b; //只有一个元素,只有一个下标 else &#123; build(2 * node, b, (b + e) / 2, M, A); build(2 * node + 1, (b + e) / 2 + 1, e, M, A); if (A[M[2 * node]] &lt;= A[M[2 * node + 1]]) M[node] = M[2 * node]; else M[node] = M[2 * node + 1]; &#125; &#125; //找出区间 [i, j] 上的最小值的索引 int query(int node, int b, int e, int M[], int A[], int i, int j) &#123; int p1, p2; //查询区间和要求的区间没有交集 if (i &gt; e || j &lt; b) return -1; if (b &gt;= i &amp;&amp; e &lt;= j) return M[node]; p1 = query(2 * node, b, (b + e) / 2, M, A, i, j); p2 = query(2 * node + 1, (b + e) / 2 + 1, e, M, A, i, j); //return the position where the overall //minimum is if (p1 == -1) return M[node] = p2; if (p2 == -1) return M[node] = p1; if (A[p1] &lt;= A[p2]) return M[node] = p1; return M[node] = p2; &#125; int main() &#123; int M[MAXIND]; //下标1起才有意义,否则不是二叉树,保存下标编号节点对应区间最小值的下标. memset(M,-1,sizeof(M)); int a[]=&#123;3,4,5,7,2,1,0,3,4,5&#125;; build(1, 0, sizeof(a)/sizeof(a[0])-1, M, a); cout&lt;&lt;query(1, 0, sizeof(a)/sizeof(a[0])-1, M, a, 0, 5)&lt;&lt;endl; return 0; &#125; 模板二、连续区间修改或者单节点更新的动态查询问题 （此模板查询区间和）123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475#include &lt;cstdio&gt; #include &lt;algorithm&gt; using namespace std; #define lson l , m , rt &lt;&lt; 1 #define rson m + 1 , r , rt &lt;&lt; 1 | 1 #define root 1 , N , 1 #define LL long long const int maxn = 111111; LL add[maxn&lt;&lt;2]; LL sum[maxn&lt;&lt;2]; void PushUp(int rt) &#123; sum[rt] = sum[rt&lt;&lt;1] + sum[rt&lt;&lt;1|1]; &#125; void PushDown(int rt,int m) &#123; if (add[rt]) &#123; add[rt&lt;&lt;1] += add[rt]; add[rt&lt;&lt;1|1] += add[rt]; sum[rt&lt;&lt;1] += add[rt] * (m - (m &gt;&gt; 1)); sum[rt&lt;&lt;1|1] += add[rt] * (m &gt;&gt; 1); add[rt] = 0; &#125; &#125; void build(int l,int r,int rt) &#123; add[rt] = 0; if (l == r) &#123; scanf("%lld",&amp;sum[rt]); return ; &#125; int m = (l + r) &gt;&gt; 1; build(lson); build(rson); PushUp(rt); &#125; void update(int L,int R,int c,int l,int r,int rt) &#123; if (L &lt;= l &amp;&amp; r &lt;= R) &#123; add[rt] += c; sum[rt] += (LL)c * (r - l + 1); return ; &#125; PushDown(rt , r - l + 1); int m = (l + r) &gt;&gt; 1; if (L &lt;= m) update(L , R , c , lson); if (m &lt; R) update(L , R , c , rson); PushUp(rt); &#125; LL query(int L,int R,int l,int r,int rt) &#123; if (L &lt;= l &amp;&amp; r &lt;= R) &#123; return sum[rt]; &#125; PushDown(rt , r - l + 1); int m = (l + r) &gt;&gt; 1; LL ret = 0; if (L &lt;= m) ret += query(L , R , lson); if (m &lt; R) ret += query(L , R , rson); return ret; &#125; int main() &#123; int N , Q; scanf("%d%d",&amp;N,&amp;Q); build(root); while (Q --) &#123; char op[2]; int a , b , c; scanf("%s",op); if (op[0] == 'Q') &#123; scanf("%d%d",&amp;a,&amp;b); printf("%lld\n",query(a , b ,root)); &#125; else &#123; scanf("%d%d%d",&amp;a,&amp;b,&amp;c); update(a , b , c , root); &#125; &#125; return 0; &#125; 前缀和一维前缀和有数组A，数组A对应的前缀和数组为S，有： S[k]=\sum_{i=0}^{k}A[i]由此方便了范围查询： \sum_{i=L}^RA[i]=S[R]-S[L-1]二维前缀和对于二维数组A，数组A对应的前缀和数组为S，有： S[i][j]=\sum_{m=0}^i\sum_{n=0}^jA[i][j]计算时二维前缀和时，可以使用递推公式： S[i][j]=A[i][j]+S[i-1][j]+S[i][j-1]-S[i-1][j-1]当求被点$(x_1,y_1)$和点$(x_2,y_2)$围起来的元素的和时，可以使用： \sum_{i=x_1}^{x_2}\sum_{j=y_1}^{y_2}A[i][j]=S[x_2][y_2]-S[x_1-1][y2]-S[x_2][y_1-1]+S[x_1-1][y_1-1]差分差分可解决范围更新的问题。 思想： 延后更新 更新的起点和终点 利用前缀和 样例： 1234567891011121314151617181920212223242526272829#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn=1e5+9;int a[maxn],b[maxn];int main()&#123; int i,j,k,n,m,p; cin&gt;&gt;n&gt;&gt;m; for(i=1;i&lt;=n;i++)&#123; cin&gt;&gt;a[i]; &#125; for(i=1;i&lt;=m;i++)&#123; int L,R,t; cin&gt;&gt;t&gt;&gt;L&gt;&gt;R&gt;&gt;p; if(t==1)&#123; b[L]+=p;b[R+1]-=p; &#125; else&#123; b[L]-=p;b[R+1]+=p; &#125; &#125; int add=0; for(i=1;i&lt;=n;i++)&#123; add+=b[i]; a[i]+=a[i-1]+add; &#125; int x,y; cin&gt;&gt;x&gt;&gt;y; cout&lt;&lt;a[y]-a[x-1]&lt;&lt;endl;&#125;]]></content>
@@ -9,8 +23,8 @@
       </categories>
       <tags>
         <tag>C++</tag>
-        <tag>OJ</tag>
         <tag>算法</tag>
+        <tag>OJ</tag>
       </tags>
   </entry>
   <entry>
@@ -22,15 +36,14 @@
       </categories>
       <tags>
         <tag>C++</tag>
-        <tag>OJ</tag>
         <tag>算法</tag>
-        <tag>字符串</tag>
+        <tag>OJ</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[SLAM之单目视觉里程计]]></title>
     <url>%2F2019%2F05%2F12%2FSLAM%E4%B9%8B%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1%2F</url>
-    <content type="text"><![CDATA[SLAM之单目视觉里程计基础知识旋转矩阵和位移矩阵建议参考计算机图形学教材，学习“图形变换”章节。重点掌握以下概念： 旋转矩阵 平移向量 齐次坐标 变换矩阵（旋转矩阵与平移向量的结合） 参考： 旋转变换（一）旋转矩阵 旋转矩阵、欧拉角、四元数理论及其转换关系 三个坐标系图像坐标系： 一般来说，图像坐标系包括像素坐标系以及物理坐标系。 对于图像直角坐标系上的坐标$ (u,v) $，分别能从像素的行数和列数得到，叫做像素坐标系，为表示像素点在图像中的位置我们需要借助物理坐标系，以图像中某一点$O1$ 当作原点建立坐标系，其中$ x $轴，$y$轴分别与像素坐标系的横、竖轴平行，方向一致。其中$(x, y)$坐标单位为毫米，$O_1$ 在$ (u, v) $坐标系下的坐标为$\left(u{0}, v{0}\right)$ ，$d{x}$和$d_y$表示每个像素点在 $x$,$y$轴上的尺寸大小，则有： \left\{\begin{array}{l}{u=\frac{x}{d x}+u_{0}} \\ {v=\frac{y}{d y}+v_{0}}\end{array}\right.即： \left[ \begin{array}{c}{u} \\ {v} \\ {1}\end{array}\right]=\left[ \begin{array}{ccc}{\frac{1}{d x}} & {0} & {u_{0}} \\ {0} & {\frac{1}{d y}} & {v_{0}} \\ {0} & {0} & {1}\end{array}\right] \left[ \begin{array}{l}{x} \\ {y} \\ {1}\end{array}\right]相机坐标系：相机坐标系原点位于光心。如图所示，相机光心为点$O$ ，$Z{c}$与像平面垂直，为相机的光轴，$X{c}, Y{c}$分别与$x,y$轴相平行，焦距大小为线段$O O{1}$ 的长度，则将$O-X{c} Y{c} Z_{c}$ 坐标系称作相机坐标系。 世界坐标系:世界坐标系可以对场景的中的任何物体进行描述，同时能表示出相机坐标。如上图中，将坐标系$O{w}-X{w} Y{w} Z{w}$称为世界坐标系，其与相机坐标系的相互变换可以通过 $3 \times 1$ 的平移向量 $t$ 以及 $ 3\times 3 $ 的旋转矩阵 $ R $ 来表示，设点 $ P $ 在世界坐标系中的齐次坐标为 $\left(X{w}, Y{w}, Z{w}, 1\right)^{T}$，在相机坐标系中的齐次坐标为$\left(X{c}, Y{c}, Z{c}, 1\right)^{T}​$ ，那么二者的转换关系为： \left[ \begin{array}{c}{X_{c}} \\ {Y_{c}} \\ {Z_{c}} \\ {1}\end{array}\right]=\left[ \begin{array}{cc}{R} & {t} \\ {0^{T}} & {1}\end{array}\right] \left[ \begin{array}{c}{X_{w}} \\ {Y_{w}} \\ {Z_{w}} \\ {1}\end{array}\right]=M_{1} \left[ \begin{array}{c}{X_{w}} \\ {Y_{w}} \\ {Z_{w}} \\ {1}\end{array}\right]针孔相机模型针孔相机模型是将空间坐标映射到图像点的模型。 请阅读: 视觉SLAM十四讲 5.1.1 对于使用的数据集，一般会提供拍摄照片所用的相机的内参和畸变系数。如果使用自己的相机，则需要采用张正友标定法进行相机标定，以获取相机内参及畸变系数。 最终有： Z \boldsymbol{P}_{u v}=Z \left[ \begin{array}{c}{u} \\ {v} \\ {1}\end{array}\right]=\boldsymbol{K}\left(\boldsymbol{R} \boldsymbol{P}_{w}+\boldsymbol{t}\right)=\boldsymbol{K} T \boldsymbol{P}_{w}其中 $ Z $ 为空间点三维坐标中的$Z$坐标值，$P_{uv}$代表空间点投影到像平面，在像平面上的坐标，$K$为相机内参，$R$为相机外参中的旋转矩阵，$t$为相机外参中的位移向量，$P_w$为空间点在世界坐标系下的三维坐标。其中： K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\ {0} & {0} & {1}\end{array}\right)单目视觉里程计单目视觉里程计主要需要了解对极约束、三角化和PnP。 对极约束 对极约束用于通过二维点之间的匹配关系，求解相邻两张图像之间的运动。关于对极约束的内容，请阅读视觉SLAM十四讲7.3，7.4。 使用对极约束求解本质矩阵可以通过调用opencv中的findEssentialMat函数完成。 12345678910111213//函数原型Mat findEssentialMat( InputArray points1, InputArray points2, InputArray cameraMatrix, int method = RANSAC, double prob = 0.999, double threshold = 1.0, OutputArray mask = noArray());//示例调用using namespace cv;Mat E = findEssentialMat(p1, p2, M); 其中： points1与points2是vector类型，两vector的size相同，对应位置上的Point2f互相匹配。 cameraMatrix是相机内参矩阵 method是计算方法，RANSAC是openCV中被define的常量，表示采用RANSAC方法进行本征矩阵计算 prob是估计矩阵正确的可信度 参数threshold用于RANSAC的参数。 它是从点到极线的最大距离（以像素为单位），超出此点时，该点被视为异常值，不用于计算最终的基本矩阵。 根据点定位精度，图像分辨率和图像噪声的不同，可将其设置为1-3。 参数mask输出N个元素的数组，其中每个元素对于异常值设置为0，对其他点设置为1。 求解出本征矩阵E后，调用recoverPose求解旋转矩阵和位移向量。 1234567891011//函数原型int recoverPose(Mat E, InputArray points1, InputArray points2, InputArray cameraMatrix, OutputArray R, OutputArray t, OutputArray mask = noArray()); //示例调用using namespace cv;int pass_count = recoverPose(E,p1, p2, M, R, t,mask); 其中： E是经过findEssentialMat求解出的本征矩阵 points1，points2，cameraMatrix，mask与findEssentialMat函数中的意义相同 R是求解出的旋转矩阵 t是求解出的位移向量 R和t组成变换矩阵T，这里的T是是第一张图到第二张图的坐标变换矩阵。或者可以理解为第一张图相机相对于相机初始位置的变换矩阵是X。因为第一张图相机所处的位置是初始位置，所以有：$X = eye(4)$，其中$eye(4)$是四阶单位矩阵。那么T左乘X是第二个图的相机的坐标变换矩阵。 对极约束可以求解出两张图像之间的相机变换矩阵，但是它是2D和2D之间求解的变换矩阵，t的尺度无法确定，t可能是1米，可能是1cm。 三角化 1234567891011121314151617181920212223242526272829void reconstruct(Mat&amp; K, Mat&amp; R1, Mat&amp; T1, Mat&amp; R2, Mat&amp; T2, vector&lt;Point2f&gt;&amp; p1, vector&lt;Point2f&gt;&amp; p2, vector&lt;Point3f&gt;&amp; structure)&#123; //两个相机的投影矩阵[R T]，triangulatePoints只支持float型 Mat proj1(3, 4, CV_32FC1); Mat proj2(3, 4, CV_32FC1); R1.convertTo(proj1(Range(0, 3), Range(0, 3)), CV_32FC1); T1.convertTo(proj1.col(3), CV_32FC1); R2.convertTo(proj2(Range(0, 3), Range(0, 3)), CV_32FC1); T2.convertTo(proj2.col(3), CV_32FC1); Mat fK; K.convertTo(fK, CV_32FC1); proj1 = fK*proj1; proj2 = fK*proj2; //三角重建 Mat s; triangulatePoints(proj1, proj2, p1, p2, s); structure.clear(); structure.reserve(s.cols); for (int i = 0; i &lt; s.cols; ++i) &#123; Mat_&lt;float&gt; col = s.col(i); col /= col(3); //齐次坐标，需要除以最后一个元素才是真正的坐标值 structure.push_back(Point3f(col(0), col(1), col(2))); &#125;&#125; 三角化在得到两个相机的旋转矩阵、位移向量后，可以根据匹配的特征点进行三角化，最终能够求得特征点对应的空间点云的坐标。 PnP PnP在得知了对应的空间点的三维坐标和新加入的图像中的特征点的二维坐标之后，可以求解新加入的图像的相机的旋转矩阵和位移向量。 参考opencv中solvePnPRansac函数求解相机位姿 12345678910//函数原型bool solvePnPRansac(InputArray objectPoints, InputArray imagePoints, InputArray cameraMatrix, InputArray dist， OutputArray rvec, OutputArray tvec, ...);//调用示例solvePnPRansac(object_points, image_points, K, noArray(), r, T); 其中： objectPoints为三维坐标，imagePoints为二维坐标，对应位置的坐标互相匹配。 cameraMatrix为相机内参。 dist为畸变参数矩阵。 rvec为求解出的相机旋转向量，不是旋转矩阵。可经过罗德里格斯变换获取旋转矩阵。 1Rodrigues(r, R); tvec为求解出的相机位移向量。 这里的objectPoints为原有空间点云三维坐标。imagePoints为新加入的一张图像中的特征点的图像坐标。假设刚开始运行程序时候，点云 $ C_{12} $ 由前两张图像的相机的旋转矩阵、位移向量和匹配的特征点经过三角化求解出来。 上述过程涉及到的前两张图像中第一张图像的相机旋转矩阵为三阶单位矩阵，位移向量为0，即第一张图像的相机处于起始位置；第二张图像的旋转矩阵和位移向量通过对极几何被求解出来。 进行求解PnP需要构建已有空间点云三维坐标和新加入图像中的特征点二维坐标的匹配关系。那么这个关系是怎么建立的呢？是在图一、图二进行三角化生成空间点云时候，会生成空间点云中点与图二中特征点的匹配关系。图二与图三进行匹配，可获得图二与图三中特征点的匹配关系。由此可获得图三中特征点与原有空间点云中点的匹配关系。 程序经过一次PnP，求解出第三张图像的相机的旋转矩阵和位移矩阵后，可以使用第三张图像的相机的旋转矩阵和位移向量与第二张图像的旋转矩阵和位移向量进行三角化，生成第二张图像和第三张图像共同构建的空间点云$C_{23}$。 之后，空间点云可以进行点的添加和旧点的消除，每次新加入的一张图像的相机位姿可以通过PnP求解出来。 参考资料【1】《视觉SLAM十四讲》 —— 高翔 【2】 葛均强. 基于无人机航拍图像序列的三维重建研究与实现[D]. 电子科技大学,2015. 【3】线性代数的本质——3blue1brown]]></content>
+    <content type="text"><![CDATA[SLAM之单目视觉里程计基础知识旋转矩阵和位移矩阵建议参考计算机图形学教材，学习“图形变换”章节。重点掌握以下概念： 旋转矩阵 平移向量 齐次坐标 变换矩阵（旋转矩阵与平移向量的结合） 参考： 旋转变换（一）旋转矩阵 旋转矩阵、欧拉角、四元数理论及其转换关系 三个坐标系图像坐标系： 一般来说，图像坐标系包括像素坐标系以及物理坐标系。 对于图像直角坐标系上的坐标$ (u,v) $，分别能从像素的行数和列数得到，叫做像素坐标系，为表示像素点在图像中的位置我们需要借助物理坐标系，以图像中某一点 $O1$ 当作原点建立坐标系，其中 $ x $ 轴， $y$ 轴分别与像素坐标系的横、竖轴平行，方向一致。其中 $(x, y)$ 坐标单位为毫米， $O_1$ 在 $ (u, v) $ 坐标系下的坐标为 $\left(u{0}, v{0}\right)$ ， $d{x}$ 和 $d_y$ 表示每个像素点在 $x$ , $y$ 轴上的尺寸大小，则有： \left\{\begin{array}{l}{u=\frac{x}{d x}+u_{0}} \\ {v=\frac{y}{d y}+v_{0}}\end{array}\right.即： \left[ \begin{array}{c}{u} \\ {v} \\ {1}\end{array}\right]=\left[ \begin{array}{ccc}{\frac{1}{d x}} & {0} & {u_{0}} \\ {0} & {\frac{1}{d y}} & {v_{0}} \\ {0} & {0} & {1}\end{array}\right] \left[ \begin{array}{l}{x} \\ {y} \\ {1}\end{array}\right]相机坐标系：相机坐标系原点位于光心。如图所示，相机光心为点 $O$ ， $Z{c}$ 与像平面垂直，为相机的光轴， $X{c}, Y{c}$ 分别与 $x,y$ 轴相平行，焦距大小为线段 $O O{1}$ 的长度，则将 $O-X{c} Y{c} Z_{c}$ 坐标系称作相机坐标系。 世界坐标系:世界坐标系可以对场景的中的任何物体进行描述，同时能表示出相机坐标。如上图中，将坐标系 $O{w}-X{w} Y{w} Z{w}$ 称为世界坐标系，其与相机坐标系的相互变换可以通过 $3 \times 1$ 的平移向量 $t$ 以及 $ 3\times 3 $ 的旋转矩阵 $ R $ 来表示，设点 $ P $ 在世界坐标系中的齐次坐标为 $\left(X{w}, Y{w}, Z{w}, 1\right)^{T}$ ，在相机坐标系中的齐次坐标为 $\left(X{c}, Y{c}, Z{c}, 1\right)^{T}$ ，那么二者的转换关系为： \left[ \begin{array}{c}{X_{c}} \\ {Y_{c}} \\ {Z_{c}} \\ {1}\end{array}\right]=\left[ \begin{array}{cc}{R} & {t} \\ {0^{T}} & {1}\end{array}\right] \left[ \begin{array}{c}{X_{w}} \\ {Y_{w}} \\ {Z_{w}} \\ {1}\end{array}\right]=M_{1} \left[ \begin{array}{c}{X_{w}} \\ {Y_{w}} \\ {Z_{w}} \\ {1}\end{array}\right]针孔相机模型针孔相机模型是将空间坐标映射到图像点的模型。 请阅读: 视觉SLAM十四讲 5.1.1 对于使用的数据集，一般会提供拍摄照片所用的相机的内参和畸变系数。如果使用自己的相机，则需要采用张正友标定法进行相机标定，以获取相机内参及畸变系数。 最终有： Z \boldsymbol{P}_{u v}=Z \left[ \begin{array}{c}{u} \\ {v} \\ {1}\end{array}\right]=\boldsymbol{K}\left(\boldsymbol{R} \boldsymbol{P}_{w}+\boldsymbol{t}\right)=\boldsymbol{K} T \boldsymbol{P}_{w}其中 $ Z $ 为空间点三维坐标中的 $Z$ 坐标值，$P_{uv}$ 代表空间点投影到像平面，在像平面上的坐标，$K$ 为相机内参， $R$ 为相机外参中的旋转矩阵， $t$ 为相机外参中的位移向量， $P_w$ 为空间点在世界坐标系下的三维坐标。其中： K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\ {0} & {0} & {1}\end{array}\right)单目视觉里程计单目视觉里程计主要需要了解对极约束、三角化和PnP。 对极约束 对极约束用于通过二维点之间的匹配关系，求解相邻两张图像之间的运动。关于对极约束的内容，请阅读视觉SLAM十四讲7.3，7.4。 使用对极约束求解本质矩阵可以通过调用opencv中的findEssentialMat函数完成。 12345678910111213//函数原型Mat findEssentialMat( InputArray points1, InputArray points2, InputArray cameraMatrix, int method = RANSAC, double prob = 0.999, double threshold = 1.0, OutputArray mask = noArray());//示例调用using namespace cv;Mat E = findEssentialMat(p1, p2, M); 其中： points1与points2是vector类型，两vector的size相同，对应位置上的Point2f互相匹配。 cameraMatrix是相机内参矩阵 method是计算方法，RANSAC是openCV中被define的常量，表示采用RANSAC方法进行本征矩阵计算 prob是估计矩阵正确的可信度 参数threshold用于RANSAC的参数。 它是从点到极线的最大距离（以像素为单位），超出此点时，该点被视为异常值，不用于计算最终的基本矩阵。 根据点定位精度，图像分辨率和图像噪声的不同，可将其设置为1-3。 参数mask输出N个元素的数组，其中每个元素对于异常值设置为0，对其他点设置为1。 求解出本征矩阵E后，调用recoverPose求解旋转矩阵和位移向量。 1234567891011//函数原型int recoverPose(Mat E, InputArray points1, InputArray points2, InputArray cameraMatrix, OutputArray R, OutputArray t, OutputArray mask = noArray()); //示例调用using namespace cv;int pass_count = recoverPose(E,p1, p2, M, R, t,mask); 其中： E是经过findEssentialMat求解出的本征矩阵 points1，points2，cameraMatrix，mask与findEssentialMat函数中的意义相同 R是求解出的旋转矩阵 t是求解出的位移向量 R和t组成变换矩阵T，这里的T是是第一张图到第二张图的坐标变换矩阵。或者可以理解为第一张图相机相对于相机初始位置的变换矩阵是X。因为第一张图相机所处的位置是初始位置，所以有：$X = eye(4)$ ，其中 $eye(4)$ 是四阶单位矩阵。那么T左乘X是第二个图的相机的坐标变换矩阵。 对极约束可以求解出两张图像之间的相机变换矩阵，但是它是2D和2D之间求解的变换矩阵，t的尺度无法确定，t可能是1米，可能是1cm。 三角化 1234567891011121314151617181920212223242526272829void reconstruct(Mat&amp; K, Mat&amp; R1, Mat&amp; T1, Mat&amp; R2, Mat&amp; T2, vector&lt;Point2f&gt;&amp; p1, vector&lt;Point2f&gt;&amp; p2, vector&lt;Point3f&gt;&amp; structure)&#123; //两个相机的投影矩阵[R T]，triangulatePoints只支持float型 Mat proj1(3, 4, CV_32FC1); Mat proj2(3, 4, CV_32FC1); R1.convertTo(proj1(Range(0, 3), Range(0, 3)), CV_32FC1); T1.convertTo(proj1.col(3), CV_32FC1); R2.convertTo(proj2(Range(0, 3), Range(0, 3)), CV_32FC1); T2.convertTo(proj2.col(3), CV_32FC1); Mat fK; K.convertTo(fK, CV_32FC1); proj1 = fK*proj1; proj2 = fK*proj2; //三角重建 Mat s; triangulatePoints(proj1, proj2, p1, p2, s); structure.clear(); structure.reserve(s.cols); for (int i = 0; i &lt; s.cols; ++i) &#123; Mat_&lt;float&gt; col = s.col(i); col /= col(3); //齐次坐标，需要除以最后一个元素才是真正的坐标值 structure.push_back(Point3f(col(0), col(1), col(2))); &#125;&#125; 三角化在得到两个相机的旋转矩阵、位移向量后，可以根据匹配的特征点进行三角化，最终能够求得特征点对应的空间点云的坐标。 PnP PnP在得知了对应的空间点的三维坐标和新加入的图像中的特征点的二维坐标之后，可以求解新加入的图像的相机的旋转矩阵和位移向量。 参考opencv中solvePnPRansac函数求解相机位姿 12345678910//函数原型bool solvePnPRansac(InputArray objectPoints, InputArray imagePoints, InputArray cameraMatrix, InputArray dist， OutputArray rvec, OutputArray tvec, ...);//调用示例solvePnPRansac(object_points, image_points, K, noArray(), r, T); 其中： objectPoints为三维坐标，imagePoints为二维坐标，对应位置的坐标互相匹配。 cameraMatrix为相机内参。 dist为畸变参数矩阵。 rvec为求解出的相机旋转向量，不是旋转矩阵。可经过罗德里格斯变换获取旋转矩阵。 1Rodrigues(r, R); tvec为求解出的相机位移向量。 这里的objectPoints为原有空间点云三维坐标。imagePoints为新加入的一张图像中的特征点的图像坐标。假设刚开始运行程序时候，点云 $ C_{12} $ 由前两张图像的相机的旋转矩阵、位移向量和匹配的特征点经过三角化求解出来。 上述过程涉及到的前两张图像中第一张图像的相机旋转矩阵为三阶单位矩阵，位移向量为0，即第一张图像的相机处于起始位置；第二张图像的旋转矩阵和位移向量通过对极几何被求解出来。 进行求解PnP需要构建已有空间点云三维坐标和新加入图像中的特征点二维坐标的匹配关系。那么这个关系是怎么建立的呢？是在图一、图二进行三角化生成空间点云时候，会生成空间点云中点与图二中特征点的匹配关系。图二与图三进行匹配，可获得图二与图三中特征点的匹配关系。由此可获得图三中特征点与原有空间点云中点的匹配关系。 程序经过一次PnP，求解出第三张图像的相机的旋转矩阵和位移矩阵后，可以使用第三张图像的相机的旋转矩阵和位移向量与第二张图像的旋转矩阵和位移向量进行三角化，生成第二张图像和第三张图像共同构建的空间点云$C_{23}$。 之后，空间点云可以进行点的添加和旧点的消除，每次新加入的一张图像的相机位姿可以通过PnP求解出来。 参考资料【1】《视觉SLAM十四讲》 —— 高翔 【2】 葛均强. 基于无人机航拍图像序列的三维重建研究与实现[D]. 电子科技大学,2015. 【3】线性代数的本质——3blue1brown]]></content>
       <categories>
         <category>SLAM</category>
       </categories>
@@ -50,7 +63,6 @@
       </categories>
       <tags>
         <tag>C++</tag>
-        <tag>OJ</tag>
       </tags>
   </entry>
   <entry>
@@ -74,19 +86,6 @@
       <tags>
         <tag>Linux</tag>
         <tag>manjaro</tag>
-        <tag>装机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[编译原理笔记]]></title>
-    <url>%2F2019%2F05%2F06%2F%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[编译原理绪论什么是编译将高级语言翻译成汇编语言或机器语言的过程。 编译系统的结构字符流 词法分析器 语法分析器 语义分析器 中间代码生成器 机器无关代码优化器 目标代码生成器 机器相关代码优化器 词法分析概述任务：扫描字符，确定单词类型，转换为统一的机内表示。 语法分析概述任务：从词法分析器输出的token序列中识别出各类短语，并构造语法分析树。语法分析树描述了句子的语法结构。 语义分析概述任务： 收集标志符的属性信息 属种 类型 存储位置、长度 值 作用域 参数和返回值信息 语义检查 变量或过程未经声明就使用 变量或过程名重复声明 运算分量类型不匹配 操作数之类类型不匹配 中间代码生成中间表示形式： 三地址码（四元式表示） 语法树 目标代码生成目标代码生成以中间代码作为输入，生成目标代码。 任务：合理分配寄存器 代码优化等价程序变换，使运行更快，占用空间更少。 语言及其文法字母表字母表$\sum$是一个有穷符号集合 字母表上的运算 乘积：两个集合中的元素相拼接 n次幂：长度为n的符号串构成的集合 正闭包 克林闭包：正闭包基础上加一个空串 串 串：字母表上的符号的有穷序列 长度：串中符号的个数 空串：长度为0的串 串的运算 连接：y串附加到x串后 幂 文法G=($V_T$,$V_N$,S,P) $V_T$是有限的终极符集合（文法定义的语言的基本符号） $V_N$是有限的非终极符集合（表示语法成分的符号，也称语法变量） S是开始符，$S \in V_N$（表示该文法中最大的语法成分） P是产生式（规则）的集合（将终结符和非终结符结合成串的方法，左部至少包含一个非终极符） 约定 文法简写可只写产生式 终结符、非终结符、文法符号、终结符号串、文法符号串 推导和规约推导：$\Rightarrow$，用产生式的右部替换产生式的左部 一步或多步推导：$\Rightarrow^+$ 零步或多步推导：$\Rightarrow^*$ 规约：用产生式的左部替换产生式的右部 句型若$S\Rightarrow^\alpha，\alpha \in (V_T \cup V_N)^$，$\alpha$是文法$G$的一个句型。 句型中可包含终结符、非终结符、空串。 句子若$S\Rightarrow^\beta,\beta \in V_T^$，$\beta$是文法$G$的一个句子。 句子是特殊的句型，它不包含非终结符。 语言语言为所有句子的集合 $L(G)=\left{ \beta | S \Rightarrow^+\beta ,\beta \in V_T^* \right}$ 文法的种类0型文法：无限制文法/短语结构文法要求左部至少包含一个非终结符 1型文法：上下文有关文法(CSG)在0型文法基础上，进一步要求左部符号个数不多于右部符号个数 CSG有段不包含空产生式 2型文法：上下文无关文法(CFG)产生式左部为非终结符 3型文法：正则文法(RG)右线性文法：$A\rightarrow wB$或$A\rightarrow w$ 左线性文法：$A\rightarrow Bw$或$A\rightarrow w$ 四种文法 逐级限制 逐级包含 短语（相对于句型而言；由非终极符经过至少一次推导产生的）分析树中每棵子树的边缘 设S是文法的开始符，有$S\Rightarrow^*\alpha_1A\alpha_2$，如果有$A\Rightarrow^+\beta$则称$\beta$是句型$\alpha_1\beta\alpha_2$的一个短语。 简单短语（非终极符本身，或由非终极符经过至少一次推导产生的）子树只有父子两代结点，这棵字数的边缘称简单短语 设S是文法的开始符，有$S\Rightarrow^*\alpha_1A\alpha_2$，如果有$A\Rightarrow\beta$则称$\beta$是句型$\alpha_1\beta\alpha_2$的一个简单短语。 句柄句型中的最左简单短语称为句柄。 二义性文法若一个文法能为一个句子生成多棵分析树，则这个文法是二义性的。不能判断一个文法是否是二义性的，单可给出一组规则，使其构造出的文法是不具有二义性的。 词法分析正则表达式$r|s$$rs$$r^*$$r^+$ 正则定义即用变量名代表一个正则表达式。 有穷自动机(Finite Automata,FA)具有有穷个状态，根据当前的状态和输入确定之后到达的状态。 串x，对于自动机存在对于串x从初始状态到终止状态的转换序列，则串被自动机接收。 最长子串匹配原则：在到达某个终态后，只要输入带上还有符号，则FA继续前进，以便寻求最可能长的匹配。]]></content>
-      <categories>
-        <category>编译原理</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
-        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -98,8 +97,7 @@
       </categories>
       <tags>
         <tag>数学</tag>
-        <tag>SLAM</tag>
-        <tag>机器学习</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -110,9 +108,7 @@
         <category>CMake</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>CMake</tag>
-        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -124,6 +120,7 @@
       </categories>
       <tags>
         <tag>OpenCV</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -135,6 +132,7 @@
       </categories>
       <tags>
         <tag>OpenCV</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -147,7 +145,6 @@
       <tags>
         <tag>云服务器</tag>
         <tag>Linux</tag>
-        <tag>Ubuntu</tag>
       </tags>
   </entry>
 </search>
