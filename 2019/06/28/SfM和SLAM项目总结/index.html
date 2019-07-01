@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://douxl5516.github.io/2019/06/28/SfM和SLAM项目总结/01.jpg">
 <meta property="og:image" content="https://douxl5516.github.io/2019/06/28/SfM和SLAM项目总结/02.jpg">
-<meta property="og:updated_time" content="2019-07-01T12:05:16.723Z">
+<meta property="og:updated_time" content="2019-07-01T15:40:17.005Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SfM和SLAM项目总结">
 <meta name="twitter:description" content="2018.5至2019.5大学生创新创业训练项目经验总结。">
@@ -454,7 +454,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-01 20:05:16" itemprop="dateModified" datetime="2019-07-01T20:05:16+08:00">2019-07-01</time>
+                <time title="修改时间：2019-07-01 23:40:17" itemprop="dateModified" datetime="2019-07-01T23:40:17+08:00">2019-07-01</time>
               
             
           </span>
@@ -535,6 +535,9 @@
         <blockquote>
 <p>前言：2019年6月27日，我进行了网易伏羲实验室虚拟人方向的电话面试。在电话中，我支支吾吾连自己的项目都讲不清楚。不管最后面试结果如何，自己做过的东西起码自己要懂。</p>
 </blockquote>
+<p><a href="http://www.360doc.com/content/17/0831/13/10408243_683549296.shtml" target="_blank" rel="noopener">http://www.360doc.com/content/17/0831/13/10408243_683549296.shtml</a></p>
+<p><a href="https://www.baidu.com/baidu?wd=%E5%8D%95%E5%BA%94%E7%9F%A9%E9%98%B5%E8%87%AA%E7%94%B1%E5%BA%A6&amp;tn=monline_7_dg&amp;ie=utf-8" target="_blank" rel="noopener">https://www.baidu.com/baidu?wd=%E5%8D%95%E5%BA%94%E7%9F%A9%E9%98%B5%E8%87%AA%E7%94%B1%E5%BA%A6&amp;tn=monline_7_dg&amp;ie=utf-8</a></p>
+<p><a href="https://blog.csdn.net/zinnc/article/details/52319491" target="_blank" rel="noopener">https://blog.csdn.net/zinnc/article/details/52319491</a></p>
 <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="内积"><a href="#内积" class="headerlink" title="内积"></a>内积</h2><script type="math/tex; mode=display">
 \bf{a} \cdot \bf{b}=\bf{a}^T\bf{b}=\sum_{i=1}^3a_ib_i=|\bf{a}||\bf{b}|cos<\bf{a,b}></script><h2 id="外积"><a href="#外积" class="headerlink" title="外积"></a>外积</h2><script type="math/tex; mode=display">
 \bf{a} \times \bf{b} = 
@@ -561,14 +564,15 @@
 \bf{b}
 \triangleq \bf{a} ^\wedge \bf{b}</script><p>相应的，有</p>
 <script type="math/tex; mode=display">
-\boldsymbol{a}=[a_1\boldsymbol{i},a_2\boldsymbol{j},a_3\boldsymbol{k}],\\\boldsymbol{a}^{\wedge}=\boldsymbol{A}=\left[\begin{matrix}0&-a_3&a_2\\a_3&0&-a_1\\-a_2&a_1&0\\\end{matrix}\right],\\\boldsymbol{A}^{\vee}=\boldsymbol{a}</script><h3 id="特殊正交群-SO-3"><a href="#特殊正交群-SO-3" class="headerlink" title="特殊正交群 $SO(3)$"></a>特殊正交群 $SO(3)$</h3><script type="math/tex; mode=display">
-SO(3)=\{R\in\mathbb{R}^{3\times3}|RR^T=I,\det(R)=1\}</script><h3 id="特殊欧式群-SE-3"><a href="#特殊欧式群-SE-3" class="headerlink" title="特殊欧式群$SE(3)$"></a>特殊欧式群$SE(3)$</h3><script type="math/tex; mode=display">
+\boldsymbol{a}=[a_1\boldsymbol{i},a_2\boldsymbol{j},a_3\boldsymbol{k}],\\\boldsymbol{a}^{\wedge}=\boldsymbol{A}=\left[\begin{matrix}0&-a_3&a_2\\a_3&0&-a_1\\-a_2&a_1&0\\\end{matrix}\right],\\\boldsymbol{A}^{\vee}=\boldsymbol{a}</script><h2 id="特殊正交群-SO-3"><a href="#特殊正交群-SO-3" class="headerlink" title="特殊正交群 $SO(3)$"></a>特殊正交群 $SO(3)$</h2><script type="math/tex; mode=display">
+SO(3)=\{R\in\mathbb{R}^{3\times3}|RR^T=I,\det(R)=1\}</script><p>（det为行列式）</p>
+<h2 id="特殊欧式群-SE-3"><a href="#特殊欧式群-SE-3" class="headerlink" title="特殊欧式群$SE(3)$"></a>特殊欧式群$SE(3)$</h2><script type="math/tex; mode=display">
 SE(3)=\{T=\left[
 \begin{matrix}
 R&t\\
 0^T&1\\
 \end{matrix}
-\right]\in\mathbb{R}^{4\times4}|R\in SO(3),t\in \mathbb{R}^3\}李代数$\mathfrak{so}(3)$</script><h3 id="李代数-mathfrak-so-3"><a href="#李代数-mathfrak-so-3" class="headerlink" title="李代数$\mathfrak{so}(3)$"></a>李代数$\mathfrak{so}(3)$</h3><p>在对$RR^T=I$进行求导及整理之后，可以得到$R(t)^{‘}R(t)^T$是一个反对称矩阵，那么就用一个$\phi(t)\in\mathbb{R}^3$与之对应。有：</p>
+\right]\in\mathbb{R}^{4\times4}|R\in SO(3),t\in \mathbb{R}^3\}李代数$\mathfrak{so}(3)$</script><h2 id="李代数-mathfrak-so-3"><a href="#李代数-mathfrak-so-3" class="headerlink" title="李代数$\mathfrak{so}(3)$"></a>李代数$\mathfrak{so}(3)$</h2><p>在对$RR^T=I$进行求导及整理之后，可以得到$R(t)^{‘}R(t)^T$是一个反对称矩阵，那么就用一个$\phi(t)\in\mathbb{R}^3$与之对应。有：</p>
 <script type="math/tex; mode=display">
 R(t)^{'}R(t)^T=\phi(t)^{\wedge}</script><p>之后求解微分方程，可以得到：</p>
 <script type="math/tex; mode=display">
@@ -883,7 +887,7 @@ h_1^TA^{-T}A^{-1}h_1= h_2^TA^{-T}A^{-1}h_2
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -947,7 +951,7 @@ h_1^TA^{-T}A^{-1}h_1= h_2^TA^{-T}A^{-1}h_2
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内积"><span class="nav-number">1.1.</span> <span class="nav-text">内积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外积"><span class="nav-number">1.2.</span> <span class="nav-text">外积</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊正交群-SO-3"><span class="nav-number">1.2.1.</span> <span class="nav-text">特殊正交群 $SO(3)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊欧式群-SE-3"><span class="nav-number">1.2.2.</span> <span class="nav-text">特殊欧式群$SE(3)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#李代数-mathfrak-so-3"><span class="nav-number">1.2.3.</span> <span class="nav-text">李代数$\mathfrak{so}(3)$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双目系统"><span class="nav-number">1.3.</span> <span class="nav-text">双目系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单应矩阵"><span class="nav-number">1.4.</span> <span class="nav-text">单应矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本质矩阵"><span class="nav-number">1.5.</span> <span class="nav-text">本质矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本矩阵"><span class="nav-number">1.6.</span> <span class="nav-text">基本矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#张正友标定法"><span class="nav-number">2.</span> <span class="nav-text">张正友标定法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数学推导"><span class="nav-number">2.1.</span> <span class="nav-text">数学推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#针孔相机模型三维点到二维点投影矩阵"><span class="nav-number">2.1.1.</span> <span class="nav-text">针孔相机模型三维点到二维点投影矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标定板平面与图像之间的单应性矩阵"><span class="nav-number">2.1.2.</span> <span class="nav-text">标定板平面与图像之间的单应性矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内参约束"><span class="nav-number">2.1.3.</span> <span class="nav-text">内参约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几何解释"><span class="nav-number">2.1.4.</span> <span class="nav-text">几何解释</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SfM"><span class="nav-number">3.</span> <span class="nav-text">SfM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三角化"><span class="nav-number">3.1.</span> <span class="nav-text">三角化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PnP"><span class="nav-number">3.2.</span> <span class="nav-text">PnP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SLAM"><span class="nav-number">4.</span> <span class="nav-text">SLAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ORB-SLAM流程"><span class="nav-number">4.1.</span> <span class="nav-text">ORB_SLAM流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#g2o图优化"><span class="nav-number">4.2.</span> <span class="nav-text">g2o图优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据可视化VTK、Pangolin"><span class="nav-number">4.3.</span> <span class="nav-text">数据可视化VTK、Pangolin</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tower"><span class="nav-number">5.</span> <span class="nav-text">Tower</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内积"><span class="nav-number">1.1.</span> <span class="nav-text">内积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外积"><span class="nav-number">1.2.</span> <span class="nav-text">外积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊正交群-SO-3"><span class="nav-number">1.3.</span> <span class="nav-text">特殊正交群 $SO(3)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊欧式群-SE-3"><span class="nav-number">1.4.</span> <span class="nav-text">特殊欧式群$SE(3)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#李代数-mathfrak-so-3"><span class="nav-number">1.5.</span> <span class="nav-text">李代数$\mathfrak{so}(3)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双目系统"><span class="nav-number">1.6.</span> <span class="nav-text">双目系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单应矩阵"><span class="nav-number">1.7.</span> <span class="nav-text">单应矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本质矩阵"><span class="nav-number">1.8.</span> <span class="nav-text">本质矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本矩阵"><span class="nav-number">1.9.</span> <span class="nav-text">基本矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#张正友标定法"><span class="nav-number">2.</span> <span class="nav-text">张正友标定法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数学推导"><span class="nav-number">2.1.</span> <span class="nav-text">数学推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#针孔相机模型三维点到二维点投影矩阵"><span class="nav-number">2.1.1.</span> <span class="nav-text">针孔相机模型三维点到二维点投影矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标定板平面与图像之间的单应性矩阵"><span class="nav-number">2.1.2.</span> <span class="nav-text">标定板平面与图像之间的单应性矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内参约束"><span class="nav-number">2.1.3.</span> <span class="nav-text">内参约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几何解释"><span class="nav-number">2.1.4.</span> <span class="nav-text">几何解释</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SfM"><span class="nav-number">3.</span> <span class="nav-text">SfM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三角化"><span class="nav-number">3.1.</span> <span class="nav-text">三角化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PnP"><span class="nav-number">3.2.</span> <span class="nav-text">PnP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SLAM"><span class="nav-number">4.</span> <span class="nav-text">SLAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ORB-SLAM流程"><span class="nav-number">4.1.</span> <span class="nav-text">ORB_SLAM流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#g2o图优化"><span class="nav-number">4.2.</span> <span class="nav-text">g2o图优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据可视化VTK、Pangolin"><span class="nav-number">4.3.</span> <span class="nav-text">数据可视化VTK、Pangolin</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tower"><span class="nav-number">5.</span> <span class="nav-text">Tower</span></a></li></ol></div>
             
 
           </div>
@@ -1509,7 +1513,7 @@ h_1^TA^{-T}A^{-1}h_1= h_2^TA^{-T}A^{-1}h_2
     }
   });
 </script>
-<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
