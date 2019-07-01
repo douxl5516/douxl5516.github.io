@@ -2,7 +2,7 @@
 title: Java平台下Opencv图像展示的简便实现
 date: 2018-08-12 21:21:14
 categories: OpenCV
-tags: [OpenCV]
+tags: [OpenCV,Java]
 description: 在C++环境下的OpenCV中，展示Mat图像可以通过imshow()实现。但在Java平台上该怎样简便地实现呢？
 ---
 

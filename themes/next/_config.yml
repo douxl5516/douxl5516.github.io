@@ -524,7 +524,7 @@ math:
 
     copy_tex:
       # See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex
-      enable: false
+      enable: true
       copy_tex_js: //cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js
       copy_tex_css: //cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css
 

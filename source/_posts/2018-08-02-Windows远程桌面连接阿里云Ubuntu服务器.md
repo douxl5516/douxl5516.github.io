@@ -2,7 +2,7 @@
 title: Windows远程桌面连接阿里云Ubuntu服务器
 date: 2018-08-02 19:06:10
 description: 使用Windows远程桌面工具连接管理阿里云Ubuntu服务器
-tags: [云服务器,Linux,Ubuntu]
+tags: [云服务器,Linux]
 category: 云服务器
 ---
 

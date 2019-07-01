@@ -2,7 +2,7 @@
 title: Java下OpenCV中Mat的初始化及赋值方法
 date: 2018-08-08 22:54:20
 description: Java中Mat如何初始化和赋值
-tags: [OpenCV]
+tags: [OpenCV,Java]
 category: OpenCV
 mathjax: true
 ---
