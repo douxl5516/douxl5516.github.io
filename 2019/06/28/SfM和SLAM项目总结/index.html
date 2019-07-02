@@ -106,7 +106,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://douxl5516.github.io/2019/06/28/SfM和SLAM项目总结/01.jpg">
 <meta property="og:image" content="https://douxl5516.github.io/2019/06/28/SfM和SLAM项目总结/02.jpg">
-<meta property="og:updated_time" content="2019-07-01T15:40:17.005Z">
+<meta property="og:image" content="https://douxl5516.github.io/2019/06/28/SfM和SLAM项目总结/03.jpg">
+<meta property="og:updated_time" content="2019-07-02T10:26:01.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SfM和SLAM项目总结">
 <meta name="twitter:description" content="2018.5至2019.5大学生创新创业训练项目经验总结。">
@@ -454,7 +455,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-01 23:40:17" itemprop="dateModified" datetime="2019-07-01T23:40:17+08:00">2019-07-01</time>
+                <time title="修改时间：2019-07-02 18:26:01" itemprop="dateModified" datetime="2019-07-02T18:26:01+08:00">2019-07-02</time>
               
             
           </span>
@@ -535,9 +536,6 @@
         <blockquote>
 <p>前言：2019年6月27日，我进行了网易伏羲实验室虚拟人方向的电话面试。在电话中，我支支吾吾连自己的项目都讲不清楚。不管最后面试结果如何，自己做过的东西起码自己要懂。</p>
 </blockquote>
-<p><a href="http://www.360doc.com/content/17/0831/13/10408243_683549296.shtml" target="_blank" rel="noopener">http://www.360doc.com/content/17/0831/13/10408243_683549296.shtml</a></p>
-<p><a href="https://www.baidu.com/baidu?wd=%E5%8D%95%E5%BA%94%E7%9F%A9%E9%98%B5%E8%87%AA%E7%94%B1%E5%BA%A6&amp;tn=monline_7_dg&amp;ie=utf-8" target="_blank" rel="noopener">https://www.baidu.com/baidu?wd=%E5%8D%95%E5%BA%94%E7%9F%A9%E9%98%B5%E8%87%AA%E7%94%B1%E5%BA%A6&amp;tn=monline_7_dg&amp;ie=utf-8</a></p>
-<p><a href="https://blog.csdn.net/zinnc/article/details/52319491" target="_blank" rel="noopener">https://blog.csdn.net/zinnc/article/details/52319491</a></p>
 <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="内积"><a href="#内积" class="headerlink" title="内积"></a>内积</h2><script type="math/tex; mode=display">
 \bf{a} \cdot \bf{b}=\bf{a}^T\bf{b}=\sum_{i=1}^3a_ib_i=|\bf{a}||\bf{b}|cos<\bf{a,b}></script><h2 id="外积"><a href="#外积" class="headerlink" title="外积"></a>外积</h2><script type="math/tex; mode=display">
 \bf{a} \times \bf{b} = 
@@ -579,7 +577,56 @@ R(t)^{'}R(t)^T=\phi(t)^{\wedge}</script><p>之后求解微分方程，可以得�
 R(t)=exp(\phi^{\wedge}t)</script><p>实际求解时利用到指数映射和对数映射。</p>
 <h2 id="双目系统"><a href="#双目系统" class="headerlink" title="双目系统"></a>双目系统</h2><p><img src="/2019/06/28/SfM和SLAM项目总结/01.jpg" alt="01"></p>
 <p><img src="/2019/06/28/SfM和SLAM项目总结/02.jpg" alt="02"></p>
-<h2 id="单应矩阵"><a href="#单应矩阵" class="headerlink" title="单应矩阵"></a>单应矩阵</h2><h2 id="本质矩阵"><a href="#本质矩阵" class="headerlink" title="本质矩阵"></a>本质矩阵</h2><h2 id="基本矩阵"><a href="#基本矩阵" class="headerlink" title="基本矩阵"></a>基本矩阵</h2><h1 id="张正友标定法"><a href="#张正友标定法" class="headerlink" title="张正友标定法"></a>张正友标定法</h1><p><a href="https://www.researchgate.net/publication/3193178_A_Flexible_New_Technique_for_Camera_Calibration" target="_blank" rel="noopener">A Flexible New Technique for Camera Calibration</a></p>
+<p>左右相机只有在 x 轴上有位移，因此 P 的像也只在 x 轴（对应图像的 u 轴）上有差异。</p>
+<script type="math/tex; mode=display">
+\frac{z-f}{z}=\frac{b-(u_{L}+u_{R})}{b}</script><p>整理得:</p>
+<script type="math/tex; mode=display">
+z=\frac{f b}{d}, \quad d=u_{L}-u_{R}</script><h2 id="对极几何"><a href="#对极几何" class="headerlink" title="对极几何"></a>对极几何</h2><p><img src="/2019/06/28/SfM和SLAM项目总结/03.jpg" alt="03"></p>
+<p>两帧图像$I<em>{1},I</em>{2}$，两个相机中心分别为 $O<em>{1},O</em>{2}$。$p<em>{1},p</em>{2}$为互相匹配的特征点。</p>
+<p><strong>极平面</strong>：连线$\overrightarrow{O<em>{1} p</em>{1}}$和连线$\overrightarrow{O<em>{2} p</em>{2}}$在三维空间中会相交于点 P。这时候点$O<em>{1}, O</em>{2}, P$三个点可以确定一个平面，该平面称极平面。</p>
+<p><strong>极点</strong>：$O<em>{1} O</em>{2}$连线与像平面$I<em>{1},I</em>{2}$的交点被称为极点。</p>
+<p><strong>基线</strong>:$O<em>{1},O</em>{2}$的连线。</p>
+<p><strong>极线</strong>：极平面与两个像平面$I<em>{1},I</em>{2}$之间的相交线$l<em>{1},l</em>{2}$。</p>
+<p><strong>用途</strong>：双目匹配中，给定左图一个点，能将右图中对应的点的搜索空间缩减到一条线。</p>
+<p><strong>条件</strong>：需要八个或八个以上的点对</p>
+<p><strong>推导</strong>：设在第一帧的坐标系下，P坐标为：$\boldsymbol{P}=[X, Y, Z]^{T}$，两像素点 $p<em>{1},p</em>{2}$ <strong>（齐次化坐标）</strong>的像素位置为：</p>
+<script type="math/tex; mode=display">
+s_{1} \boldsymbol{p}_{1}=\boldsymbol{K} \boldsymbol{P}, \quad s_{2} \boldsymbol{p}_{2}=\boldsymbol{K}(\boldsymbol{R} \boldsymbol{P}+\boldsymbol{t})</script><p>因为是齐次坐标，所以认为等式任意一边乘以非零常数，等式仍然成立。即：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{p}_{1}=\boldsymbol{K} \boldsymbol{P}, \quad \boldsymbol{p}_{2}=\boldsymbol{K}(\boldsymbol{R} \boldsymbol{P}+\boldsymbol{t})</script><p>取$\boldsymbol{x}<em>{1}, \boldsymbol{x}</em>{2}$是两个像素点的<strong>归一化平面上的坐标</strong>：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{x}_{1}=\boldsymbol{K}^{-1} \boldsymbol{p}_{1}, \quad \boldsymbol{x}_{2}=\boldsymbol{K}^{-1} \boldsymbol{p}_{2}</script><p>有：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{x}_{2}=\boldsymbol{R} \boldsymbol{x}_{1}+\boldsymbol{t}</script><p>同时左乘$t^{\wedge}$，相当于同时与$t$做外积。</p>
+<script type="math/tex; mode=display">
+\boldsymbol{t}^{\wedge} \boldsymbol{x}_{2}=\boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}_{1}</script><p>同时左乘$\boldsymbol{x}_{2}^{T}$</p>
+<script type="math/tex; mode=display">
+\boldsymbol{x}_{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{x}_{2}=\boldsymbol{x}_{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}_{1}</script><p>因$t^{\wedge} x<em>{2}$垂直于$\boldsymbol{x}</em>{2}^{T}$或$t$，因此左侧为0。<strong><em>极线约束</em></strong>即：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{x}_{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}_{1}=0</script><p>将$\boldsymbol{x}<em>{1}=\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}, \quad \boldsymbol{x}<em>{2}=\boldsymbol{K}^{-1} \boldsymbol{p}</em>{2}$代回，可得<strong><em>极线约束</em></strong>的另一种形式：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{p}_{2}^{T} \boldsymbol{K}^{-T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{K}^{-1} \boldsymbol{p}_{1}=0</script><p><strong>意义</strong>：</p>
+<p>$O<em>{1}, P, O</em>{2}$三点共面，$\boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}<em>{1}$表示极线，且极线一定通过$\boldsymbol{x}</em>{2}$。</p>
+<h2 id="本质矩阵"><a href="#本质矩阵" class="headerlink" title="本质矩阵"></a>本质矩阵</h2><p>本质矩阵为：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{E}=\boldsymbol{t}^{\wedge} \boldsymbol{R}</script><p><strong>特点</strong>：</p>
+<ol>
+<li>秩为2</li>
+<li>仅依赖于外参</li>
+<li>采用摄像机坐标系</li>
+</ol>
+<h2 id="基本矩阵"><a href="#基本矩阵" class="headerlink" title="基本矩阵"></a>基本矩阵</h2><p>基本矩阵为：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F}=\boldsymbol{K}^{-T} \boldsymbol{E} \boldsymbol{K}^{-1}</script><p><strong>特点</strong>：</p>
+<ol>
+<li>秩为2</li>
+<li>仅依赖于外参和内参</li>
+<li>采用像素坐标系</li>
+<li>F是从左图到右图，有方向，从右图到左图就是F的转置</li>
+<li>7个自由度。（$3\times3$矩阵本有9个自由度，因行列式值为零，相差常数因子，即$kF,k\neq 0$,也是基本矩阵，减去两个自由度。）</li>
+</ol>
+<h2 id="单应矩阵"><a href="#单应矩阵" class="headerlink" title="单应矩阵"></a>单应矩阵</h2><p>单应矩阵是齐次矩阵，有8个未知数，需要四个对应点。</p>
+<h1 id="张正友标定法"><a href="#张正友标定法" class="headerlink" title="张正友标定法"></a>张正友标定法</h1><p><a href="https://www.researchgate.net/publication/3193178_A_Flexible_New_Technique_for_Camera_Calibration" target="_blank" rel="noopener">A Flexible New Technique for Camera Calibration</a></p>
 <p>摘要：张正友标定法只需要相机观察几个（至少两个）不同方向上显示的平面图案。相机或平面图案都可以自由移动。且相机或标定板的运动不需要知道。张正友标定法对径向透镜畸变进行了建模。该方法由一个封闭形式的解组成，然后根据最大似然准则进行非线性改进。</p>
 <h2 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h2><h3 id="针孔相机模型三维点到二维点投影矩阵"><a href="#针孔相机模型三维点到二维点投影矩阵" class="headerlink" title="针孔相机模型三维点到二维点投影矩阵"></a>针孔相机模型三维点到二维点投影矩阵</h3><div class="table-container">
 <table>
@@ -659,12 +706,72 @@ s\left[\begin{array}{c}{u}\\{v}\\{1}\end{array}\right]=\bf{A}[\begin{array}{cccc
 s\widetilde{\bf{m}}=\bf{H\widetilde{M}}</script><p>其中，$\bf{H}$为单应矩阵，$\bf{H=A[\begin{array}{ccc}{\bf{r_1}}&amp;{\bf{r_2}}&amp;{\bf{t}}\end{array}]}$。</p>
 <h3 id="内参约束"><a href="#内参约束" class="headerlink" title="内参约束"></a>内参约束</h3><p>假设$\bf{H}=\left[\begin{array}{ccc}{\bf{h_1}}&amp;{\bf{h_2}}&amp;{\bf{h_3}}\end{array}\right]$，根据单应关系有：</p>
 <script type="math/tex; mode=display">
-\left[\begin{array}{ccc}{\bf{h_1}}&{\bf{h_2}}&{\bf{h_3}}\end{array}\right]=\lambda \bf{A}[\begin{array}{ccc}{\bf{r_1}}&{\bf{r_2}}&{\bf{t}}\end{array}]</script><p>根据$\bf{r_1}$和$\bf{r_2}$正交，有：</p>
+\left[\begin{array}{ccc}{\bf{h_1}}&{\bf{h_2}}&{\bf{h_3}}\end{array}\right]=\lambda \bf{A}[\begin{array}{ccc}{\bf{r_1}}&{\bf{r_2}}&{\bf{t}}\end{array}]</script><p>可推出</p>
+<script type="math/tex; mode=display">
+\mathbf{r}_{1}=\lambda \mathbf{A}^{-1} \mathbf{h}_{1}</script><script type="math/tex; mode=display">
+\mathbf{r}_{2}=\lambda \mathbf{A}^{-1} \mathbf{h}_{2}</script><script type="math/tex; mode=display">
+\mathbf{r}_{3}=\mathbf{r}_{1} \times \mathbf{r}_{2}</script><script type="math/tex; mode=display">
+\mathbf{t}=\lambda \mathbf{A}^{-1} \mathbf{h}_{3}</script><script type="math/tex; mode=display">
+\lambda=\frac{1}{\left\|\mathbf{A}^{-1} \mathbf{h}_{1}\right\|}=\frac{1}{\left\|\mathbf{A}^{-1} \mathbf{h}_{2}\right\|}</script><p>根据$\bf{r_1}$和$\bf{r_2}$正交，根据</p>
+<ol>
+<li>正交</li>
+<li>模相等</li>
+</ol>
+<p>有：</p>
 <script type="math/tex; mode=display">
 \begin{split}
 h_1^TA^{-T}A^{-1}h_2=0 \\ 
 h_1^TA^{-T}A^{-1}h_1= h_2^TA^{-T}A^{-1}h_2
-\end{split}</script><h3 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h3><h1 id="SfM"><a href="#SfM" class="headerlink" title="SfM"></a>SfM</h1><h2 id="三角化"><a href="#三角化" class="headerlink" title="三角化"></a>三角化</h2><h2 id="PnP"><a href="#PnP" class="headerlink" title="PnP"></a>PnP</h2><h1 id="SLAM"><a href="#SLAM" class="headerlink" title="SLAM"></a>SLAM</h1><h2 id="ORB-SLAM流程"><a href="#ORB-SLAM流程" class="headerlink" title="ORB_SLAM流程"></a>ORB_SLAM流程</h2><h2 id="g2o图优化"><a href="#g2o图优化" class="headerlink" title="g2o图优化"></a>g2o图优化</h2><h2 id="数据可视化VTK、Pangolin"><a href="#数据可视化VTK、Pangolin" class="headerlink" title="数据可视化VTK、Pangolin"></a>数据可视化VTK、Pangolin</h2><h1 id="Tower"><a href="#Tower" class="headerlink" title="Tower"></a>Tower</h1>
+\end{split}</script><h3 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h3><p>需要大于等于三张图像才能确定唯一解。</p>
+<h1 id="SfM"><a href="#SfM" class="headerlink" title="SfM"></a>SfM</h1><h2 id="三角化"><a href="#三角化" class="headerlink" title="三角化"></a>三角化</h2><p>设 $x_1 ,x_2$ 为两个特征点的归一化坐标，那么它们满足：</p>
+<script type="math/tex; mode=display">
+s_{1} \boldsymbol{x}_{1}=s_{2} \boldsymbol{R} \boldsymbol{x}_{2}+\boldsymbol{t}</script><p>现在我们已经知道了$\boldsymbol{R}, \boldsymbol{t}$，想要求解的是两个特征点的深度 $s<em>{1}, s</em>{2}$。</p>
+<p>可以左侧使用$x_1$进行叉乘，使左侧为0，即可求得$s_2$：</p>
+<script type="math/tex; mode=display">
+s_{1} \boldsymbol{x}_{1}^{\wedge} \boldsymbol{x}_{1}=0=s_{2} \boldsymbol{x}_{1}^{\wedge} \boldsymbol{R} \boldsymbol{x}_{2}+\boldsymbol{x}_{1}^{\wedge} \boldsymbol{t}</script><p>求$s_1$时同理。</p>
+<h2 id="PnP"><a href="#PnP" class="headerlink" title="PnP"></a>PnP</h2><p>求解 3D 到 2D 点对运动的问题。特征点的 3D 位置可以由三角化，或者由 RGB-D 相机的深度图确定。在单目视觉里程计中，必须先进行初始化，然后才能使用 PnP。</p>
+<h1 id="SLAM"><a href="#SLAM" class="headerlink" title="SLAM"></a>SLAM</h1><h2 id="ORB-SLAM流程"><a href="#ORB-SLAM流程" class="headerlink" title="ORB_SLAM流程"></a>ORB_SLAM流程</h2><ol>
+<li><p>System类生成一个对象slam，初始化slam对象，设置三个线程：Tracking ，LocalMapping ，LoopClosing</p>
+</li>
+<li><p>订阅 GrabImage() ——&gt; TrackMonocular()——&gt;GrabImageMonocular()——&gt;Track() </p>
+</li>
+</ol>
+<h3 id="三个线程作用"><a href="#三个线程作用" class="headerlink" title="三个线程作用"></a>三个线程作用</h3><h4 id="Tracking："><a href="#Tracking：" class="headerlink" title="Tracking："></a>Tracking：</h4><ol>
+<li>Extract ORB，提取关键点和描述子</li>
+<li><p>Initialize pose：在Track() 中初始化位姿 pose ， 第一帧 ：mInitialFrame  当前帧：mCurrentFrame ，从这两帧得到 （R，t）。并且，这两帧转为KeyFrame，凡是关键帧KeyFrame都要插入地图 mpMap（mpMap-&gt;AddMapPoint(pMP);），根据关键帧与当前帧公共3D点的个数 更新关键帧间的连接关系。</p>
+<p><strong>MapPoint类表示 路标点，Map类用Hash表管理 路标点和关键帧。</strong></p>
+</li>
+<li><p>track local map：</p>
+<ol>
+<li>更新局部地图，包括局部关键帧和关键点</li>
+<li>对局部MapPoints进行投影匹配</li>
+<li><p>根据匹配对估计当前帧的姿态</p>
+</li>
+<li><p>根据姿态剔除误匹配</p>
+</li>
+</ol>
+</li>
+<li><p>keyFrame decision</p>
+</li>
+</ol>
+<h4 id="Local-Mapping"><a href="#Local-Mapping" class="headerlink" title="Local Mapping:"></a>Local Mapping:</h4><p><strong>LocalMapping线程处理的关键帧都是Tracking线程发过来的</strong></p>
+<ol>
+<li>插入关键帧，</li>
+<li>去除<strong>冗余的MapPoints；</strong></li>
+<li>Local BA；</li>
+<li>去除<strong>冗余的关键帧</strong> : 检测并剔除当前帧相邻的关键帧中<strong>和关键帧</strong>，剔除的标准是：该关键帧的90%的MapPoints可以被其它关键帧观测到。将当前帧加入到闭环检测队列中。</li>
+</ol>
+<h4 id="Loop-Closing"><a href="#Loop-Closing" class="headerlink" title="Loop Closing"></a>Loop Closing</h4><ol>
+<li>回环检测Loop decision：计算闭环候选帧，在候选帧中检测具有连续性的候选帧；</li>
+<li>计算相似变换阵sim3，求 [ sR | t ]；</li>
+<li>Loop Correction：</li>
+</ol>
+<p>A. 通过求解的Sim3以及相对姿态关系，调整与当前帧相连的关键帧位姿以及这些关键帧观测到的MapPoints的位置；<br>B. 将闭环帧以及 与闭环帧相连的关键帧的MapPoints和与当前帧相连的关键帧的点进行匹配；<br>C. 通过MapPoints的匹配关系更新这些帧之间的连接关系，即更新covisibility graph<br>D. 对Essential Graph（Pose Graph）进行优化，MapPoints的位置则根据优化后的位姿做相对应的调整<br>E. 创建线程进行全局Bundle Adjustment</p>
+<p>main-&gt;构造SLAM对象，在构造函数中设置线程。</p>
+<p>读取图像，循环调用trackMonocular，在其中先检查状态是否改变，再调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GrabImageMonocular</span><br></pre></td></tr></table></figure>
+<p>构造了CurrentFrame，最后进行Track</p>
+
       
     </div>
 
@@ -887,7 +994,7 @@ h_1^TA^{-T}A^{-1}h_1= h_2^TA^{-T}A^{-1}h_2
                     
                       
                     
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -951,7 +1058,7 @@ h_1^TA^{-T}A^{-1}h_1= h_2^TA^{-T}A^{-1}h_2
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内积"><span class="nav-number">1.1.</span> <span class="nav-text">内积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外积"><span class="nav-number">1.2.</span> <span class="nav-text">外积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊正交群-SO-3"><span class="nav-number">1.3.</span> <span class="nav-text">特殊正交群 $SO(3)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊欧式群-SE-3"><span class="nav-number">1.4.</span> <span class="nav-text">特殊欧式群$SE(3)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#李代数-mathfrak-so-3"><span class="nav-number">1.5.</span> <span class="nav-text">李代数$\mathfrak{so}(3)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双目系统"><span class="nav-number">1.6.</span> <span class="nav-text">双目系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单应矩阵"><span class="nav-number">1.7.</span> <span class="nav-text">单应矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本质矩阵"><span class="nav-number">1.8.</span> <span class="nav-text">本质矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本矩阵"><span class="nav-number">1.9.</span> <span class="nav-text">基本矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#张正友标定法"><span class="nav-number">2.</span> <span class="nav-text">张正友标定法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数学推导"><span class="nav-number">2.1.</span> <span class="nav-text">数学推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#针孔相机模型三维点到二维点投影矩阵"><span class="nav-number">2.1.1.</span> <span class="nav-text">针孔相机模型三维点到二维点投影矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标定板平面与图像之间的单应性矩阵"><span class="nav-number">2.1.2.</span> <span class="nav-text">标定板平面与图像之间的单应性矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内参约束"><span class="nav-number">2.1.3.</span> <span class="nav-text">内参约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几何解释"><span class="nav-number">2.1.4.</span> <span class="nav-text">几何解释</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SfM"><span class="nav-number">3.</span> <span class="nav-text">SfM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三角化"><span class="nav-number">3.1.</span> <span class="nav-text">三角化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PnP"><span class="nav-number">3.2.</span> <span class="nav-text">PnP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SLAM"><span class="nav-number">4.</span> <span class="nav-text">SLAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ORB-SLAM流程"><span class="nav-number">4.1.</span> <span class="nav-text">ORB_SLAM流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#g2o图优化"><span class="nav-number">4.2.</span> <span class="nav-text">g2o图优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据可视化VTK、Pangolin"><span class="nav-number">4.3.</span> <span class="nav-text">数据可视化VTK、Pangolin</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tower"><span class="nav-number">5.</span> <span class="nav-text">Tower</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内积"><span class="nav-number">1.1.</span> <span class="nav-text">内积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外积"><span class="nav-number">1.2.</span> <span class="nav-text">外积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊正交群-SO-3"><span class="nav-number">1.3.</span> <span class="nav-text">特殊正交群 $SO(3)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊欧式群-SE-3"><span class="nav-number">1.4.</span> <span class="nav-text">特殊欧式群$SE(3)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#李代数-mathfrak-so-3"><span class="nav-number">1.5.</span> <span class="nav-text">李代数$\mathfrak{so}(3)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双目系统"><span class="nav-number">1.6.</span> <span class="nav-text">双目系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对极几何"><span class="nav-number">1.7.</span> <span class="nav-text">对极几何</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本质矩阵"><span class="nav-number">1.8.</span> <span class="nav-text">本质矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本矩阵"><span class="nav-number">1.9.</span> <span class="nav-text">基本矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单应矩阵"><span class="nav-number">1.10.</span> <span class="nav-text">单应矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#张正友标定法"><span class="nav-number">2.</span> <span class="nav-text">张正友标定法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数学推导"><span class="nav-number">2.1.</span> <span class="nav-text">数学推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#针孔相机模型三维点到二维点投影矩阵"><span class="nav-number">2.1.1.</span> <span class="nav-text">针孔相机模型三维点到二维点投影矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标定板平面与图像之间的单应性矩阵"><span class="nav-number">2.1.2.</span> <span class="nav-text">标定板平面与图像之间的单应性矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内参约束"><span class="nav-number">2.1.3.</span> <span class="nav-text">内参约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几何解释"><span class="nav-number">2.1.4.</span> <span class="nav-text">几何解释</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SfM"><span class="nav-number">3.</span> <span class="nav-text">SfM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三角化"><span class="nav-number">3.1.</span> <span class="nav-text">三角化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PnP"><span class="nav-number">3.2.</span> <span class="nav-text">PnP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SLAM"><span class="nav-number">4.</span> <span class="nav-text">SLAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ORB-SLAM流程"><span class="nav-number">4.1.</span> <span class="nav-text">ORB_SLAM流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三个线程作用"><span class="nav-number">4.1.1.</span> <span class="nav-text">三个线程作用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tracking："><span class="nav-number">4.1.1.1.</span> <span class="nav-text">Tracking：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Local-Mapping"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">Local Mapping:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Loop-Closing"><span class="nav-number">4.1.1.3.</span> <span class="nav-text">Loop Closing</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
