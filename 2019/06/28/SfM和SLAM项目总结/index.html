@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://douxl5516.github.io/2019/06/28/SfM和SLAM项目总结/01.jpg">
 <meta property="og:image" content="https://douxl5516.github.io/2019/06/28/SfM和SLAM项目总结/02.jpg">
 <meta property="og:image" content="https://douxl5516.github.io/2019/06/28/SfM和SLAM项目总结/03.jpg">
-<meta property="og:updated_time" content="2019-07-03T00:50:49.462Z">
+<meta property="og:updated_time" content="2019-07-07T11:18:24.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SfM和SLAM项目总结">
 <meta name="twitter:description" content="2018.5至2019.5大学生创新创业训练项目经验总结。">
@@ -455,7 +455,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-03 08:50:49" itemprop="dateModified" datetime="2019-07-03T08:50:49+08:00">2019-07-03</time>
+                <time title="修改时间：2019-07-07 19:18:24" itemprop="dateModified" datetime="2019-07-07T19:18:24+08:00">2019-07-07</time>
               
             
           </span>
@@ -570,7 +570,7 @@ SE(3)=\{T=\left[
 R&t\\
 0^T&1\\
 \end{matrix}
-\right]\in\mathbb{R}^{4\times4}|R\in SO(3),t\in \mathbb{R}^3\}李代数$\mathfrak{so}(3)$</script><h2 id="李代数-mathfrak-so-3"><a href="#李代数-mathfrak-so-3" class="headerlink" title="李代数$\mathfrak{so}(3)$"></a>李代数$\mathfrak{so}(3)$</h2><p>在对$RR^T=I$进行求导及整理之后，可以得到$R(t)^{‘}R(t)^T$是一个反对称矩阵，那么就用一个$\phi(t)\in\mathbb{R}^3$与之对应。有：</p>
+\right]\in\mathbb{R}^{4\times4}|R\in SO(3),t\in \mathbb{R}^3\}</script><h2 id="李代数-mathfrak-so-3"><a href="#李代数-mathfrak-so-3" class="headerlink" title="李代数$\mathfrak{so}(3)$"></a>李代数$\mathfrak{so}(3)$</h2><p>在对$RR^T=I$进行求导及整理之后，可以得到$R(t)^{‘}R(t)^T$是一个反对称矩阵，那么就用一个$\phi(t)\in\mathbb{R}^3$与之对应。有：</p>
 <script type="math/tex; mode=display">
 R(t)^{'}R(t)^T=\phi(t)^{\wedge}</script><p>之后求解微分方程，可以得到：</p>
 <script type="math/tex; mode=display">
@@ -719,10 +719,8 @@ s\widetilde{\bf{m}}=\bf{H\widetilde{M}}</script><p>其中，$\bf{H}$为单应矩
 </ol>
 <p>有：</p>
 <script type="math/tex; mode=display">
-\begin{split}
-h_1^TA^{-T}A^{-1}h_2=0 \\ 
-h_1^TA^{-T}A^{-1}h_1= h_2^TA^{-T}A^{-1}h_2
-\end{split}</script><h3 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h3><p>需要大于等于三张图像才能确定唯一解。</p>
+h_1^TA^{-T}A^{-1}h_2=0</script><script type="math/tex; mode=display">
+h_1^TA^{-T}A^{-1}h_1= h_2^TA^{-T}A^{-1}h_2</script><h3 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h3><p>需要大于等于三张图像才能确定唯一解。</p>
 <h1 id="SfM"><a href="#SfM" class="headerlink" title="SfM"></a>SfM</h1><h2 id="三角化"><a href="#三角化" class="headerlink" title="三角化"></a>三角化</h2><p>设 $x_1 ,x_2$ 为两个特征点的归一化坐标，那么它们满足：</p>
 <script type="math/tex; mode=display">
 s_{1} \boldsymbol{x}_{1}=s_{2} \boldsymbol{R} \boldsymbol{x}_{2}+\boldsymbol{t}</script><p>现在我们已经知道了$\boldsymbol{R}, \boldsymbol{t}$，想要求解的是两个特征点的深度 $s<em>{1}, s</em>{2}$。</p>
