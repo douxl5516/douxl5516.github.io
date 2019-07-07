@@ -582,18 +582,18 @@ R(t)=exp(\phi^{\wedge}t)</script><p>实际求解时利用到指数映射和对�
 \frac{z-f}{z}=\frac{b-(u_{L}+u_{R})}{b}</script><p>整理得:</p>
 <script type="math/tex; mode=display">
 z=\frac{f b}{d}, \quad d=u_{L}-u_{R}</script><h2 id="对极几何"><a href="#对极几何" class="headerlink" title="对极几何"></a>对极几何</h2><p><img src="/2019/06/28/SfM和SLAM项目总结/03.jpg" alt="03"></p>
-<p>两帧图像$I<em>{1},I</em>{2}$，两个相机中心分别为 $O<em>{1},O</em>{2}$。$p<em>{1},p</em>{2}$为互相匹配的特征点。</p>
-<p><strong>极平面</strong>：连线$\overrightarrow{O<em>{1} p</em>{1}}$和连线$\overrightarrow{O<em>{2} p</em>{2}}$在三维空间中会相交于点 P。这时候点$O<em>{1}, O</em>{2}, P$三个点可以确定一个平面，该平面称极平面。</p>
-<p><strong>极点</strong>：$O<em>{1} O</em>{2}$连线与像平面$I<em>{1},I</em>{2}$的交点被称为极点。</p>
-<p><strong>基线</strong>：$O<em>{1},O</em>{2}$的连线。</p>
-<p><strong>极线</strong>：极平面与两个像平面$I<em>{1},I</em>{2}$之间的相交线$l<em>{1},l</em>{2}$。</p>
+<p>两帧图像$I_{1},I_{2}$，两个相机中心分别为 $O_{1},O_{2}$。$p_{1},p_{2}$为互相匹配的特征点。</p>
+<p><strong>极平面</strong>：连线$\overrightarrow{O_{1} p_{1}}$和连线$\overrightarrow{O_{2} p_{2}}$在三维空间中会相交于点 P。这时候点$O_{1}, O_{2}, P$三个点可以确定一个平面，该平面称极平面。</p>
+<p><strong>极点</strong>：$O_{1} O_{2}$连线与像平面$I_{1},I_{2}$的交点被称为极点。</p>
+<p><strong>基线</strong>：$O_{1},O_{2}$的连线。</p>
+<p><strong>极线</strong>：极平面与两个像平面$I_{1},I_{2}$之间的相交线$l_{1},l_{2}$。</p>
 <p><strong>用途</strong>：双目匹配中，给定左图一个点，能将右图中对应的点的搜索空间缩减到一条线。</p>
 <p><strong>条件</strong>：需要八个或八个以上的点对</p>
-<p><strong>推导</strong>：设在第一帧的坐标系下，P坐标为：$\boldsymbol{P}=[X, Y, Z]^{T}$，两像素点 $p<em>{1},p</em>{2}$ <strong>（齐次化坐标）</strong>的像素位置为：</p>
+<p><strong>推导</strong>：设在第一帧的坐标系下，P坐标为：$\boldsymbol{P}=[X, Y, Z]^{T}$，两像素点 $p_{1},p_{2}$ <strong>（齐次化坐标）</strong>的像素位置为：</p>
 <script type="math/tex; mode=display">
 s_{1} \boldsymbol{p}_{1}=\boldsymbol{K} \boldsymbol{P}, \quad s_{2} \boldsymbol{p}_{2}=\boldsymbol{K}(\boldsymbol{R} \boldsymbol{P}+\boldsymbol{t})</script><p>因为是齐次坐标，所以认为等式任意一边乘以非零常数，等式仍然成立。即：</p>
 <script type="math/tex; mode=display">
-\boldsymbol{p}_{1}=\boldsymbol{K} \boldsymbol{P}, \quad \boldsymbol{p}_{2}=\boldsymbol{K}(\boldsymbol{R} \boldsymbol{P}+\boldsymbol{t})</script><p>取$\boldsymbol{x}<em>{1}, \boldsymbol{x}</em>{2}$是两个像素点的<strong>归一化平面上的坐标</strong>：</p>
+\boldsymbol{p}_{1}=\boldsymbol{K} \boldsymbol{P}, \quad \boldsymbol{p}_{2}=\boldsymbol{K}(\boldsymbol{R} \boldsymbol{P}+\boldsymbol{t})</script><p>取$\boldsymbol{x}_{1}, \boldsymbol{x}_{2}$是两个像素点的<strong>归一化平面上的坐标</strong>：</p>
 <script type="math/tex; mode=display">
 \boldsymbol{x}_{1}=\boldsymbol{K}^{-1} \boldsymbol{p}_{1}, \quad \boldsymbol{x}_{2}=\boldsymbol{K}^{-1} \boldsymbol{p}_{2}</script><p>有：</p>
 <script type="math/tex; mode=display">
@@ -601,12 +601,12 @@ s_{1} \boldsymbol{p}_{1}=\boldsymbol{K} \boldsymbol{P}, \quad s_{2} \boldsymbol{
 <script type="math/tex; mode=display">
 \boldsymbol{t}^{\wedge} \boldsymbol{x}_{2}=\boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}_{1}</script><p>同时左乘$\boldsymbol{x}_{2}^{T}$</p>
 <script type="math/tex; mode=display">
-\boldsymbol{x}_{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{x}_{2}=\boldsymbol{x}_{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}_{1}</script><p>因$t^{\wedge} x<em>{2}$垂直于$\boldsymbol{x}</em>{2}^{T}$或$t$，因此左侧为0。<strong><em>极线约束</em></strong>即：</p>
+\boldsymbol{x}_{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{x}_{2}=\boldsymbol{x}_{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}_{1}</script><p>因$t^{\wedge} x_{2}$垂直于$\boldsymbol{x}_{2}^{T}$或$t$，因此左侧为0。<strong><em>极线约束</em></strong>即：</p>
 <script type="math/tex; mode=display">
-\boldsymbol{x}_{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}_{1}=0</script><p>将$\boldsymbol{x}<em>{1}=\boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}, \quad \boldsymbol{x}<em>{2}=\boldsymbol{K}^{-1} \boldsymbol{p}</em>{2}$代回，可得<strong><em>极线约束</em></strong>的另一种形式：</p>
+\boldsymbol{x}_{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}_{1}=0</script><p>将$\boldsymbol{x}_{1}=\boldsymbol{K}^{-1} \boldsymbol{p}_{1}, \quad \boldsymbol{x}_{2}=\boldsymbol{K}^{-1} \boldsymbol{p}_{2}$代回，可得<strong><em>极线约束</em></strong>的另一种形式：</p>
 <script type="math/tex; mode=display">
 \boldsymbol{p}_{2}^{T} \boldsymbol{K}^{-T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{K}^{-1} \boldsymbol{p}_{1}=0</script><p><strong>意义</strong>：</p>
-<p>$O<em>{1}, P, O</em>{2}$三点共面，$\boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}<em>{1}$表示极线，且极线一定通过$\boldsymbol{x}</em>{2}$。</p>
+<p>$O_{1}, P, O_{2}$三点共面，$\boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}_{1}$表示极线，且极线一定通过$\boldsymbol{x}_{2}$。</p>
 <h2 id="本质矩阵"><a href="#本质矩阵" class="headerlink" title="本质矩阵"></a>本质矩阵</h2><p>本质矩阵为：</p>
 <script type="math/tex; mode=display">
 \boldsymbol{E}=\boldsymbol{t}^{\wedge} \boldsymbol{R}</script><p><strong>特点</strong>：</p>
@@ -723,7 +723,7 @@ h_1^TA^{-T}A^{-1}h_2=0</script><script type="math/tex; mode=display">
 h_1^TA^{-T}A^{-1}h_1= h_2^TA^{-T}A^{-1}h_2</script><h3 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h3><p>需要大于等于三张图像才能确定唯一解。</p>
 <h1 id="SfM"><a href="#SfM" class="headerlink" title="SfM"></a>SfM</h1><h2 id="三角化"><a href="#三角化" class="headerlink" title="三角化"></a>三角化</h2><p>设 $x_1 ,x_2$ 为两个特征点的归一化坐标，那么它们满足：</p>
 <script type="math/tex; mode=display">
-s_{1} \boldsymbol{x}_{1}=s_{2} \boldsymbol{R} \boldsymbol{x}_{2}+\boldsymbol{t}</script><p>现在我们已经知道了$\boldsymbol{R}, \boldsymbol{t}$，想要求解的是两个特征点的深度 $s<em>{1}, s</em>{2}$。</p>
+s_{1} \boldsymbol{x}_{1}=s_{2} \boldsymbol{R} \boldsymbol{x}_{2}+\boldsymbol{t}</script><p>现在我们已经知道了$\boldsymbol{R}, \boldsymbol{t}$，想要求解的是两个特征点的深度 $s_{1}, s_{2}$。</p>
 <p>可以左侧使用$x_1$进行叉乘，使左侧为0，即可求得$s_2$：</p>
 <script type="math/tex; mode=display">
 s_{1} \boldsymbol{x}_{1}^{\wedge} \boldsymbol{x}_{1}=0=s_{2} \boldsymbol{x}_{1}^{\wedge} \boldsymbol{R} \boldsymbol{x}_{2}+\boldsymbol{x}_{1}^{\wedge} \boldsymbol{t}</script><p>求$s_1$时同理。</p>
