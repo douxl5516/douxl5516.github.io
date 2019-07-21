@@ -163,6 +163,27 @@
   </style>
 </noscript>
 
+	<script type="text/javascript">
+		$(document).ready(function(){
+		  $("code").map(function(){
+		    match = /^\$(.*)\$$/.exec($(this).html());
+		    if (match) {
+		      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+		      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+		    }
+		    match = /^\$\$(.*)\$\$$/.exec($(this).html());
+		    if (match) {
+		      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+		      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+		    }
+		    match = /^\\begin/.exec($(this).html());
+		    if (match) {
+		      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+		      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+		    }
+		  });
+		});
+	</script>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -1236,12 +1257,24 @@
                 
               
 
-              <time title="创建时间：2019-07-01 09:49:14 / 修改时间：23:35:33" itemprop="dateCreated datePublished" datetime="2019-07-01T09:49:14+08:00">2019-07-01</time>
+              <time title="创建时间：2019-07-01 09:49:14" itemprop="dateCreated datePublished" datetime="2019-07-01T09:49:14+08:00">2019-07-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-21 09:37:23" itemprop="dateModified" datetime="2019-07-21T09:37:23+08:00">2019-07-21</time>
               
             
           </span>

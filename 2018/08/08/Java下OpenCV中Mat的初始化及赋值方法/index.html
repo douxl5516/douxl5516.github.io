@@ -164,6 +164,27 @@
   </style>
 </noscript>
 
+	<script type="text/javascript">
+		$(document).ready(function(){
+		  $("code").map(function(){
+		    match = /^\$(.*)\$$/.exec($(this).html());
+		    if (match) {
+		      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+		      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+		    }
+		    match = /^\$\$(.*)\$\$$/.exec($(this).html());
+		    if (match) {
+		      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+		      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+		    }
+		    match = /^\\begin/.exec($(this).html());
+		    if (match) {
+		      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+		      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+		    }
+		  });
+		});
+	</script>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -530,13 +551,13 @@
 
       
         <p>利用函数构造特殊Mat</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A = Mat.eye(<span class="number">3</span>,<span class="number">3</span>, CvType.CV_64FC1);</span><br><span class="line">A = Mat.zero(<span class="number">3</span>,<span class="number">3</span>,CvType.CV_64FC1);</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A = Mat.eye(<span class="number">3</span>,<span class="number">3</span>, CvType.CV_64FC1);</span><br><span class="line">A = Mat.zero(<span class="number">3</span>,<span class="number">3</span>,CvType.CV_64FC1);</span><br></pre></td></tr></table></figure></p>
 <p>诸如MatOfDouble之类的矩阵，还支持将矩阵转换为List或者从List（array）转换成矩阵。所以可以直接这样创建矩阵：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MatOfDouble A = <span class="keyword">new</span> MatOfDouble(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>);</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MatOfDouble A = <span class="keyword">new</span> MatOfDouble(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>);</span><br></pre></td></tr></table></figure></p>
 <p>或者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MatOfDouble A = <span class="keyword">new</span> MatOfDouble();</span><br><span class="line">A.fromArray(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>);</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MatOfDouble A = <span class="keyword">new</span> MatOfDouble();</span><br><span class="line">A.fromArray(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>);</span><br></pre></td></tr></table></figure></p>
 <p>这样得到的矩阵实际上是一个列向量，也就是$9<em>1$的矩阵。如果想得到一个$3</em>3$的矩阵，可以使用reshape。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A.reshape(<span class="number">1</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A.reshape(<span class="number">1</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure></p>
 <p>注意这里第一个参数为通道数，第二个参数为行数</p>
 
       
