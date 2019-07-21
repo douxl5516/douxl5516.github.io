@@ -16,6 +16,27 @@
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
+  	<script type="text/javascript">
+	$(document).ready(function(){
+	  $("code").map(function(){
+	    match = /^\$(.*)\$$/.exec($(this).html());
+	    if (match) {
+	      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+	      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+	    }
+	    match = /^\$\$(.*)\$\$$/.exec($(this).html());
+	    if (match) {
+	      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+	      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+	    }
+	    match = /^\\begin/.exec($(this).html());
+	    if (match) {
+	      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+	      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+	    }
+	  });
+	});
+	</script>
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -107,7 +128,7 @@
 <meta property="og:image" content="https://douxl5516.github.io/2019/06/28/SfM和SLAM项目总结/01.jpg">
 <meta property="og:image" content="https://douxl5516.github.io/2019/06/28/SfM和SLAM项目总结/02.jpg">
 <meta property="og:image" content="https://douxl5516.github.io/2019/06/28/SfM和SLAM项目总结/03.jpg">
-<meta property="og:updated_time" content="2019-07-07T11:18:24.237Z">
+<meta property="og:updated_time" content="2019-07-21T01:53:00.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SfM和SLAM项目总结">
 <meta name="twitter:description" content="2018.5至2019.5大学生创新创业训练项目经验总结。">
@@ -168,27 +189,6 @@
   </style>
 </noscript>
 
-	<script type="text/javascript">
-		$(document).ready(function(){
-		  $("code").map(function(){
-		    match = /^\$(.*)\$$/.exec($(this).html());
-		    if (match) {
-		      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
-		      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
-		    }
-		    match = /^\$\$(.*)\$\$$/.exec($(this).html());
-		    if (match) {
-		      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
-		      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
-		    }
-		    match = /^\\begin/.exec($(this).html());
-		    if (match) {
-		      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
-		      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
-		    }
-		  });
-		});
-	</script>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -476,7 +476,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-07 19:18:24" itemprop="dateModified" datetime="2019-07-07T19:18:24+08:00">2019-07-07</time>
+                <time title="修改时间：2019-07-21 09:53:00" itemprop="dateModified" datetime="2019-07-21T09:53:00+08:00">2019-07-21</time>
               
             
           </span>
@@ -588,9 +588,15 @@ $$</p>
 \bf{b}
 \triangleq \bf{a} ^\wedge \bf{b}
 $$</p>
-<p>相应的，有</p>
+<p>相应的，有
+$$
+\boldsymbol{a}=[a_1\boldsymbol{i},a_2\boldsymbol{j},a_3\boldsymbol{k}]
+$$</p>
 <p>$$
-\boldsymbol{a}=[a_1\boldsymbol{i},a_2\boldsymbol{j},a_3\boldsymbol{k}],\\boldsymbol{a}^{\wedge}=\boldsymbol{A}=\left[\begin{matrix}0&amp;-a_3&amp;a_2\a_3&amp;0&amp;-a_1\-a_2&amp;a_1&amp;0\\end{matrix}\right],\\boldsymbol{A}^{\vee}=\boldsymbol{a}
+\boldsymbol{a}^{\wedge}=\boldsymbol{A}=\left[\begin{matrix}0&amp;-a_3&amp;a_2\a_3&amp;0&amp;-a_1\-a_2&amp;a_1&amp;0\\end{matrix}\right]
+$$</p>
+<p>$$
+\boldsymbol{A}^{\vee}=\boldsymbol{a}
 $$</p>
 <h2>特殊正交群 $SO(3)$</h2>
 <p>$$
@@ -636,7 +642,7 @@ $$</p>
 <p><strong>极线</strong>：极平面与两个像平面$I_{1},I_{2}$之间的相交线$l_{1},l_{2}$。</p>
 <p><strong>用途</strong>：双目匹配中，给定左图一个点，能将右图中对应的点的搜索空间缩减到一条线。</p>
 <p><strong>条件</strong>：需要八个或八个以上的点对</p>
-<p><strong>推导</strong>：设在第一帧的坐标系下，P坐标为：$\boldsymbol{P}=[X, Y, Z]^{T}$，两像素点 $p_{1},p_{2}$ **（齐次化坐标）**的像素位置为：</p>
+<p><strong>推导</strong>：设在第一帧的坐标系下，P坐标为：$\boldsymbol{P}=[X, Y, Z]^{T}​$，两像素点 $p_{1},p_{2}​$ **（齐次化坐标）**的像素位置为：</p>
 <p>$$
 s_{1} \boldsymbol{p}<em>{1}=\boldsymbol{K} \boldsymbol{P}, \quad s</em>{2} \boldsymbol{p}_{2}=\boldsymbol{K}(\boldsymbol{R} \boldsymbol{P}+\boldsymbol{t})
 $$</p>
