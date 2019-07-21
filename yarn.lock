@@ -113,7 +113,6 @@ align-text@^0.1.1, align-text@^0.1.3:
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
-  integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
 ansi-regex@^2.0.0:
   version "2.1.1"
@@ -595,7 +594,6 @@ crypt@~0.0.1:
 css-parse@1.7.x:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/css-parse/-/css-parse-1.7.0.tgz#321f6cf73782a6ff751111390fc05e2c657d8c9b"
-  integrity sha1-Mh9s9zeCpv91ERE5D8BeLGV9jJs=
 
 css-select@~1.0.0:
   version "1.0.0"
@@ -760,7 +758,6 @@ ejs@^1.0.0:
 ejs@^2.3.4:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.6.2.tgz#3a32c63d1cd16d11266cd4703b14fec4e74ab4f6"
-  integrity sha512-PcW2a0tyTuPHz3tWyYqtK6r1fZ3gp+3Sop8Ph+ZYN81Ob5rwmbHEzaqs10N3BEsaGTkh/ooniXK+WwszGlc2+Q==
 
 encodeurl@~1.0.1, encodeurl@~1.0.2:
   version "1.0.2"
@@ -993,7 +990,6 @@ gauge@~2.7.3:
 get-stdin@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
-  integrity sha1-uWjGsKBDhDJJAui/Gl3zJXmkUP4=
 
 get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
@@ -1022,7 +1018,6 @@ glob-parent@^3.1.0:
 glob@7.0.x:
   version "7.0.6"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.0.6.tgz#211bafaf49e525b8cd93260d14ab136152b3f57a"
-  integrity sha1-IRuvr0nlJbjNkyYNFKsTYVKz9Xo=
   dependencies:
     fs.realpath "^1.0.0"
     inflight "^1.0.4"
@@ -1251,7 +1246,6 @@ hexo-pagination@0.0.2:
 hexo-renderer-ejs@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/hexo-renderer-ejs/-/hexo-renderer-ejs-0.3.1.tgz#c0c1a3757532d47e5b7d9dc908b5dfd98c94be2c"
-  integrity sha512-XN8pYJU+Wr3dT8ipqEPRlOBySJpd1C5NUBBzgZpVSVBC/6L36O0YZI/Qd5NxQqwfGfSuKQ8N5iMyjmRXSR1MdA==
   dependencies:
     ejs "^2.3.4"
     object-assign "^4.0.1"
@@ -1259,7 +1253,6 @@ hexo-renderer-ejs@^0.3.1:
 hexo-renderer-kramed@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/hexo-renderer-kramed/-/hexo-renderer-kramed-0.1.4.tgz#bf858485b44618ea1694a6abc2cccbd745478c0f"
-  integrity sha1-v4WEhbRGGOoWlKarwszL10VHjA8=
   dependencies:
     hexo-util "^0.6.0"
     kramed "^0.5.6"
@@ -1269,7 +1262,6 @@ hexo-renderer-kramed@^0.1.4:
 hexo-renderer-markdown-it@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/hexo-renderer-markdown-it/-/hexo-renderer-markdown-it-3.4.1.tgz#d409a44c9b2c1b331ed2e6f374901f985ce7231c"
-  integrity sha1-1AmkTJssGzMe0ubzdJAfmFznIxw=
   dependencies:
     lodash.assign "^3.2.0"
     markdown-it "^5.0.1"
@@ -1283,14 +1275,12 @@ hexo-renderer-markdown-it@^3.4.1:
 hexo-renderer-mathjax@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/hexo-renderer-mathjax/-/hexo-renderer-mathjax-0.6.0.tgz#f42e41a158a41a6409ecdc92a132137358f601fa"
-  integrity sha1-9C5BoVikGmQJ7NySoTITc1j2Afo=
   dependencies:
     ejs "^1.0.0"
 
 hexo-renderer-stylus@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/hexo-renderer-stylus/-/hexo-renderer-stylus-0.3.3.tgz#c54ea27e1fd8e3c8a9a7a84cfba8ad354122ca7f"
-  integrity sha1-xU6ifh/Y48ipp6hM+6itNUEiyn8=
   dependencies:
     nib "^1.1.2"
     stylus "^0.54.5"
@@ -1312,7 +1302,6 @@ hexo-server@^0.3.3:
 hexo-symbols-count-time@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/hexo-symbols-count-time/-/hexo-symbols-count-time-0.6.0.tgz#100c1d26e8299b364a96cb91f8642a4896804dd4"
-  integrity sha512-Q4scQaED3STHOxKthdhXJn/e6dtXQ3apFxK0Zj0v1Y1TAn596kWOEoo0oAOAyDmmWVyHUMA2xUKpXLdvpMPOww==
 
 hexo-util@^0.6.0, hexo-util@^0.6.3, hexo-util@latest:
   version "0.6.3"
@@ -1328,7 +1317,6 @@ hexo-util@^0.6.0, hexo-util@^0.6.3, hexo-util@latest:
 hexo-wordcount@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/hexo-wordcount/-/hexo-wordcount-6.0.1.tgz#5a60efc9d3c8e421956f2fd6683ca94a8a795264"
-  integrity sha512-tbo2P9xRWEKQmRf7+XuPjx9It1MnaE26nA+EEb2DN39gK1x+26W7Nm4Iyp4AugQjBWYYDx7OLn4gp1WFxQpQew==
 
 hexo@^3.8.0:
   version "3.8.0"
@@ -1654,7 +1642,6 @@ kind-of@^6.0.0, kind-of@^6.0.2:
 kramed@^0.5.6:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/kramed/-/kramed-0.5.6.tgz#5c37979bcbb59cbb7a8d231049409298857b5162"
-  integrity sha1-XDeXm8u1nLt6jSMQSUCSmIV7UWI=
 
 lazy-cache@^1.0.3:
   version "1.0.4"
@@ -1703,7 +1690,6 @@ leancloud-storage@^3.13.2:
 linkify-it@~1.2.0:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/linkify-it/-/linkify-it-1.2.4.tgz#0773526c317c8fd13bd534ee1d180ff88abf881a"
-  integrity sha1-B3NSbDF8j9E71TTuHRgP+Iq/iBo=
   dependencies:
     uc.micro "^1.0.1"
 
@@ -1714,7 +1700,6 @@ localstorage-memory@^1.0.1:
 lodash._baseassign@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/lodash._baseassign/-/lodash._baseassign-3.2.0.tgz#8c38a099500f215ad09e59f1722fd0c52bfe0a4e"
-  integrity sha1-jDigmVAPIVrQnlnxci/QxSv+Ck4=
   dependencies:
     lodash._basecopy "^3.0.0"
     lodash.keys "^3.0.0"
@@ -1722,17 +1707,14 @@ lodash._baseassign@^3.0.0:
 lodash._basecopy@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/lodash._basecopy/-/lodash._basecopy-3.0.1.tgz#8da0e6a876cf344c0ad8a54882111dd3c5c7ca36"
-  integrity sha1-jaDmqHbPNEwK2KVIghEd08XHyjY=
 
 lodash._bindcallback@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz#e531c27644cf8b57a99e17ed95b35c748789392e"
-  integrity sha1-5THCdkTPi1epnhftlbNcdIeJOS4=
 
 lodash._createassigner@^3.0.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/lodash._createassigner/-/lodash._createassigner-3.1.1.tgz#838a5bae2fdaca63ac22dee8e19fa4e6d6970b11"
-  integrity sha1-g4pbri/aymOsIt7o4Z+k5taXCxE=
   dependencies:
     lodash._bindcallback "^3.0.0"
     lodash._isiterateecall "^3.0.0"
@@ -1741,17 +1723,14 @@ lodash._createassigner@^3.0.0:
 lodash._getnative@^3.0.0:
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
-  integrity sha1-VwvH3t5G1hzc3mh9ZdPuy6o6r/U=
 
 lodash._isiterateecall@^3.0.0:
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/lodash._isiterateecall/-/lodash._isiterateecall-3.0.9.tgz#5203ad7ba425fae842460e696db9cf3e6aac057c"
-  integrity sha1-UgOte6Ql+uhCRg5pbbnPPmqsBXw=
 
 lodash.assign@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-3.2.0.tgz#3ce9f0234b4b2223e296b8fa0ac1fee8ebca64fa"
-  integrity sha1-POnwI0tLIiPilrj6CsH+6OvKZPo=
   dependencies:
     lodash._baseassign "^3.0.0"
     lodash._createassigner "^3.0.0"
@@ -1784,17 +1763,14 @@ lodash.foreach@^4.3.0:
 lodash.isarguments@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/lodash.isarguments/-/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
-  integrity sha1-L1c9hcaiQon/AGY7SRwdM4/zRYo=
 
 lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
-  integrity sha1-eeTriMNqgSKvhvhEqpvNhRtfu1U=
 
 lodash.keys@^3.0.0:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/lodash.keys/-/lodash.keys-3.1.2.tgz#4dbc0472b156be50a0b286855d1bd0b0c656098a"
-  integrity sha1-TbwEcrFWvlCgsoaFXRvQsMZWCYo=
   dependencies:
     lodash._getnative "^3.0.0"
     lodash.isarguments "^3.0.0"
@@ -1823,7 +1799,6 @@ lodash.reject@^4.4.0:
 lodash.restparam@^3.0.0:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
-  integrity sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU=
 
 lodash.some@^4.4.0:
   version "4.6.0"
@@ -1869,32 +1844,26 @@ map-visit@^1.0.0:
 markdown-it-abbr@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/markdown-it-abbr/-/markdown-it-abbr-1.0.4.tgz#d66b5364521cbb3dd8aa59dadfba2fb6865c8fd8"
-  integrity sha1-1mtTZFIcuz3Yqlna37ovtoZcj9g=
 
 markdown-it-footnote@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/markdown-it-footnote/-/markdown-it-footnote-2.0.0.tgz#14e9c4f68ff12cf354fa365ae378276e8104ca94"
-  integrity sha1-FOnE9o/xLPNU+jZa43gnboEEypQ=
 
 markdown-it-ins@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/markdown-it-ins/-/markdown-it-ins-2.0.0.tgz#a5aa6a30f1e2f71e9497567cfdff40f1fde67483"
-  integrity sha1-papqMPHi9x6Ul1Z8/f9A8f3mdIM=
 
 markdown-it-sub@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/markdown-it-sub/-/markdown-it-sub-1.0.0.tgz#375fd6026eae7ddcb012497f6411195ea1e3afe8"
-  integrity sha1-N1/WAm6ufdywEkl/ZBEZXqHjr+g=
 
 markdown-it-sup@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/markdown-it-sup/-/markdown-it-sup-1.0.0.tgz#cb9c9ff91a5255ac08f3fd3d63286e15df0a1fc3"
-  integrity sha1-y5yf+RpSVawI8/09YyhuFd8KH8M=
 
 markdown-it@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-5.1.0.tgz#25286b8465bac496f3f1b77eed544643e9bd718d"
-  integrity sha1-JShrhGW6xJbz8bd+7VRGQ+m9cY0=
   dependencies:
     argparse "~1.0.3"
     entities "~1.1.1"
@@ -1923,7 +1892,6 @@ md5@^2.0.0:
 mdurl@~1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
-  integrity sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=
 
 methods@^1.1.1:
   version "1.1.2"
@@ -2102,7 +2070,6 @@ negotiator@0.6.2:
 nib@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/nib/-/nib-1.1.2.tgz#6a69ede4081b95c0def8be024a4c8ae0c2cbb6c7"
-  integrity sha1-amnt5AgblcDe+L4CSkyK4MLLtsc=
   dependencies:
     stylus "0.54.5"
 
@@ -2485,7 +2452,6 @@ safe-regex@^1.1.0:
 sax@0.5.x:
   version "0.5.8"
   resolved "https://registry.yarnpkg.com/sax/-/sax-0.5.8.tgz#d472db228eb331c2506b0e8c15524adb939d12c1"
-  integrity sha1-1HLbIo6zMcJQaw6MFVJK25OdEsE=
 
 sax@^1.2.4:
   version "1.2.4"
@@ -2555,7 +2521,6 @@ signal-exit@^3.0.0:
 sluggo@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/sluggo/-/sluggo-0.2.0.tgz#5d0bcb28d70c8c1eee773feec626d15189689cbf"
-  integrity sha1-XQvLKNcMjB7udz/uxibRUYlonL8=
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
@@ -2601,7 +2566,6 @@ source-map-url@^0.4.0:
 source-map@0.1.x:
   version "0.1.43"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.1.43.tgz#c24bc146ca517c1471f5dacbe2571b2b7f9e3346"
-  integrity sha1-wkvBRspRfBRx9drL4lcbK3+eM0Y=
   dependencies:
     amdefine ">=0.0.4"
 
@@ -2688,7 +2652,6 @@ strip-ansi@^4.0.0:
 strip-indent@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/strip-indent/-/strip-indent-1.0.1.tgz#0c7962a6adefa7bbd4ac366460a638552ae1a0a2"
-  integrity sha1-DHlipq3vp7vUrDZkYKY4VSrhoKI=
   dependencies:
     get-stdin "^4.0.1"
 
@@ -2711,7 +2674,6 @@ striptags@latest:
 stylus@0.54.5, stylus@^0.54.5:
   version "0.54.5"
   resolved "https://registry.yarnpkg.com/stylus/-/stylus-0.54.5.tgz#42b9560931ca7090ce8515a798ba9e6aa3d6dc79"
-  integrity sha1-QrlWCTHKcJDOhRWnmLqeaqPW3Hk=
   dependencies:
     css-parse "1.7.x"
     debug "*"
@@ -2821,7 +2783,6 @@ trim-right@^1.0.1:
 uc.micro@^1.0.0, uc.micro@^1.0.1:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.6.tgz#9c411a802a409a91fc6cf74081baba34b24499ac"
-  integrity sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==
 
 uglify-js@2.6.0:
   version "2.6.0"

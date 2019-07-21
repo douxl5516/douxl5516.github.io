@@ -16,32 +16,32 @@
 
 <html class="{{ html_class | lower }}" lang="{{ config.language }}">
 <head>
+  	<script type="text/javascript">
+	$(document).ready(function(){
+	  $("code").map(function(){
+	    match = /^\$(.*)\$$/.exec($(this).html());
+	    if (match) {
+	      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+	      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+	    }
+	    match = /^\$\$(.*)\$\$$/.exec($(this).html());
+	    if (match) {
+	      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+	      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+	    }
+	    match = /^\\begin/.exec($(this).html());
+	    if (match) {
+	      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+	      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+	    }
+	  });
+	});
+	</script>
   {{ partial('_partials/head/head.swig', {}, {cache: theme.cache.enable}) }}
   {% include '_partials/head/head-unique.swig' %}
   <title>{% block title %}{% endblock %}</title>
   {% include '_third-party/analytics/index.swig' %}
   {{ partial('_scripts/noscript.swig', {}, {cache: theme.cache.enable}) }}
-	<script type="text/javascript">
-		$(document).ready(function(){
-		  $("code").map(function(){
-		    match = /^\$(.*)\$$/.exec($(this).html());
-		    if (match) {
-		      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
-		      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
-		    }
-		    match = /^\$\$(.*)\$\$$/.exec($(this).html());
-		    if (match) {
-		      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
-		      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
-		    }
-		    match = /^\\begin/.exec($(this).html());
-		    if (match) {
-		      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
-		      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
-		    }
-		  });
-		});
-	</script>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="{{ page.lang || page.language || config.language }}">
