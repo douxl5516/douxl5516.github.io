@@ -540,21 +540,17 @@
       
         <blockquote>
 <p>存疑</p>
-<p>baseline方法是如何使swap数最小的？</p>
+<p>baseline方法是如何使swap数最小的？ </p>
 <p>为啥有一个图先高后低，为啥变化大的，它的PST提升的就高</p>
 </blockquote>
-<h1>关于量子计算的知识</h1>
-<p>量子计算中，量子计算机是不可靠不稳定的。可能发生操作错误和保持性错误。操作错误分单比特位操作和双比特位操作。严重程度：双比特位操作错误&gt;单比特位操作错误&gt;保持性错误。</p>
+<h1 id="关于量子计算的知识"><a href="#关于量子计算的知识" class="headerlink" title="关于量子计算的知识"></a>关于量子计算的知识</h1><p>量子计算中，量子计算机是不可靠不稳定的。可能发生操作错误和保持性错误。操作错误分单比特位操作和双比特位操作。严重程度：双比特位操作错误&gt;单比特位操作错误&gt;保持性错误。</p>
 <p>量子计算通过多次执行量子程序，记录每次的观测结果，根据大数定律，正确事件出现的次数与总试验次数的比值会趋近于该事件的概率。</p>
-<h1>简介</h1>
-<p>传统噪声中尺度量子计算机（NISQ, Noisy Intermediate Scale Quantum computers），由于量子位太少（10x-100x），不能够采用QEC来执行错误检测和错误更正，因为QEC需要10-100个量子位来编码一个错误检测位。那么该如何有效提升量子计算机的可靠性呢？</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>传统噪声中尺度量子计算机（NISQ, Noisy Intermediate Scale Quantum computers），由于量子位太少（10x-100x），不能够采用QEC来执行错误检测和错误更正，因为QEC需要10-100个量子位来编码一个错误检测位。那么该如何有效提升量子计算机的可靠性呢？</p>
 <p>作者通过分析IBM-Q20的特征数据发现，量子位和量子位之间的连接的错误率是不完全一致的，是多变的。为了利用这一特性，作者提出了VQM和VQA，能使程序量子位被分配到更好的物理量子位上，能使swap操作更多地发生在更可靠的链接上。</p>
-<h1>基线策略</h1>
-<p>VQM和VQA是在基线准则上进行改进所得到的策略。</p>
+<h1 id="基线策略"><a href="#基线策略" class="headerlink" title="基线策略"></a>基线策略</h1><p>VQM和VQA是在基线准则上进行改进所得到的策略。</p>
 <p>基线策略采用SWAP次数作为价值参数。</p>
 <p>前提假设：所有的SWAP操作代价相同</p>
-<h2>基线映射策略</h2>
-<ol>
+<h2 id="基线映射策略"><a href="#基线映射策略" class="headerlink" title="基线映射策略"></a>基线映射策略</h2><ol>
 <li>初始化无权无向图</li>
 <li>使用最短路算法，计算任意两点纠缠所需最少的swap次数</li>
 <li>程序指令分为n层，不同层包含不同的指令，不同层之间可以并行执行。</li>
@@ -567,20 +563,18 @@
 <p>分层是什么意思？分层依据的准则是什么？</p>
 <p>这里的分层，每一层的所包含的程序量子位都完全一样？否则第5步中无法通过SWAP方法来把第一层的映射改为第二层的映射。</p>
 </blockquote>
-<h1>VQM</h1>
-<ol>
+<h1 id="VQM"><a href="#VQM" class="headerlink" title="VQM"></a>VQM</h1><ol>
 <li>可构造无向有权图，采用最短路算法，计算距离矩阵</li>
 <li>对每一个物理量子位计算节点强度，节点强度等于节点上的所有连线的权值</li>
 <li>将输入程序分层</li>
 <li>每一层寻找映射，映射要优先选择介电强度高的节点</li>
 <li>找到从第一层映射到第二层映射的最优swap集，依据标准是最短路矩阵，有最大跳数的限制</li>
 </ol>
-<h1>VQA</h1>
-<ol>
+<h1 id="VQA"><a href="#VQA" class="headerlink" title="VQA"></a>VQA</h1><ol>
 <li>找一个具有k个节点的子图，子图应当具有最大的ANS，ANS是子图中所有节点的边权的和的加和。</li>
 <li>在前t层中，通过计算CNOT数，计算每个量子位的量子位活动</li>
 <li>映射程序量子位到物理量子位，优先映射量子位活动较高的程序量子位</li>
-<li>运用基线策略，找到层$l_i$和层$l_{i+1}$之间的映射</li>
+<li>运用基线策略，找到层$l<em>i$和层$l</em>{i+1}$之间的映射</li>
 </ol>
 
       
@@ -881,7 +875,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">关于量子计算的知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">基线策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">基线映射策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">VQM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">VQA</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于量子计算的知识"><span class="nav-number">1.</span> <span class="nav-text">关于量子计算的知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基线策略"><span class="nav-number">3.</span> <span class="nav-text">基线策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基线映射策略"><span class="nav-number">3.1.</span> <span class="nav-text">基线映射策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VQM"><span class="nav-number">4.</span> <span class="nav-text">VQM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VQA"><span class="nav-number">5.</span> <span class="nav-text">VQA</span></a></li></ol></div>
             
 
           </div>
