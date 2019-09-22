@@ -37,6 +37,15 @@
 	  });
 	});
 	</script>
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?5a77e64c1159cb41fe15cda42c3e5dd2";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -551,13 +560,13 @@
 
       
         <p>利用函数构造特殊Mat</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A = Mat.eye(<span class="number">3</span>,<span class="number">3</span>, CvType.CV_64FC1);</span><br><span class="line">A = Mat.zero(<span class="number">3</span>,<span class="number">3</span>,CvType.CV_64FC1);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A = Mat.eye(<span class="number">3</span>,<span class="number">3</span>, CvType.CV_64FC1);</span><br><span class="line">A = Mat.zero(<span class="number">3</span>,<span class="number">3</span>,CvType.CV_64FC1);</span><br></pre></td></tr></table></figure>
 <p>诸如MatOfDouble之类的矩阵，还支持将矩阵转换为List或者从List（array）转换成矩阵。所以可以直接这样创建矩阵：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MatOfDouble A = <span class="keyword">new</span> MatOfDouble(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MatOfDouble A = <span class="keyword">new</span> MatOfDouble(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>);</span><br></pre></td></tr></table></figure>
 <p>或者</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MatOfDouble A = <span class="keyword">new</span> MatOfDouble();</span><br><span class="line">A.fromArray(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MatOfDouble A = <span class="keyword">new</span> MatOfDouble();</span><br><span class="line">A.fromArray(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>);</span><br></pre></td></tr></table></figure>
 <p>这样得到的矩阵实际上是一个列向量，也就是$9<em>1$的矩阵。如果想得到一个$3</em>3$的矩阵，可以使用reshape。</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A.reshape(<span class="number">1</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A.reshape(<span class="number">1</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
 <p>注意这里第一个参数为通道数，第二个参数为行数</p>
 
       
