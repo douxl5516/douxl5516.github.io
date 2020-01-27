@@ -562,16 +562,24 @@
 
       
         <p><a href="https://dl.acm.org/citation.cfm?id=3307650.3322262" target="_blank" rel="noopener">A Quantum Computational Compiler and Design Tool for Technology-Specifific Targets</a></p>
-<h1 id="前提知识"><a href="#前提知识" class="headerlink" title="前提知识"></a>前提知识</h1><h2 id="酉矩阵"><a href="#酉矩阵" class="headerlink" title="酉矩阵"></a>酉矩阵</h2><p>一个矩阵的共轭转置和它的逆相等。</p>
-<p>即：</p>
-<script type="math/tex; mode=display">
-U^{-1}=U^{\dagger}</script><script type="math/tex; mode=display">
-U^{H} U=U U^{H}=E_{n}</script><p>其中，$U^{H}$为$U$的共轭转置，$E_n$为n阶单位矩阵。</p>
-<h1 id="不理解"><a href="#不理解" class="headerlink" title="不理解"></a>不理解</h1><ul>
+<h1>前提知识</h1>
+<h2>酉矩阵</h2>
+<p>一个矩阵的共轭转置和它的逆相等。</p>
+<p>即：
+$$
+U^{-1}=U^{\dagger}
+$$</p>
+<p>$$
+U^{H} U=U U^{H}=E_{n}
+$$
+其中，$U^{H}$为$U$的共轭转置，$E_n$为n阶单位矩阵。</p>
+<h1>不理解</h1>
+<ul>
 <li>Local optimizations based on removing partitions of gates that equal the identity function are implemented recursively until technology library cost function cannot be further reduced.（P6）</li>
 <li>single-target gate？</li>
 </ul>
-<h1 id="关键词汇理解"><a href="#关键词汇理解" class="headerlink" title="关键词汇理解"></a>关键词汇理解</h1><ul>
+<h1>关键词汇理解</h1>
+<ul>
 <li>technologically-independent：技术无关，即没有映射到实际量子计算机，不考虑量子计算机实际物理体系结构的</li>
 <li>technology-dependent ：考虑量子计算机体系结构的</li>
 <li>Quantum Multiple valued Decision Diagram (QMDD)，量子多值决策图</li>
@@ -580,8 +588,10 @@ U^{H} U=U U^{H}=E_{n}</script><p>其中，$U^{H}$为$U$的共轭转置，$E_n$�
 <li>connectivity tree reroute algorithm（CTR），连接树重新路由算法</li>
 <li>switching functions，可逆的二进制转换函数，即量子电路</li>
 </ul>
-<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>为了充分利用量子计算机性能，编译器需要对细节做优化，将量子程序映射到实际结构上。现有的大多数技术并没有考虑量子计算机本身的特点。我们的方法基于实际架构的约束来执行。这个工具基于实际结构执行优化，具有高质量的架构相关的映射结果。并进行了数学方面的等价检查，使我们的映射结果与原有算法等价。</p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>QC体系结构各不相同，需要特殊的技术使合成工具能够将广义量子线路映射到特定QC体系结构上。这个工具需要重新配置一个量子线路，让一个量子计算机上的可执行的量子线路映射到另一个设备上。该技术促进了量子逻辑自动转化工具的发展、硬件编译器的发展。技术利用形式等价性验证产生的物理映射结果和最初的逻辑线路是否相等。该技术也可以自动优化逻辑线路。</p>
+<h1>摘要</h1>
+<p>为了充分利用量子计算机性能，编译器需要对细节做优化，将量子程序映射到实际结构上。现有的大多数技术并没有考虑量子计算机本身的特点。我们的方法基于实际架构的约束来执行。这个工具基于实际结构执行优化，具有高质量的架构相关的映射结果。并进行了数学方面的等价检查，使我们的映射结果与原有算法等价。</p>
+<h1>简介</h1>
+<p>QC体系结构各不相同，需要特殊的技术使合成工具能够将广义量子线路映射到特定QC体系结构上。这个工具需要重新配置一个量子线路，让一个量子计算机上的可执行的量子线路映射到另一个设备上。该技术促进了量子逻辑自动转化工具的发展、硬件编译器的发展。技术利用形式等价性验证产生的物理映射结果和最初的逻辑线路是否相等。该技术也可以自动优化逻辑线路。</p>
 <p>过去已经产生了可逆逻辑、考虑架构限制的网格模型量子结构、单双量子门。</p>
 <p>此处讨论的特点是：</p>
 <ol>
@@ -591,21 +601,30 @@ U^{H} U=U U^{H}=E_{n}</script><p>其中，$U^{H}$为$U$的共轭转置，$E_n$�
 <p>通过形式验证达到了高效的量子线路合成和映射。编译过程中，实现了量子多值决策图（QMDD），用于电路等价性检查。</p>
 <p>原型工具实现了对原始量子线路图到实际量子计算机上的量子线路图的映射、优化和验证转换。文中以IBMQ系列量子计算机为例，是因为这些计算机提供了他们具体的架构，但本文工作也可以用于其他的架构，因此是模块化的。</p>
 <p>第2节提供了量子逻辑，计算和操作的背景信息，并介绍了QMDD数据结构。 第3节描述了IBM量子机器和工具。 第4节概述了基于量子计算机物理体系结构的量子逻辑综合和编译的方法。第5节回顾了实验结果。第6节得出了当前研究的结论，并详述了量子合成和编译工具的未来发展和改进。</p>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h2 id="量子计算"><a href="#量子计算" class="headerlink" title="量子计算"></a>量子计算</h2><ul>
+<h1>背景</h1>
+<h2>量子计算</h2>
+<ul>
 <li>叠加态和纠缠态在经过观测后消失</li>
 <li>量子算子表示量子态的特定时间演化，从而有目的地转换量子位状态，从而产生有意义的QIP。如果将量子算法建模为一个电路，那么量子运算可以看作是量子逻辑门。</li>
 <li>量子位多，退相干性高，superconducting solid-state qubits是目前效果最好的量子位实现手段。</li>
 </ul>
-<h2 id="量子费用"><a href="#量子费用" class="headerlink" title="量子费用"></a>量子费用</h2><ul>
-<li><p>维持量子在计算中的稳定性是非常重要的</p>
+<h2>量子费用</h2>
+<ul>
+<li>
+<p>维持量子在计算中的稳定性是非常重要的</p>
 </li>
-<li><p>减少操作数是非常重要的</p>
+<li>
+<p>减少操作数是非常重要的</p>
 </li>
-<li><p>提出了量子位费用，其中T门为三比特位操作，额外成本设为0.5，C门额外成本为0.25，量子成本越高说明退相干可能性越大。</p>
-<script type="math/tex; mode=display">
-q_{c o s t}=0.5 \times t+0.25 \times c+a</script></li>
+<li>
+<p>提出了量子位费用，其中T门为三比特位操作，额外成本设为0.5，C门额外成本为0.25，量子成本越高说明退相干可能性越大。
+$$
+q_{c o s t}=0.5 \times t+0.25 \times c+a
+$$</p>
+</li>
 </ul>
-<h2 id="可逆逻辑"><a href="#可逆逻辑" class="headerlink" title="可逆逻辑"></a>可逆逻辑</h2><ul>
+<h2>可逆逻辑</h2>
+<ul>
 <li>可逆逻辑指的是理论上可以通过反向执行算法来恢复输入信息的实现</li>
 <li>为了实现可逆性，要求输入和输出端口相同，输入输出有闲余端口用于维持可逆性。编译和优化工具的优化目标是：在维持可逆性的前提下，最小化闲余端口。</li>
 <li>与QIP操作对应的状态转换被建模为酉转换，及具有可逆性。</li>
@@ -617,23 +636,28 @@ q_{c o s t}=0.5 \times t+0.25 \times c+a</script></li>
 <li>后来的一项工作，包含了ESOP的工作，使用决策图（DD，decision diagram）来进行表示。一个顺序二维决策图用一堆不相交的立方体表示了一个不可逆函数。</li>
 <li>现有的量子合成工作使用诸如ESOP和DD表示之类的技术将经典规范转换为可逆逻辑[2,6]，但由于可逆逻辑在实际QC上是不可实现的，因此产生的输出与技术无关。</li>
 </ul>
-<h2 id="量子多值决策表"><a href="#量子多值决策表" class="headerlink" title="量子多值决策表"></a>量子多值决策表</h2><ul>
+<h2>量子多值决策表</h2>
+<ul>
 <li>对于n个量子位的逻辑门需要的酉矩阵大小为$2^n\times 2^n$</li>
 <li>QMDD可以用有向无环图表示量子逻辑门，类似空间八叉树。</li>
 <li>量子多值决策表被用于等价性检测，因为对于初始量子线路和映射到物理量子线路上的量子程序，只要操作顺序不变，量子多值决策表是相同的。</li>
 </ul>
-<h1 id="IBM-Q"><a href="#IBM-Q" class="headerlink" title="IBM Q"></a>IBM Q</h1><p>可以讲IBM Q系列表示为一个字典，键为CNOT的控制位，值列表为CNOT控制位对应的目标。</p>
+<h1>IBM Q</h1>
+<p>可以讲IBM Q系列表示为一个字典，键为CNOT的控制位，值列表为CNOT控制位对应的目标。</p>
 <ul>
-<li><p>设计了一个称为“耦合复杂度”的度量，用于描述物理量子位的耦合复杂度。</p>
+<li>
+<p>设计了一个称为“耦合复杂度”的度量，用于描述物理量子位的耦合复杂度。</p>
 </li>
-<li><p>将耦合复杂度定义为耦合映射中发现的允许CNOT耦合数量与量子机器的所有量子的二排列之比。越接近1，两个量子位互联的可能性更高。</p>
+<li>
+<p>将耦合复杂度定义为耦合映射中发现的允许CNOT耦合数量与量子机器的所有量子的二排列之比。越接近1，两个量子位互联的可能性更高。</p>
 <blockquote>
 <p>ibmqx2 = {0:[1,2], 1:[2], 3:[2,4], 4:[2]}</p>
 <p>$complex=\frac{6}{C_5^2}=\frac{6}{20}=0.3$</p>
 </blockquote>
 </li>
 </ul>
-<h1 id="量子逻辑合成方法"><a href="#量子逻辑合成方法" class="headerlink" title="量子逻辑合成方法"></a>量子逻辑合成方法</h1><ul>
+<h1>量子逻辑合成方法</h1>
+<ul>
 <li>最终量子程序要以量子汇编语言展示。</li>
 <li>前端接受多种输入，包括经典的开关函数，前端都会对其进行处理。</li>
 <li>前端的处理结果是一个与实际物理量子设备无关的可逆表示。</li>
@@ -648,7 +672,8 @@ q_{c o s t}=0.5 \times t+0.25 \times c+a</script></li>
 <li>实现了以下的映射和优化过程：1.CNOT可翻转。2.CTR用于路由不直接连接的量子位。3.广义Toffoli门被分解为Toffoli流。4.将Toffoli操作分解为一个和两个量子位操作符。5.在不能进一步降低技术库成本函数之前，将递归地实现基于删除等同于标识函数的门的分区的本地优化。6.在不能进一步降低技术库成本函数之前，递归地实现基于移除逻辑上相同的电路标识可以最小化的门分区的局部优化。</li>
 <li>所有的综合优化程序完成后，调用形式验证，使用QMDD进行等价测试。非常重要，因为验证了工具的转换和优化不会改变算法逻辑。</li>
 </ul>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><ul>
+<h1>实验</h1>
+<ul>
 <li>负责映射和优化，用于合成和编译的后端工具使用Python完成。</li>
 <li>工具的目的是使用经典的计算方法，而不是模拟量子算法，来合成依赖于技术的算法。</li>
 <li>工具可以对IBM Q系列设备、和自己提出来的96qubits设备进行计算，可直接在个人电脑上进行计算。</li>
@@ -983,7 +1008,7 @@ q_{c o s t}=0.5 \times t+0.25 \times c+a</script></li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前提知识"><span class="nav-number">1.</span> <span class="nav-text">前提知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#酉矩阵"><span class="nav-number">1.1.</span> <span class="nav-text">酉矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不理解"><span class="nav-number">2.</span> <span class="nav-text">不理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关键词汇理解"><span class="nav-number">3.</span> <span class="nav-text">关键词汇理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要"><span class="nav-number">4.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">5.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">6.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#量子计算"><span class="nav-number">6.1.</span> <span class="nav-text">量子计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#量子费用"><span class="nav-number">6.2.</span> <span class="nav-text">量子费用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可逆逻辑"><span class="nav-number">6.3.</span> <span class="nav-text">可逆逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#量子多值决策表"><span class="nav-number">6.4.</span> <span class="nav-text">量子多值决策表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IBM-Q"><span class="nav-number">7.</span> <span class="nav-text">IBM Q</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#量子逻辑合成方法"><span class="nav-number">8.</span> <span class="nav-text">量子逻辑合成方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验"><span class="nav-number">9.</span> <span class="nav-text">实验</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">前提知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">酉矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">不理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">关键词汇理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.1.</span> <span class="nav-text">量子计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.2.</span> <span class="nav-text">量子费用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.3.</span> <span class="nav-text">可逆逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.4.</span> <span class="nav-text">量子多值决策表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">IBM Q</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">量子逻辑合成方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">9.</span> <span class="nav-text">实验</span></a></li></ol></div>
             
 
           </div>
@@ -1004,7 +1029,7 @@ q_{c o s t}=0.5 \times t+0.25 \times c+a</script></li>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
