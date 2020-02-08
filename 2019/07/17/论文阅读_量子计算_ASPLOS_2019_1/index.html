@@ -118,7 +118,7 @@
 
 
   <meta name="description" content="论文阅读： Tannu S S , Qureshi M K . A Case for Variability-Aware Policies for NISQ-Era Quantum Computers[J]. 2018.">
-<meta name="keywords" content="论文阅读,量子计算">
+<meta name="keywords" content="量子计算,论文阅读">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文阅读_量子计算_ASPLOS_2019_1">
 <meta property="og:url" content="https://douxl5516.github.io/2019/07/17/论文阅读_量子计算_ASPLOS_2019_1/index.html">
@@ -562,69 +562,43 @@
 
       
         <p><a href="http://memlab.ece.gatech.edu/papers/ASPLOS_2019_1.pdf" target="_blank" rel="noopener">Not All Qubits Are Created Equal</a></p>
-<h1>前提知识</h1>
-<h2>希尔伯特空间(Hilbert Space)</h2>
-<p>希尔伯特空间是复向量内积空间。</p>
+<h1 id="前提知识"><a href="#前提知识" class="headerlink" title="前提知识"></a>前提知识</h1><h2 id="希尔伯特空间-Hilbert-Space"><a href="#希尔伯特空间-Hilbert-Space" class="headerlink" title="希尔伯特空间(Hilbert Space)"></a>希尔伯特空间(Hilbert Space)</h2><p>希尔伯特空间是复向量内积空间。</p>
 <p>内积空间是两个向量上的函数并返回一个标量的二元运算，它的结果是欧几里得空间的标准内积。</p>
 <p>一个量子系统的态空间一般用有限维度的Hilbert空间来表述，即可以用来表述<strong>量子系统的各种可能的量子态</strong>。</p>
-<h2>量子两个基本状态</h2>
-<h3>叠加态</h3>
-<p>量子叠加态就是一个量子能在同一时间处于两种不同属性0和1的状态，而对于经典物理中，一个粒子只能处于一种状态，如要么左旋，要么右旋。</p>
-<h3>纠缠态</h3>
-<p>量子纠缠态，就是满足一定条件的情况下一个量子的行为将会影响到另一个量子的状态。即其中一个量子被操作改变而发生状态变化时，比如进行量子观测时，一个量子被观测为左旋。则另一个量子其状态立即发生相应的状态变化。而两个量子之间不存在一定相同或者相反的绝对规则。因此两个被纠缠的粒子可以是状态相同，也可以是状态相反。</p>
-<h2>Bloch 球面</h2>
-<p><a href="https://baike.baidu.com/item/%E5%B8%83%E6%B4%9B%E8%B5%AB%E7%90%83%E9%9D%A2/5542370?fr=aladdin" target="_blank" rel="noopener">百度百科</a></p>
+<h2 id="量子两个基本状态"><a href="#量子两个基本状态" class="headerlink" title="量子两个基本状态"></a>量子两个基本状态</h2><h3 id="叠加态"><a href="#叠加态" class="headerlink" title="叠加态"></a>叠加态</h3><p>量子叠加态就是一个量子能在同一时间处于两种不同属性0和1的状态，而对于经典物理中，一个粒子只能处于一种状态，如要么左旋，要么右旋。</p>
+<h3 id="纠缠态"><a href="#纠缠态" class="headerlink" title="纠缠态"></a>纠缠态</h3><p>量子纠缠态，就是满足一定条件的情况下一个量子的行为将会影响到另一个量子的状态。即其中一个量子被操作改变而发生状态变化时，比如进行量子观测时，一个量子被观测为左旋。则另一个量子其状态立即发生相应的状态变化。而两个量子之间不存在一定相同或者相反的绝对规则。因此两个被纠缠的粒子可以是状态相同，也可以是状态相反。</p>
+<h2 id="Bloch-球面"><a href="#Bloch-球面" class="headerlink" title="Bloch 球面"></a>Bloch 球面</h2><p><a href="https://baike.baidu.com/item/%E5%B8%83%E6%B4%9B%E8%B5%AB%E7%90%83%E9%9D%A2/5542370?fr=aladdin" target="_blank" rel="noopener">百度百科</a></p>
 <p>对量子位元这样的二阶量子系统而言，其存在的可能状态 $ |\psi\rangle $可以由两个互相正交的基底以复数线性叠加所构成，这两个基底可以选用$|0\rangle,|1\rangle$为代表。在物理实作上,$|0\rangle,|1\rangle$代表了做投影式量子测量所会得到的唯二结果。</p>
-<p>从任意纯态出发，有：
-$$
-|\psi\rangle=\alpha|0\rangle+\beta|1\rangle, \alpha, \beta \in \mathbb{C}, \quad|\alpha|^{2}+|\beta|^{2}=1
-$$
-可设：
-$$
-\alpha=\cos \theta e^{i \delta}
-$$</p>
-<p>$$
-\beta=\sin \theta e^{i(\delta+\phi)}
-$$</p>
-<p>有：
-$$
-|\psi\rangle=\cos \theta e^{i \delta}|0\rangle+\sin \theta e^{i(\delta+\phi)}|1\rangle= e^{i \delta}\left(\cos \theta|0\rangle+\sin \theta e^{i \phi}|1\rangle\right)
-$$
-$e^{i \delta}$称共同相位，可以省略。$e^{i \phi}$称相对相位。有：
-$$
-|\psi\rangle=\cos \theta|0\rangle+\sin \theta e^{i \phi}|1\rangle
-$$
-因$cos\theta$和$sin\theta$为长度，所以都为非负实数，可以确定：
-$$
-0 \leq \theta \leq \frac{\pi}{2} \Rightarrow 0 \leq 2 \theta \leq \pi, \quad 0 \leq \phi&lt;2 \pi
-$$
-$x=\sin 2 \theta \times \cos \phi$的所有分布在三维空间中画出来，即布洛赫球面。
-$$
-\begin{array}{rlrl}{x} &amp; {=} &amp; {\sin 2 \theta \times \cos \phi} \ {y} &amp; {=} &amp; {\sin 2 \theta \times \sin \phi} \ {z} &amp; {=} &amp; {\cos 2 \theta}\end{array}
-$$</p>
-<h2>欧拉公式</h2>
-<p>$e^{ix}=cosx+isinx$</p>
+<p>从任意纯态出发，有：</p>
+<script type="math/tex; mode=display">
+|\psi\rangle=\alpha|0\rangle+\beta|1\rangle, \alpha, \beta \in \mathbb{C}, \quad|\alpha|^{2}+|\beta|^{2}=1</script><p>可设：</p>
+<script type="math/tex; mode=display">
+\alpha=\cos \theta e^{i \delta}</script><script type="math/tex; mode=display">
+\beta=\sin \theta e^{i(\delta+\phi)}</script><p>有：</p>
+<script type="math/tex; mode=display">
+|\psi\rangle=\cos \theta e^{i \delta}|0\rangle+\sin \theta e^{i(\delta+\phi)}|1\rangle= e^{i \delta}\left(\cos \theta|0\rangle+\sin \theta e^{i \phi}|1\rangle\right)</script><p>$e^{i \delta}$称共同相位，可以省略。$e^{i \phi}$称相对相位。有：</p>
+<script type="math/tex; mode=display">
+|\psi\rangle=\cos \theta|0\rangle+\sin \theta e^{i \phi}|1\rangle</script><p>因$cos\theta$和$sin\theta$为长度，所以都为非负实数，可以确定：</p>
+<script type="math/tex; mode=display">
+0 \leq \theta \leq \frac{\pi}{2} \Rightarrow 0 \leq 2 \theta \leq \pi, \quad 0 \leq \phi<2 \pi</script><p>$x=\sin 2 \theta \times \cos \phi$的所有分布在三维空间中画出来，即布洛赫球面。</p>
+<script type="math/tex; mode=display">
+\begin{array}{rlrl}{x} & {=} & {\sin 2 \theta \times \cos \phi} \\ {y} & {=} & {\sin 2 \theta \times \sin \phi} \\ {z} & {=} & {\cos 2 \theta}\end{array}</script><h2 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h2><p>$e^{ix}=cosx+isinx$</p>
 <p>得到一个模为1的复向量,$x$是向量的角</p>
-<h2>k-core</h2>
-<ul>
+<h2 id="k-core"><a href="#k-core" class="headerlink" title="k-core"></a>k-core</h2><ul>
 <li>一个图G的 KCore 是G的子图</li>
-<li>这个子图的每个顶点的度≥K</li>
+<li>这个子图的每个顶点的度≥K </li>
 </ul>
-<h3>计算方法</h3>
-<ol>
+<h3 id="计算方法"><a href="#计算方法" class="headerlink" title="计算方法"></a>计算方法</h3><ol>
 <li>每个顶点记录is_delete，current_degree</li>
 <li>如果一个顶点的度数小于k，则从图中删除该顶点，给邻居发消息</li>
 <li>顶点收到消息之后，更新自己的度。</li>
 </ol>
-<h1>论文阅读</h1>
-<h2>待了解</h2>
-<ul>
+<h1 id="论文阅读"><a href="#论文阅读" class="headerlink" title="论文阅读"></a>论文阅读</h1><h2 id="待了解"><a href="#待了解" class="headerlink" title="待了解"></a>待了解</h2><ul>
 <li>希尔伯特空间</li>
 <li><a href="https://baike.baidu.com/item/%E5%B8%83%E6%B4%9B%E8%B5%AB%E7%90%83%E9%9D%A2/5542370?fr=aladdin" target="_blank" rel="noopener">Bloch球面</a></li>
 <li><a href="https://blog.csdn.net/Mr_KkTian/article/details/70158659" target="_blank" rel="noopener">k-core算法</a></li>
 </ul>
-<h2>问题</h2>
-<ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
 <li>noisy是什么意思？</li>
 <li>SWAP操作如何理解？和量子纠缠的关系是什么？</li>
 <li>baseline mapping policy中</li>
@@ -634,8 +608,7 @@ $$</p>
 <li>量子程序中的Cx代表什么意思?</li>
 <li>Fig15中的执行过程是怎么回事？其中的SWAP操作为什么是3次方的失败概率？</li>
 </ul>
-<h2>概念</h2>
-<ul>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
 <li>NISQ： Noisy Intermediate Scale Quantum computers，噪声中尺度量子计算机，具有10至1000量子位。容错率低，但能为量子应用提供一些优势。</li>
 <li>Qubit-Allocation：处理程序量子位到物理量子位的映射问题。</li>
 <li>Qubit-Movement：选择将一个量子位状态移动到另一个量子位状态的路径的问题</li>
@@ -651,72 +624,60 @@ $$</p>
 <li>量子门 (Quantum gate，或量子逻辑门)是一个基本的，操作一个小数量量子位的量子线路 ，使用酉矩阵表示。</li>
 <li>Coherence Time：相干时间，一个物理量子位保持一个数据所能持续的时间</li>
 <li>Operational errorrate：操作错误率定义为在执行操作时引入错误的概率</li>
-<li>ANS,aggregate node strength，$A N S=\sum_{i}^{k} d_{i}$ where $d_{i}=\sum_{j}^{N} w_{i j}$</li>
+<li>ANS,aggregate node strength，$A N S=\sum<em>{i}^{k} d</em>{i}$ where $d<em>{i}=\sum</em>{j}^{N} w_{i j}$</li>
 <li>activity，(total number of CNOT operations)</li>
 <li>benchmark：标准检查程序</li>
 <li>STPT，Successful Trials per Unit Time，单位时间成功尝试次数</li>
 </ul>
-<h2>摘要</h2>
-<p>现有量子计算机的不足：容错性不好。造成容错性不好的原因是：</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>现有量子计算机的不足：容错性不好。造成容错性不好的原因是：</p>
 <ol>
 <li>量子位数太少</li>
 <li>系统噪声大，工作不稳定</li>
 </ol>
 <p>NISQ应运而生（量子位相对较多），本paper研究量子位分配和量子位移动。</p>
-<p>不同的量子位和不同的量子位间的连接（link）拥有不同的错误率，这可能会影响量子位元移动和量子位元分配的**&lt;u&gt;决策&lt;/u&gt;**。因此作者分析了IBM-Q20的公开可用的特性数据，确实发现了上述差异，确定了&lt;u&gt;<strong>设备</strong>&lt;/u&gt;的变异性对整个系统的可靠性有重要的影响。</p>
-<p>为了利用**&lt;u&gt;错误率&lt;/u&gt;**的可变性，作者提出了</p>
+<p>不同的量子位和不同的量子位间的连接（link）拥有不同的错误率，这可能会影响量子位元移动和量子位元分配的<strong><u>决策</u></strong>。因此作者分析了IBM-Q20的公开可用的特性数据，确实发现了上述差异，确定了<u><strong>设备</strong></u>的变异性对整个系统的可靠性有重要的影响。</p>
+<p>为了利用<strong><u>错误率</u></strong>的可变性，作者提出了</p>
 <ol>
 <li>可变感知量子位移动(VQM)</li>
 <li>可变感知量子位分配(VQA)</li>
 </ol>
 <p>这些策略可避免较弱的量子位和链接，鼓励更多的操作向较强的量子位和链接发展。</p>
 <p>基于IBM-Q20仿真模型，变量感知策略可以将系统可靠性提高1.7倍。基于IBM-Q5，可靠性可高达1.9倍。</p>
-<h2>介绍</h2>
-<h3>量子计算机：</h3>
-<p>能够加速求解普通困难问题的求解，如：</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><h3 id="量子计算机："><a href="#量子计算机：" class="headerlink" title="量子计算机："></a>量子计算机：</h3><p>能够加速求解普通困难问题的求解，如：</p>
 <ul>
 <li>素因子分解</li>
 <li>模拟物质和化学反应</li>
 </ul>
-<p>通过创建纠缠集合状态实现运算，创建纠缠集合所用到的操作是：“两量子位操作”，这个操作只能对有**&lt;u&gt;联系&lt;/u&gt;**的量子位元进行。</p>
-<h3>量子算法</h3>
-<ul>
+<p>通过创建纠缠集合状态实现运算，创建纠缠集合所用到的操作是：“两量子位操作”，这个操作只能对有<strong><u>联系</u></strong>的量子位元进行。</p>
+<h3 id="量子算法"><a href="#量子算法" class="headerlink" title="量子算法"></a>量子算法</h3><ul>
 <li>利用叠加和纠缠的性质，依靠量子运算来改变量子位元的状态。</li>
 </ul>
-<h3>历史</h3>
-<ul>
+<h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3><ul>
 <li>过去20年：从理论模型到被实践</li>
 <li>过去2年：各公司设计出了量子计算机蓝图</li>
 <li>过去10年：一致性时间（coherence times）从1纳秒上升到了100微秒</li>
 </ul>
-<h3>量子位</h3>
-<ul>
+<h3 id="量子位"><a href="#量子位" class="headerlink" title="量子位"></a>量子位</h3><ul>
 <li>具有易变的特性，因为：退相干和操作错误</li>
 <li>具有避免错误的方法，即：QEC，但QEC有不足：需要10-100个物理量子位元来编码一个容错量子位元。当前有数十或数百量子位的计算机因量子位限制，不能使用QEC。</li>
 </ul>
-<h3>VOM and VOA</h3>
-<h4>VOM</h4>
-<ul>
+<h3 id="VOM-and-VOA"><a href="#VOM-and-VOA" class="headerlink" title="VOM and VOA"></a>VOM and VOA</h3><h4 id="VOM"><a href="#VOM" class="headerlink" title="VOM"></a>VOM</h4><ul>
 <li>以前的做法是让SWAP次数更少的路径</li>
 <li>选择成功率最高的纠缠路径</li>
 </ul>
-<h4>VOA</h4>
-<ul>
+<h4 id="VOA"><a href="#VOA" class="headerlink" title="VOA"></a>VOA</h4><ul>
 <li>以前的做法是选择让SWAP次数更少的的放置位置，这些研究假设了swap代价均等</li>
 <li>将数据量子位放置在成功率更高的的物理量子位上</li>
 </ul>
 <p>需要考虑量子位设备的多样性，认为SWAP操作代价不等</p>
-<h3>文章工作</h3>
-<ul>
+<h3 id="文章工作"><a href="#文章工作" class="headerlink" title="文章工作"></a>文章工作</h3><ul>
 <li>给出了所有20个量子位的相干时间统计量，执行单量子位运算时的误码率，以及在不同量子位上执行双量子位运算的误码率。</li>
 <li>证明确实不同的量子位和连接是存在差异的。</li>
 <li>提出Variation-Aware Qubit Movement：如果想对两个数据量子位进行纠缠，VQM方法会找出是成功率最高的path，而不是SWAP最小的path</li>
 <li>提出Variation-Aware Qubit Allocation：在将数据量子位映射到物理量子位上时，选择最强的链接，提升系统整体的可靠性。</li>
 </ul>
-<h2>背景和动机</h2>
-<h3>量子计算背景</h3>
-<ul>
-<li>传统计算机的一个位可看做球体上的南北两极，而一个量子位代表的数据可看做在一个球面**&lt;u&gt;（布洛赫球面）&lt;/u&gt;**上的任意一点</li>
+<h2 id="背景和动机"><a href="#背景和动机" class="headerlink" title="背景和动机"></a>背景和动机</h2><h3 id="量子计算背景"><a href="#量子计算背景" class="headerlink" title="量子计算背景"></a>量子计算背景</h3><ul>
+<li>传统计算机的一个位可看做球体上的南北两极，而一个量子位代表的数据可看做在一个球面<strong><u>（布洛赫球面）</u></strong>上的任意一点</li>
 <li>量子操作：将一个量子位从球面上的一点移动到另一点</li>
 <li>存储和操作量子位是量子算法的关键</li>
 <li>量子纠缠是创建有联系的量子位之间的集合状态的操作</li>
@@ -725,22 +686,19 @@ $$</p>
 <li>超导量子计算机通常不会采用全互联量子位，而是采用一种受限制的网络，如mesh，只在相邻的量子位之间连接。</li>
 <li>SWAP操作可以交换邻接的量子位位，能使任意两个量子进行纠缠，SWAP可以通过三个控制非门完成</li>
 </ul>
-<h3>量子计算机中的错误</h3>
-<ul>
+<h3 id="量子计算机中的错误"><a href="#量子计算机中的错误" class="headerlink" title="量子计算机中的错误"></a>量子计算机中的错误</h3><ul>
 <li>很有可能因为量子设备的环境发生变化而产生错误</li>
 <li>分类：连贯性错误和操作错误</li>
 <li>连贯性错误：量子位只能在有限时间内保持数据，高能状态$(|1\rangle)$总会向低能状态$(|0\rangle)$衰变。与这种衰变相关的时间常量被称为T1相干时间（T1 Coherence Time）。T1表示一个量子位自然放松的时间。T2表示被环境影响的量子位放松时间。</li>
 <li>操作错误：量子操作不精确，不完美，可能导致错误。<strong>操作错误率</strong>定义为在执行操作时引入错误的概率。单量子操作错误率量级：$10^{-3}$，双量子操作错误率量级：$10^{-2}$。本文主要研究双量子操作错误。</li>
 </ul>
-<h3>近期的量子计算机</h3>
-<ul>
+<h3 id="近期的量子计算机"><a href="#近期的量子计算机" class="headerlink" title="近期的量子计算机"></a>近期的量子计算机</h3><ul>
 <li>QEC可实现错误免疫，但一个容错量子位需要10x-100x物理量子位来编码。现阶段量子位少的量子计算机（NISQ）无法实现QEC。</li>
 <li>大程序需要几百万量子位，已存在或近期的量子计算机无法达到。对只需要几十位的量子程序，错误更正无法达到。</li>
 <li>NISQ没办法执行错误更正，但能执行有用的工作。</li>
 <li>可通过多次执行，根据大数定律可知，一个事件出现的次数与实验总次数比值随着实验次数的增加，趋近于事件的概率。</li>
 </ul>
-<h3>量子位元之间有限的连通性</h3>
-<ul>
+<h3 id="量子位元之间有限的连通性"><a href="#量子位元之间有限的连通性" class="headerlink" title="量子位元之间有限的连通性"></a>量子位元之间有限的连通性</h3><ul>
 <li>若实现量子位全连通，连接需$O(N^2)$，不可行。</li>
 <li>连接包括导线、以特定频率工作的谐振器，使连接做到可靠，是一项艰难的任务。因此大多量子计算机使用网格网络。</li>
 <li>由于使用网格网络，所以产生了两个子问题：Qubit-Allocation：处理程序量子位到物理量子位的映射问题。Qubit-Movement：选择将一个量子位状态移动到另一个量子位状态的路径的问题。</li>
@@ -748,41 +706,31 @@ $$</p>
 <li>Qubit-Allocation 策略：该策略决定程序量子位元到数据量子位元的初始映射。经常通信的量子位元最好放在彼此附近。</li>
 <li>本文工作采用Zulehner开发的编译器，对于给定链接的量子程序进行编译，生成指令队列、SWAPs和初始量子位映射。他开发的编译器采用贪婪算法减少SWAP次数，在执行交换操作时，用于qubit移动和qubit分配的基线策略假定统一的成本(特别是可靠性影响)。但是不正确，会有易变性。</li>
 </ul>
-<h2>分析 IBM-Q20 中的可变性</h2>
-<h3>相干时间分布</h3>
-<ul>
+<h2 id="分析-IBM-Q20-中的可变性"><a href="#分析-IBM-Q20-中的可变性" class="headerlink" title="分析 IBM-Q20 中的可变性"></a>分析 IBM-Q20 中的可变性</h2><h3 id="相干时间分布"><a href="#相干时间分布" class="headerlink" title="相干时间分布"></a>相干时间分布</h3><ul>
 <li>标准差是离均差平方的算术平均数的平方根。平均偏差是数列中各项数值和其对应的算术平均数的离差绝对值的算术平均数。</li>
 </ul>
-<h3>单量子位位操作错误率</h3>
-<ul>
+<h3 id="单量子位位操作错误率"><a href="#单量子位位操作错误率" class="headerlink" title="单量子位位操作错误率"></a>单量子位位操作错误率</h3><ul>
 <li>IMB量子计算机中的量子位操作是通过在量子位元装置上应用具有一定持续时间和频率的微波信号来实现的。但量子位器件是高度非线性的，微小的扰动或实验条件都会引起器件特性的漂移。</li>
 <li>单位操作比双位操作更加稳定。</li>
 </ul>
-<h3>双量子位位操作错误率</h3>
-<ul>
+<h3 id="双量子位位操作错误率"><a href="#双量子位位操作错误率" class="headerlink" title="双量子位位操作错误率"></a>双量子位位操作错误率</h3><ul>
 <li>IBM量子计算机中双量子位操作通过在目标设备、控制量子位设备以及连接两者的耦合链路上应用微波脉冲来执行的。与单量子位操作类似，双量子位操作的错误率也会发生变化。有一小部分耦合链路比大多数链路明显不可靠</li>
 </ul>
-<h3>双量子位位门误差的时间变化</h3>
-<ul>
+<h3 id="双量子位位门误差的时间变化"><a href="#双量子位位门误差的时间变化" class="headerlink" title="双量子位位门误差的时间变化"></a>双量子位位门误差的时间变化</h3><ul>
 <li>链接的错误率可能随时间变化</li>
 <li>强连接保持平均错误率的能力较强，弱连接保持平均错误率的能力较弱</li>
 </ul>
-<h3>双量子位位门误差的空间变化</h3>
-<ul>
+<h3 id="双量子位位门误差的空间变化"><a href="#双量子位位门误差的空间变化" class="headerlink" title="双量子位位门误差的空间变化"></a>双量子位位门误差的空间变化</h3><ul>
 <li>不同节点和连接之间的误差率不一样</li>
 </ul>
-<h2>评估方法</h2>
-<h3>系统级别可靠性的品质因数</h3>
-<ul>
+<h2 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h2><h3 id="系统级别可靠性的品质因数"><a href="#系统级别可靠性的品质因数" class="headerlink" title="系统级别可靠性的品质因数"></a>系统级别可靠性的品质因数</h3><ul>
 <li>以PST作为主要指标</li>
 </ul>
-<h3>评估基准</h3>
-<ul>
+<h3 id="评估基准"><a href="#评估基准" class="headerlink" title="评估基准"></a>评估基准</h3><ul>
 <li>微基准是按照比例缩小的大的量子应用和子程序</li>
 <li>选取准则：选取了纠缠模式不同的数据集</li>
 </ul>
-<h3>评估所用的工具</h3>
-<ul>
+<h3 id="评估所用的工具"><a href="#评估所用的工具" class="headerlink" title="评估所用的工具"></a>评估所用的工具</h3><ul>
 <li>采用基于蒙特卡洛方法的错误注入模拟器</li>
 <li>采用NISQ的迭代执行，分析结果模型</li>
 <li>错误注入模拟器接收：1.NISQ程序 2.框架、配置和错误率 3. 管理策略</li>
@@ -791,120 +739,91 @@ $$</p>
 <li>错误建模为具有独立概率的不相关事件</li>
 <li>映射和编译策略可以被一阶模拟器评估</li>
 </ul>
-<h3>架构和错误率参数</h3>
-<ul>
+<h3 id="架构和错误率参数"><a href="#架构和错误率参数" class="headerlink" title="架构和错误率参数"></a>架构和错误率参数</h3><ul>
 <li>架构参数规定了量子位的数量和连通性</li>
 <li>错误率参数规定了单比特、双比特和测量操作的错误率</li>
 <li>文章对coherence错误进行了建模</li>
 <li>IBM-Q20的门错误比coherence错误更加严重</li>
 </ul>
-<h3>量子位移动和分配的基准策略</h3>
-<h4>Zulehner提出的基本映射策略</h4>
-<ol>
-<li>
-<p>构建无权图，节点为量子位，边为量子位与量子位之间的连通</p>
+<h3 id="量子位移动和分配的基准策略"><a href="#量子位移动和分配的基准策略" class="headerlink" title="量子位移动和分配的基准策略"></a>量子位移动和分配的基准策略</h3><h4 id="Zulehner提出的基本映射策略"><a href="#Zulehner提出的基本映射策略" class="headerlink" title="Zulehner提出的基本映射策略"></a>Zulehner提出的基本映射策略</h4><ol>
+<li><p>构建无权图，节点为量子位，边为量子位与量子位之间的连通</p>
 </li>
-<li>
-<p>采用Floyd算法，计算任意两点之间的最短路径</p>
+<li><p>采用Floyd算法，计算任意两点之间的最短路径</p>
 </li>
-<li>
-<p>对输入程序**&lt;u&gt;分层&lt;/u&gt;**，使得每一层都包含能够被并行执行的独立操作。分层为：
-$$
-L=\left{l_{0}, \ldots, l_{i}, l_{i+1}, \ldots, l_{n-1}\right}
-$$</p>
+<li><p>对输入程序<strong><u>分层</u></strong>，使得每一层都包含能够被并行执行的独立操作。分层为：</p>
+<script type="math/tex; mode=display">
+L=\left\{l_{0}, \ldots, l_{i}, l_{i+1}, \ldots, l_{n-1}\right\}</script></li>
+<li><p>对于每一个分层$l<em>{i}$，都要找到一个对应的映射$m</em>{i}$，使得这一层的控制非门都能有足够的物理连通性被执行</p>
 </li>
-<li>
-<p>对于每一个分层$l_{i}$，都要找到一个对应的映射$m_{i}$，使得这一层的控制非门都能有足够的物理连通性被执行</p>
-</li>
-<li>
-<p>为每对相邻层$l_{i}$ 和 $l_{i+1}$找到最优swap操作集合$\left(S_{i \rightarrow i+1}\right)$，**这个操作集合能够将映射$m_{i}$转化到$m_{i+1}$。*<em>搜索时要采用A</em>算法。</p>
+<li><p>为每对相邻层$l<em>{i}$ 和 $l</em>{i+1}$找到最优swap操作集合$\left(S<em>{i \rightarrow i+1}\right)$，**这个操作集合能够将映射$m</em>{i}$转化到$m_{i+1}$。<em>*搜索时要采用A</em>算法。</p>
 </li>
 </ol>
-<h2>可变感知的量子位移动</h2>
-<ul>
+<h2 id="可变感知的量子位移动"><a href="#可变感知的量子位移动" class="headerlink" title="可变感知的量子位移动"></a>可变感知的量子位移动</h2><ul>
 <li>由于量子计算机的量子位大多数以网格状分布，因此两点之间沿任意路径的曼哈顿距离相同。</li>
 <li>现有的方法采用插入的交换数作为代价函数。但文章的方法是将量子位从源移动到目标的总体失败率。但在失败率相同的时候，选择最小的交换数。</li>
 <li>VQM利用了基线的局部性保留特性，同时使用了一种可变感知的启发式。</li>
 </ul>
-<h4>VQM算法流程</h4>
-<ol>
+<h4 id="VQM算法流程"><a href="#VQM算法流程" class="headerlink" title="VQM算法流程"></a>VQM算法流程</h4><ol>
 <li>初始化权图，边的权值是失败概率，使用N次Dijkstra算法，获取任意两点之间的纠缠最小失败概率。</li>
-<li>计算每个量子位的节点强度$d_{i}$，$d_{i}=\sum_{j}^{N} w_{i j}$</li>
+<li>计算每个量子位的节点强度$d<em>{i}$，$d</em>{i}=\sum<em>{j}^{N} w</em>{i j}$</li>
 <li>将输入程序分层，使得每一层都包含能够被并行执行的独立操作。分层为：</li>
 </ol>
-<p>$$
-L=\left{l_{0}, \ldots, l_{i}, l_{i+1}, \ldots, l_{n-1}\right}
-$$</p>
-<ol>
+<script type="math/tex; mode=display">
+L=\left\{l_{0}, \ldots, l_{i}, l_{i+1}, \ldots, l_{n-1}\right\}</script><ol>
 <li>找映射，量子位节点强度更高的量子位会被优先选中。</li>
 <li>选择能够根据最小失败概率矩阵，找到最优交换操作。使用A*算法进行搜索，启发函数使用可靠性消耗和MAH（最大附加跳数）的加和。</li>
 </ol>
 <p>MAH：Maximum Additional Hop，用于限制最大跳数，如果超过最大跳数的做法，即使cost低，也不予考虑。</p>
-<h2>可变感知的量子位分配</h2>
-<ul>
+<h2 id="可变感知的量子位分配"><a href="#可变感知的量子位分配" class="headerlink" title="可变感知的量子位分配"></a>可变感知的量子位分配</h2><ul>
 <li>普通方法只注意分配过程使SWAP数最小，而VQA方法要使出错概率最小。</li>
 <li>基线策略从精心选择的初始映射开始，然后尝试收敛到具有最小SWAP数量的配置。</li>
 <li>VQA方法将最频繁使用的量子位分配到最稳定的物理量子位上，并保持局部性。VQA方法通过采用最可靠的初始映射，限制最常用的量子位到最可靠的连接上来实现。VQA方法通过分析程序中的前N条指令、跟踪控制非门操作涉及的对象，来估计最常被纠缠的量子位。</li>
 </ul>
-<h4>VQA算法流程</h4>
-<ol>
+<h4 id="VQA算法流程"><a href="#VQA算法流程" class="headerlink" title="VQA算法流程"></a>VQA算法流程</h4><ol>
 <li>找到具有k个节点的具有最高ANS的子图，ANS等于k个节点的临边权值和的和</li>
-<li>通过计算前t层的每一个量子位的控制非门数，找出***&lt;u&gt;量子位活动&lt;/u&gt;***</li>
+<li>通过计算前t层的每一个量子位的控制非门数，找出<strong><em><u>量子位活动</u></em></strong></li>
 <li>优先映射量子位活动多的量子位到子图上</li>
-<li>用基线算法找到层$l_{i}$ 和 $l_{i+1}$的SWAP数</li>
+<li>用基线算法找到层$l<em>{i}$ 和 $l</em>{i+1}$的SWAP数</li>
 </ol>
 <p>VQA使用<strong>K-core算法</strong>来计算最强的子图集，该算法递归删除度数小于k的节点。</p>
-<h3>VQA对系统可靠性的影响</h3>
-<ul>
+<h3 id="VQA对系统可靠性的影响"><a href="#VQA对系统可靠性的影响" class="headerlink" title="VQA对系统可靠性的影响"></a>VQA对系统可靠性的影响</h3><ul>
 <li>VQA具有高活动性(CNOT操作总数)的程序量子位元到具有较高节点强度的物理量子位的映射。这提高了在少数几个qubit对之间重复纠缠操作的工作负载的可靠性。</li>
 </ul>
-<h3>和IBM编译器的比较</h3>
-<ul>
+<h3 id="和IBM编译器的比较"><a href="#和IBM编译器的比较" class="headerlink" title="和IBM编译器的比较"></a>和IBM编译器的比较</h3><ul>
 <li>baseline比原始IBM编译器提升了4倍，VQA和VQM可提升7倍</li>
 </ul>
-<h3>每天不同数据的比较</h3>
-<ul>
+<h3 id="每天不同数据的比较"><a href="#每天不同数据的比较" class="headerlink" title="每天不同数据的比较"></a>每天不同数据的比较</h3><ul>
 <li>错误率变化程度大的数据，PST相对较高，反之则较低</li>
 </ul>
-<h3>对错误率大小变化的敏感性</h3>
-<ul>
+<h3 id="对错误率大小变化的敏感性"><a href="#对错误率大小变化的敏感性" class="headerlink" title="对错误率大小变化的敏感性"></a>对错误率大小变化的敏感性</h3><ul>
 <li>错误率无论大小，总会有变化，总是适用。</li>
 <li>VQM+VQA提供了显著的好处，这些好处随着相对变化的增加而增加。</li>
 <li>改变了两个变量：一个是平均错误率，一个是Covariation（相关变异）</li>
 </ul>
-<h2>在IBM-Q5上的测试</h2>
-<p>two-qubit error rate is 4.2%, the worst link-error is 12%.  We run each experiment with 4096 trials and analyze the output log to compute the PST for each  program and policy.</p>
-<h2>分区的量子计算机</h2>
-<ul>
+<h2 id="在IBM-Q5上的测试"><a href="#在IBM-Q5上的测试" class="headerlink" title="在IBM-Q5上的测试"></a>在IBM-Q5上的测试</h2><p> two-qubit error rate is 4.2%, the worst link-error is 12%.  We run each experiment with 4096 trials and analyze the output log to compute the PST for each  program and policy.</p>
+<h2 id="分区的量子计算机"><a href="#分区的量子计算机" class="headerlink" title="分区的量子计算机"></a>分区的量子计算机</h2><ul>
 <li>在实际所需的量子位比物理量子位少一半甚至更少的时候，探究分区是否有意义。</li>
 <li>产生了2 copy mode</li>
 <li>同时运行的两个副本每次可以提供两倍的无错误试验次数。但是这限制了物理量子位的映射的选择。因为单次实验可以选择连接较强，错误率较低的物理量子位进行映射，而两个副本导致了不得不选用连接较弱、错误率较高的物理量子位进行映射。</li>
 </ul>
-<h2>局限性分析</h2>
-<ul>
+<h2 id="局限性分析"><a href="#局限性分析" class="headerlink" title="局限性分析"></a>局限性分析</h2><ul>
 <li>benchmarks可能不典型</li>
 <li>错误模型可能假设有问题</li>
 </ul>
-<h2>总结</h2>
-<ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
 <li>强调了量子位和量子位之间的连接的错误率中的可变性</li>
 <li>提出了VQM，能使量子位的移动有最低失败概率</li>
 <li>提出了VQA，能将程序量子位映射到更健壮的物理量子位上</li>
 <li>提出了一套评价方法论来评估设备变化和管理策略对量子计算机系统级可靠性的影响</li>
 </ul>
-<h1>论文总结和评价</h1>
-<h2>关于量子计算的知识</h2>
-<p>量子计算中，量子计算机是不可靠不稳定的。可能发生操作错误和保持性错误。操作错误分单比特位操作和双比特位操作。严重程度：双比特位操作错误&gt;单比特位操作错误&gt;保持性错误。</p>
+<h1 id="论文总结和评价"><a href="#论文总结和评价" class="headerlink" title="论文总结和评价"></a>论文总结和评价</h1><h2 id="关于量子计算的知识"><a href="#关于量子计算的知识" class="headerlink" title="关于量子计算的知识"></a>关于量子计算的知识</h2><p>量子计算中，量子计算机是不可靠不稳定的。可能发生操作错误和保持性错误。操作错误分单比特位操作和双比特位操作。严重程度：双比特位操作错误&gt;单比特位操作错误&gt;保持性错误。</p>
 <p>量子计算通过多次执行量子程序，记录每次的观测结果，根据大数定律，正确事件出现的次数与总试验次数的比值会趋近于该事件的概率。</p>
-<h2>简介</h2>
-<p>传统噪声中尺度量子计算机（NISQ, Noisy Intermediate Scale Quantum computers），由于量子位太少（10x-100x），不能够采用QEC来执行错误检测和错误更正，因为QEC需要10-100个量子位来编码一个错误检测位。那么该如何有效提升量子计算机的可靠性呢？</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>传统噪声中尺度量子计算机（NISQ, Noisy Intermediate Scale Quantum computers），由于量子位太少（10x-100x），不能够采用QEC来执行错误检测和错误更正，因为QEC需要10-100个量子位来编码一个错误检测位。那么该如何有效提升量子计算机的可靠性呢？</p>
 <p>作者通过分析IBM-Q20的特征数据发现，量子位和量子位之间的连接的错误率是不完全一致的，是多变的。为了利用这一特性，作者提出了VQM和VQA，能使程序量子位被分配到更好的物理量子位上，能使swap操作更多地发生在更可靠的链接上。</p>
-<h2>基线策略</h2>
-<p>VQM和VQA是在基线准则上进行改进所得到的策略。</p>
+<h2 id="基线策略"><a href="#基线策略" class="headerlink" title="基线策略"></a>基线策略</h2><p>VQM和VQA是在基线准则上进行改进所得到的策略。</p>
 <p>基线策略采用SWAP次数作为价值参数。</p>
 <p>前提假设：所有的SWAP操作代价相同</p>
-<h3>基线映射策略</h3>
-<ol>
+<h3 id="基线映射策略"><a href="#基线映射策略" class="headerlink" title="基线映射策略"></a>基线映射策略</h3><ol>
 <li>初始化无权无向图</li>
 <li>使用最短路算法，计算任意两点纠缠所需最少的swap次数</li>
 <li>程序指令分为n层，不同层包含不同的指令，不同层之间可以并行执行。</li>
@@ -917,20 +836,18 @@ $$</p>
 <p>分层是什么意思？分层依据的准则是什么？</p>
 <p>这里的分层，每一层的所包含的程序量子位都完全一样？否则第5步中无法通过SWAP方法来把第一层的映射改为第二层的映射。</p>
 </blockquote>
-<h2>VQM</h2>
-<ol>
+<h2 id="VQM"><a href="#VQM" class="headerlink" title="VQM"></a>VQM</h2><ol>
 <li>可构造无向有权图，采用最短路算法，计算距离矩阵</li>
 <li>对每一个物理量子位计算节点强度，节点强度等于节点上的所有连线的权值</li>
 <li>将输入程序分层</li>
 <li>每一层寻找映射，映射要优先选择介电强度高的节点</li>
 <li>找到从第一层映射到第二层映射的最优swap集，依据标准是最短路矩阵，有最大跳数的限制</li>
 </ol>
-<h2>VQA</h2>
-<ol>
+<h2 id="VQA"><a href="#VQA" class="headerlink" title="VQA"></a>VQA</h2><ol>
 <li>找一个具有k个节点的子图，子图应当具有最大的ANS，ANS是子图中所有节点的边权的和的加和。</li>
 <li>在前t层中，通过计算CNOT数，计算每个量子位的量子位活动</li>
 <li>映射程序量子位到物理量子位，优先映射量子位活动较高的程序量子位</li>
-<li>运用基线策略，找到层$l_i$和层$l_{i+1}$之间的映射</li>
+<li>运用基线策略，找到层$l<em>i$和层$l</em>{i+1}$之间的映射</li>
 </ol>
 
       
@@ -955,9 +872,9 @@ $$</p>
       
         <div class="post-tags">
           
-            <a href="/tags/论文阅读/" rel="tag"># 论文阅读</a>
-          
             <a href="/tags/量子计算/" rel="tag"># 量子计算</a>
+          
+            <a href="/tags/论文阅读/" rel="tag"># 论文阅读</a>
           
         </div>
       
@@ -1265,7 +1182,7 @@ $$</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">前提知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">希尔伯特空间(Hilbert Space)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">量子两个基本状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.1.</span> <span class="nav-text">叠加态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.2.</span> <span class="nav-text">纠缠态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">Bloch 球面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">欧拉公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.5.</span> <span class="nav-text">k-core</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.5.1.</span> <span class="nav-text">计算方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">论文阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">待了解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.1.</span> <span class="nav-text">量子计算机：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.2.</span> <span class="nav-text">量子算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.3.</span> <span class="nav-text">历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.4.</span> <span class="nav-text">量子位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.5.</span> <span class="nav-text">VOM and VOA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.5.1.</span> <span class="nav-text">VOM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.5.2.</span> <span class="nav-text">VOA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.6.</span> <span class="nav-text">文章工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.</span> <span class="nav-text">背景和动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.1.</span> <span class="nav-text">量子计算背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.2.</span> <span class="nav-text">量子计算机中的错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.3.</span> <span class="nav-text">近期的量子计算机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.4.</span> <span class="nav-text">量子位元之间有限的连通性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.7.</span> <span class="nav-text">分析 IBM-Q20 中的可变性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.7.1.</span> <span class="nav-text">相干时间分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.7.2.</span> <span class="nav-text">单量子位位操作错误率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.7.3.</span> <span class="nav-text">双量子位位操作错误率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.7.4.</span> <span class="nav-text">双量子位位门误差的时间变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.7.5.</span> <span class="nav-text">双量子位位门误差的空间变化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.8.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.8.1.</span> <span class="nav-text">系统级别可靠性的品质因数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.8.2.</span> <span class="nav-text">评估基准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.8.3.</span> <span class="nav-text">评估所用的工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.8.4.</span> <span class="nav-text">架构和错误率参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.8.5.</span> <span class="nav-text">量子位移动和分配的基准策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.8.5.1.</span> <span class="nav-text">Zulehner提出的基本映射策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.9.</span> <span class="nav-text">可变感知的量子位移动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.9.0.1.</span> <span class="nav-text">VQM算法流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.10.</span> <span class="nav-text">可变感知的量子位分配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.10.0.1.</span> <span class="nav-text">VQA算法流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.10.1.</span> <span class="nav-text">VQA对系统可靠性的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.10.2.</span> <span class="nav-text">和IBM编译器的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.10.3.</span> <span class="nav-text">每天不同数据的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.10.4.</span> <span class="nav-text">对错误率大小变化的敏感性</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.11.</span> <span class="nav-text">在IBM-Q5上的测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.12.</span> <span class="nav-text">分区的量子计算机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.13.</span> <span class="nav-text">局限性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.14.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">论文总结和评价</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">关于量子计算的知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">基线策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.1.</span> <span class="nav-text">基线映射策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.4.</span> <span class="nav-text">VQM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.5.</span> <span class="nav-text">VQA</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前提知识"><span class="nav-number">1.</span> <span class="nav-text">前提知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#希尔伯特空间-Hilbert-Space"><span class="nav-number">1.1.</span> <span class="nav-text">希尔伯特空间(Hilbert Space)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#量子两个基本状态"><span class="nav-number">1.2.</span> <span class="nav-text">量子两个基本状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#叠加态"><span class="nav-number">1.2.1.</span> <span class="nav-text">叠加态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#纠缠态"><span class="nav-number">1.2.2.</span> <span class="nav-text">纠缠态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bloch-球面"><span class="nav-number">1.3.</span> <span class="nav-text">Bloch 球面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉公式"><span class="nav-number">1.4.</span> <span class="nav-text">欧拉公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k-core"><span class="nav-number">1.5.</span> <span class="nav-text">k-core</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算方法"><span class="nav-number">1.5.1.</span> <span class="nav-text">计算方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#论文阅读"><span class="nav-number">2.</span> <span class="nav-text">论文阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#待了解"><span class="nav-number">2.1.</span> <span class="nav-text">待了解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">2.2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">2.3.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">2.4.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">2.5.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#量子计算机："><span class="nav-number">2.5.1.</span> <span class="nav-text">量子计算机：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#量子算法"><span class="nav-number">2.5.2.</span> <span class="nav-text">量子算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#历史"><span class="nav-number">2.5.3.</span> <span class="nav-text">历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#量子位"><span class="nav-number">2.5.4.</span> <span class="nav-text">量子位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VOM-and-VOA"><span class="nav-number">2.5.5.</span> <span class="nav-text">VOM and VOA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VOM"><span class="nav-number">2.5.5.1.</span> <span class="nav-text">VOM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VOA"><span class="nav-number">2.5.5.2.</span> <span class="nav-text">VOA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章工作"><span class="nav-number">2.5.6.</span> <span class="nav-text">文章工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#背景和动机"><span class="nav-number">2.6.</span> <span class="nav-text">背景和动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#量子计算背景"><span class="nav-number">2.6.1.</span> <span class="nav-text">量子计算背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#量子计算机中的错误"><span class="nav-number">2.6.2.</span> <span class="nav-text">量子计算机中的错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#近期的量子计算机"><span class="nav-number">2.6.3.</span> <span class="nav-text">近期的量子计算机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#量子位元之间有限的连通性"><span class="nav-number">2.6.4.</span> <span class="nav-text">量子位元之间有限的连通性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析-IBM-Q20-中的可变性"><span class="nav-number">2.7.</span> <span class="nav-text">分析 IBM-Q20 中的可变性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相干时间分布"><span class="nav-number">2.7.1.</span> <span class="nav-text">相干时间分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单量子位位操作错误率"><span class="nav-number">2.7.2.</span> <span class="nav-text">单量子位位操作错误率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双量子位位操作错误率"><span class="nav-number">2.7.3.</span> <span class="nav-text">双量子位位操作错误率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双量子位位门误差的时间变化"><span class="nav-number">2.7.4.</span> <span class="nav-text">双量子位位门误差的时间变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双量子位位门误差的空间变化"><span class="nav-number">2.7.5.</span> <span class="nav-text">双量子位位门误差的空间变化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估方法"><span class="nav-number">2.8.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统级别可靠性的品质因数"><span class="nav-number">2.8.1.</span> <span class="nav-text">系统级别可靠性的品质因数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估基准"><span class="nav-number">2.8.2.</span> <span class="nav-text">评估基准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估所用的工具"><span class="nav-number">2.8.3.</span> <span class="nav-text">评估所用的工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#架构和错误率参数"><span class="nav-number">2.8.4.</span> <span class="nav-text">架构和错误率参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#量子位移动和分配的基准策略"><span class="nav-number">2.8.5.</span> <span class="nav-text">量子位移动和分配的基准策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Zulehner提出的基本映射策略"><span class="nav-number">2.8.5.1.</span> <span class="nav-text">Zulehner提出的基本映射策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可变感知的量子位移动"><span class="nav-number">2.9.</span> <span class="nav-text">可变感知的量子位移动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VQM算法流程"><span class="nav-number">2.9.0.1.</span> <span class="nav-text">VQM算法流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可变感知的量子位分配"><span class="nav-number">2.10.</span> <span class="nav-text">可变感知的量子位分配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VQA算法流程"><span class="nav-number">2.10.0.1.</span> <span class="nav-text">VQA算法流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VQA对系统可靠性的影响"><span class="nav-number">2.10.1.</span> <span class="nav-text">VQA对系统可靠性的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和IBM编译器的比较"><span class="nav-number">2.10.2.</span> <span class="nav-text">和IBM编译器的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#每天不同数据的比较"><span class="nav-number">2.10.3.</span> <span class="nav-text">每天不同数据的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对错误率大小变化的敏感性"><span class="nav-number">2.10.4.</span> <span class="nav-text">对错误率大小变化的敏感性</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#在IBM-Q5上的测试"><span class="nav-number">2.11.</span> <span class="nav-text">在IBM-Q5上的测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分区的量子计算机"><span class="nav-number">2.12.</span> <span class="nav-text">分区的量子计算机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局限性分析"><span class="nav-number">2.13.</span> <span class="nav-text">局限性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.14.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#论文总结和评价"><span class="nav-number">3.</span> <span class="nav-text">论文总结和评价</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于量子计算的知识"><span class="nav-number">3.1.</span> <span class="nav-text">关于量子计算的知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">3.2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基线策略"><span class="nav-number">3.3.</span> <span class="nav-text">基线策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基线映射策略"><span class="nav-number">3.3.1.</span> <span class="nav-text">基线映射策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VQM"><span class="nav-number">3.4.</span> <span class="nav-text">VQM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VQA"><span class="nav-number">3.5.</span> <span class="nav-text">VQA</span></a></li></ol></li></div>
             
 
           </div>
