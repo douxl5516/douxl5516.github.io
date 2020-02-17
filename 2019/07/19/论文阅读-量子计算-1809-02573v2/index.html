@@ -118,7 +118,7 @@
 
 
   <meta name="description" content="论文阅读：Tackling the Qubit Mapping Problem for NISQ-Era  Quantum Devices">
-<meta name="keywords" content="量子计算,论文阅读">
+<meta name="keywords" content="论文阅读,量子计算">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文阅读_量子计算_1809.02573v2">
 <meta property="og:url" content="https://douxl5516.github.io/2019/07/19/论文阅读-量子计算-1809-02573v2/index.html">
@@ -562,17 +562,22 @@
 
       
         <p><a href="https://arxiv.org/abs/1809.02573" target="_blank" rel="noopener">Tackling the Qubit Mapping Problem for NISQ-Era  Quantum Devices</a></p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="不理解的名词"><a href="#不理解的名词" class="headerlink" title="不理解的名词"></a>不理解的名词</h2><ul>
+<h1>问题</h1>
+<h2>不理解的名词</h2>
+<ul>
 <li>保留遍历搜索技术</li>
 <li>全局优化初始映射</li>
 </ul>
-<h1 id="名词"><a href="#名词" class="headerlink" title="名词"></a>名词</h1><ul>
+<h1>名词</h1>
+<ul>
 <li>quantum circuit：量子线路，是在抽象概念下，对量子信息存储单元进行操作的线路。组成包括：量子位、线路（时间线）、逻辑门。</li>
 <li>Directed Acyclic Graph：DAG，有向非循环图</li>
 </ul>
-<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>由于对量子计算的硬件条件考虑不足，比如说没有考虑二量子位操作的物理连接不足的问题，一般的NISQ无法执行大多数的量子算法。动态重映射策略被创建，来解决这些问题。但是动态重映射策略不能保证程序的可靠性，策略复杂度高，初始映射差，可控性和灵活性低。</p>
+<h1>摘要</h1>
+<p>由于对量子计算的硬件条件考虑不足，比如说没有考虑二量子位操作的物理连接不足的问题，一般的NISQ无法执行大多数的量子算法。动态重映射策略被创建，来解决这些问题。但是动态重映射策略不能保证程序的可靠性，策略复杂度高，初始映射差，可控性和灵活性低。</p>
 <p>提出了一种基于交换的双向启发式搜索算法(SABRE)，适用于量子位任意连接的NISQ设备。通过优化每一次搜索尝试，采用新型的反向遍历技术，全局优化了初始映射。引入了了衰减效应，能够衡量搜索的深度和整个系统的门的个数。SABRE比其他的已知最好的指数级算法好一些。</p>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>量子计算机虽然无法实现QEC，但是也可以干很多事情。软硬差距存在，现有的NISQ体系结构无法支持大型量子程序有效执行。本文章专注于由于NISQ设备限制而产生的二量子位操作问题。逻辑量子位分配到物理量子位上，类比传统计算机就是寄存器分配。    </p>
+<h1>介绍</h1>
+<p>量子计算机虽然无法实现QEC，但是也可以干很多事情。软硬差距存在，现有的NISQ体系结构无法支持大型量子程序有效执行。本文章专注于由于NISQ设备限制而产生的二量子位操作问题。逻辑量子位分配到物理量子位上，类比传统计算机就是寄存器分配。</p>
 <p>实际量子线路无法直接在NISQ上执行，因此需要进行量子电路转换，实现量子程序在NISQ设备上的使用，步骤有：</p>
 <ol>
 <li>初始逻辑量子位到物理量子位的映射</li>
@@ -598,50 +603,64 @@
 <li>提出了反向遍历策略，利用量子位映射问题的内在可逆性，在初始映射解决方案中实现全局优化。</li>
 <li>在启发式搜索策略中提出衰减代价函数，能产生适用于不同硬件的量子电路。</li>
 </ol>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h2 id="软件基础"><a href="#软件基础" class="headerlink" title="软件基础"></a>软件基础</h2><p>多种量子模型是数学等价的，量子电路模型是最流行的。</p>
+<h1>背景</h1>
+<h2>软件基础</h2>
+<p>多种量子模型是数学等价的，量子电路模型是最流行的。</p>
 <ul>
 <li>量子位</li>
 <li>量子操作</li>
 <li>量子线路</li>
 </ul>
-<h2 id="在NISQ时代的QC硬件"><a href="#在NISQ时代的QC硬件" class="headerlink" title="在NISQ时代的QC硬件"></a>在NISQ时代的QC硬件</h2><p>实现量子计算的硬件方法有：超导量子电路、离子阱、量子点、中性原子等。目前最可靠的技术是超导量子电路。</p>
+<h2>在NISQ时代的QC硬件</h2>
+<p>实现量子计算的硬件方法有：超导量子电路、离子阱、量子点、中性原子等。目前最可靠的技术是超导量子电路。</p>
 <p>文章中考虑硬件约束包括：</p>
 <ol>
 <li>量子位生存时间</li>
 <li>量子位操作错误率，因为量子门会导致错误，因此要尽可能缩减量子门的数目</li>
 <li>量子位连接。</li>
 </ol>
-<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><ul>
+<h1>问题分析</h1>
+<ul>
 <li>SWAP操作解决不连通问题</li>
 <li>其他方法解决不连通问题：基于先前的架构，不予考虑。</li>
 <li>SWAP操作带来如下问题：操作指令数增加，导致总体错误率增加；电路层次增加，总执行时间增加，由decoherence导致的错误增加。由此要尽量减少SWAP操作个数。</li>
 </ul>
-<h2 id="构建问题"><a href="#构建问题" class="headerlink" title="构建问题"></a>构建问题</h2><p>找初始mapping、中间mapping的变换，最小化门操作个数，最小化量子线路层次。</p>
-<h2 id="目标和度量标准"><a href="#目标和度量标准" class="headerlink" title="目标和度量标准"></a>目标和度量标准</h2><ol>
+<h2>构建问题</h2>
+<p>找初始mapping、中间mapping的变换，最小化门操作个数，最小化量子线路层次。</p>
+<h2>目标和度量标准</h2>
+<ol>
 <li>灵活性：对以后的量子计算机也需适用</li>
 <li>可靠性：要尽量减少门个数</li>
 <li>并行性：减少量子线路层次，允许更多的操作</li>
 <li>可扩展性：在不使用QEC的情况下，问题是不变的。使用了QEC，会将问题转化为另一个。</li>
 </ol>
 <p>度量标准：门总数和量子线路深度。</p>
-<h1 id="找初始化映射和SWAP"><a href="#找初始化映射和SWAP" class="headerlink" title="找初始化映射和SWAP"></a>找初始化映射和SWAP</h1><h2 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h2><ol>
+<h1>找初始化映射和SWAP</h1>
+<h2>预处理</h2>
+<ol>
 <li>使用Floyd-Warshall算法计算距离矩阵</li>
 <li>使用有向非循环图（DAG）表示在一个量子线路中的双量子比特位门的执行限制。单量子位的操作在这不予考虑，因为他们不涉及到其他量子位。</li>
 <li>找到第一层：没有前驱节点，即入度为零的控制非门可以被放在第一层中。</li>
 <li>临时初始映射生成：随机产生初始映射，作为启发式搜索的起始状态。</li>
 </ol>
-<h2 id="基于SWAP的启发式搜索"><a href="#基于SWAP的启发式搜索" class="headerlink" title="基于SWAP的启发式搜索"></a>基于SWAP的启发式搜索</h2><p>算法1是一次遍历的搜索过程，从头到尾扫描，并插入SWAP操作，使得所有的CNOT都可以被执行。这个算法会被多次使用来更新优化初始映射。</p>
+<h2>基于SWAP的启发式搜索</h2>
+<p>算法1是一次遍历的搜索过程，从头到尾扫描，并插入SWAP操作，使得所有的CNOT都可以被执行。这个算法会被多次使用来更新优化初始映射。</p>
 <p>拓扑排序方法</p>
 <ol>
-<li><p>检查F是否为空，若是，则停止，若否，则初始化Execute gate list。</p>
+<li>
+<p>检查F是否为空，若是，则停止，若否，则初始化Execute gate list。</p>
 </li>
-<li><p>对于F中现在的所有的门，取出这个门涉及到的两个量子位，查看他们所在的物理量子位有没有连接，如果有，则加入Execute gate list，否则不加入。</p>
+<li>
+<p>对于F中现在的所有的门，取出这个门涉及到的两个量子位，查看他们所在的物理量子位有没有连接，如果有，则加入Execute gate list，否则不加入。</p>
 </li>
-<li><p>如果Execute gate list不为空，则将里面的所有门从F中删除掉。接下来检查后继的门，对于后继门的两个量子位，如果如果F中没有任何门指向这两个量子位的其中一个，则把这个后继门添加到F中。回到2。</p>
+<li>
+<p>如果Execute gate list不为空，则将里面的所有门从F中删除掉。接下来检查后继的门，对于后继门的两个量子位，如果如果F中没有任何门指向这两个量子位的其中一个，则把这个后继门添加到F中。回到2。</p>
 </li>
-<li><p>如果Execute gate list为空，则所有的F中的门在硬件中不能被执行。需要插入SWAP操作。</p>
+<li>
+<p>如果Execute gate list为空，则所有的F中的门在硬件中不能被执行。需要插入SWAP操作。</p>
 </li>
-<li><p><strong>启发式搜索插入SWAP</strong>：初始化score。通过F和G找到SWAP的候选列表。对于F中的所有门的所有程序量子位，找到它对应的物理量子位，通过G找到和这个物理量子位相邻的其他物理量子位，根据映射找到这些物理量子位对应的程序量子位。原量子位和这些程序量子位可以被进行SWAP。加入到候选SWAP列表中。对于候选列表中的每一个候选SWAP，更新原映射，作为临时图，对其进行评分，选择评分最小的SWAP操作，并将原映射更新。回到1。</p>
+<li>
+<p><strong>启发式搜索插入SWAP</strong>：初始化score。通过F和G找到SWAP的候选列表。对于F中的所有门的所有程序量子位，找到它对应的物理量子位，通过G找到和这个物理量子位相邻的其他物理量子位，根据映射找到这些物理量子位对应的程序量子位。原量子位和这些程序量子位可以被进行SWAP。加入到候选SWAP列表中。对于候选列表中的每一个候选SWAP，更新原映射，作为临时图，对其进行评分，选择评分最小的SWAP操作，并将原映射更新。回到1。</p>
 <blockquote>
 <p>在这里每次启发式搜索只搜索一步SWAP，下一次可能还是处于EExecute gate list为空的状态，这样就需进行下一步的启发式搜索，如果不为空，则可以继续进行拓扑排序。</p>
 </blockquote>
@@ -659,22 +678,27 @@
 <ul>
 <li>不是去搜索一个映射，而是去搜索在F中的量子位的SWAP。</li>
 </ul>
-<h2 id="解释关键设计决策"><a href="#解释关键设计决策" class="headerlink" title="解释关键设计决策"></a>解释关键设计决策</h2><ul>
+<h2>解释关键设计决策</h2>
+<ul>
 <li>只有F中的门涉及到的量子位元参与的SWAP才有意义。</li>
 <li>F后紧邻的量子位的距离也加入启发式函数的考虑，但不考虑再后面的，因为执行过程中，mapping的变化可能会很大。</li>
 </ul>
-<h3 id="时间复杂度分析（暂不理解）"><a href="#时间复杂度分析（暂不理解）" class="headerlink" title="时间复杂度分析（暂不理解）"></a>时间复杂度分析（暂不理解）</h3><p>时间复杂度上限可以通过最坏情况来估计，也就是每两个比特位门都需要单独满足。</p>
+<h3>时间复杂度分析（暂不理解）</h3>
+<p>时间复杂度上限可以通过最坏情况来估计，也就是每两个比特位门都需要单独满足。</p>
 <p>满足一个比特位门的时间复杂度是满足在搜索空间中的潜在选项、最大可能搜索空间、二比特位最大数目的搜索步数的一次搜索的乘积。启发式代价函数的时间复杂度是O（N）。</p>
 <p>搜索空间从可以从O(exp(N))降到O(N)（最坏情况下所有量子比特位都在首层），</p>
-<h3 id="初始映射的反遍历"><a href="#初始映射的反遍历" class="headerlink" title="初始映射的反遍历"></a>初始映射的反遍历</h3><p>Siraichi没有考虑时间因素，Zulehner只考虑了最初映射，没有全局考虑。</p>
+<h3>初始映射的反遍历</h3>
+<p>Siraichi没有考虑时间因素，Zulehner只考虑了最初映射，没有全局考虑。</p>
 <p>量子电路是可逆的，可以获取到一个量子电路的逆电路。如果知道了最终电路，我们就可以把最终电路作为初始电路，解决映射问题。如果一次执行完成，得到的结果映射，可以作为我们开始执行时的初始映射，这样能够提供更好的效果。</p>
 <p>首先随机生成初始映射，进过原量子线路，获得最终映射。将最终映射通过反向量子线路，获得更新后的初始映射。更新后的初始映射就在以后被作为优秀的映射方案。</p>
-<h3 id="量子线路深度和门数的衡量"><a href="#量子线路深度和门数的衡量" class="headerlink" title="量子线路深度和门数的衡量"></a>量子线路深度和门数的衡量</h3><ul>
+<h3>量子线路深度和门数的衡量</h3>
+<ul>
 <li>深度优先</li>
 <li>门数少优先</li>
 </ul>
 <p>衰减效果被应用，来尽可能选择不相交的SWAP操作。</p>
-<h2 id="启发式函数设计"><a href="#启发式函数设计" class="headerlink" title="启发式函数设计"></a>启发式函数设计</h2><ol>
+<h2>启发式函数设计</h2>
+<ol>
 <li>H应该能代表SWAP的移动步数</li>
 <li>能够帮助后期的SWAP采用更少的步数</li>
 <li>能够鼓励并行操作，考虑线路深度和并行度的取舍。</li>
@@ -685,10 +709,13 @@
 <li>扩展集中的距离和</li>
 <li>swap是否被重复使用</li>
 </ol>
-<script type="math/tex; mode=display">
-H=\max \left(\operatorname{decay}\left(SWAP . q_{1}\right), \operatorname{decay}\left(SWAP . q_{2}\right)\right)\\
-*\left\{\frac{1}{|F|} \sum_{g a t e \in F} D\left[\pi\left(g a t e \cdot q_{1}\right)\right]\left[\pi\left(g a t e . q_{2}\right)\right]\\
-+W * \frac{1}{|E|} \sum_{g a t e \in E} D\left[\pi\left(g a t e . q_{1}\right)\right]\left[\pi\left(g a t e . q_{2}\right)\right] \right\}</script><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<p>$$
+H=\max \left(\operatorname{decay}\left(SWAP . q_{1}\right), \operatorname{decay}\left(SWAP . q_{2}\right)\right)\
+*\left{\frac{1}{|F|} \sum_{g a t e \in F} D\left[\pi\left(g a t e \cdot q_{1}\right)\right]\left[\pi\left(g a t e . q_{2}\right)\right]\
++W * \frac{1}{|E|} \sum_{g a t e \in E} D\left[\pi\left(g a t e . q_{1}\right)\right]\left[\pi\left(g a t e . q_{2}\right)\right] \right}
+$$</p>
+<h1>总结</h1>
+<ul>
 <li>物理量子位不能比程序量子位少</li>
 <li>有限的物理连接</li>
 </ul>
@@ -715,9 +742,9 @@ H=\max \left(\operatorname{decay}\left(SWAP . q_{1}\right), \operatorname{decay}
       
         <div class="post-tags">
           
-            <a href="/tags/量子计算/" rel="tag"># 量子计算</a>
-          
             <a href="/tags/论文阅读/" rel="tag"># 论文阅读</a>
+          
+            <a href="/tags/量子计算/" rel="tag"># 量子计算</a>
           
         </div>
       
@@ -1025,7 +1052,7 @@ H=\max \left(\operatorname{decay}\left(SWAP . q_{1}\right), \operatorname{decay}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不理解的名词"><span class="nav-number">1.1.</span> <span class="nav-text">不理解的名词</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#名词"><span class="nav-number">2.</span> <span class="nav-text">名词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要"><span class="nav-number">3.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">4.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">5.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#软件基础"><span class="nav-number">5.1.</span> <span class="nav-text">软件基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在NISQ时代的QC硬件"><span class="nav-number">5.2.</span> <span class="nav-text">在NISQ时代的QC硬件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题分析"><span class="nav-number">6.</span> <span class="nav-text">问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建问题"><span class="nav-number">6.1.</span> <span class="nav-text">构建问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标和度量标准"><span class="nav-number">6.2.</span> <span class="nav-text">目标和度量标准</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#找初始化映射和SWAP"><span class="nav-number">7.</span> <span class="nav-text">找初始化映射和SWAP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预处理"><span class="nav-number">7.1.</span> <span class="nav-text">预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于SWAP的启发式搜索"><span class="nav-number">7.2.</span> <span class="nav-text">基于SWAP的启发式搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释关键设计决策"><span class="nav-number">7.3.</span> <span class="nav-text">解释关键设计决策</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度分析（暂不理解）"><span class="nav-number">7.3.1.</span> <span class="nav-text">时间复杂度分析（暂不理解）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始映射的反遍历"><span class="nav-number">7.3.2.</span> <span class="nav-text">初始映射的反遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#量子线路深度和门数的衡量"><span class="nav-number">7.3.3.</span> <span class="nav-text">量子线路深度和门数的衡量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启发式函数设计"><span class="nav-number">7.4.</span> <span class="nav-text">启发式函数设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">不理解的名词</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">名词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.1.</span> <span class="nav-text">软件基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.2.</span> <span class="nav-text">在NISQ时代的QC硬件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.1.</span> <span class="nav-text">构建问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.2.</span> <span class="nav-text">目标和度量标准</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">找初始化映射和SWAP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.1.</span> <span class="nav-text">预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.2.</span> <span class="nav-text">基于SWAP的启发式搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.3.</span> <span class="nav-text">解释关键设计决策</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">7.3.1.</span> <span class="nav-text">时间复杂度分析（暂不理解）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">7.3.2.</span> <span class="nav-text">初始映射的反遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">7.3.3.</span> <span class="nav-text">量子线路深度和门数的衡量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.4.</span> <span class="nav-text">启发式函数设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
