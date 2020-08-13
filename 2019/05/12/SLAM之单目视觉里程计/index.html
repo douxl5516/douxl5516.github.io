@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   	<script type="text/javascript">
 	$(document).ready(function(){
 	  $("code").map(function(){
@@ -37,10 +37,10 @@
 	  });
 	});
 	</script>
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -65,9 +65,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+<link rel="stylesheet" href="/css/main.css?v=7.1.1"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
@@ -118,20 +118,23 @@
 
 
   <meta name="description" content="单目SLAM中涉及到的第一部分，单目视觉里程计。">
-<meta name="keywords" content="SLAM,机器视觉,单目,视觉里程计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SLAM之单目视觉里程计">
-<meta property="og:url" content="https://douxl5516.github.io/2019/05/12/SLAM之单目视觉里程计/index.html">
+<meta property="og:url" content="https://douxl5516.github.io/2019/05/12/SLAM%E4%B9%8B%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1/index.html">
 <meta property="og:site_name" content="平崖">
 <meta property="og:description" content="单目SLAM中涉及到的第一部分，单目视觉里程计。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://douxl5516.github.io/2019/05/12/SLAM之单目视觉里程计/01.jpg">
-<meta property="og:image" content="https://douxl5516.github.io/2019/05/12/SLAM之单目视觉里程计/02.jpg">
-<meta property="og:updated_time" content="2019-07-01T23:38:55.647Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://douxl5516.github.io/2019/05/12/SLAM%E4%B9%8B%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1/01.jpg">
+<meta property="og:image" content="https://douxl5516.github.io/2019/05/12/SLAM%E4%B9%8B%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1/02.jpg">
+<meta property="article:published_time" content="2019-05-12T01:15:10.000Z">
+<meta property="article:modified_time" content="2019-07-01T23:38:55.647Z">
+<meta property="article:author" content="窦星磊">
+<meta property="article:tag" content="SLAM">
+<meta property="article:tag" content="机器视觉">
+<meta property="article:tag" content="单目">
+<meta property="article:tag" content="视觉里程计">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SLAM之单目视觉里程计">
-<meta name="twitter:description" content="单目SLAM中涉及到的第一部分，单目视觉里程计。">
-<meta name="twitter:image" content="https://douxl5516.github.io/2019/05/12/SLAM之单目视觉里程计/01.jpg">
+<meta name="twitter:image" content="https://douxl5516.github.io/2019/05/12/SLAM%E4%B9%8B%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1/01.jpg">
 
 
 
@@ -139,7 +142,7 @@
 
   
   
-  <link rel="canonical" href="https://douxl5516.github.io/2019/05/12/SLAM之单目视觉里程计/">
+  <link rel="canonical" href="https://douxl5516.github.io/2019/05/12/SLAM%E4%B9%8B%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1/"/>
 
 
 
@@ -199,7 +202,7 @@
 </noscript>
 
 
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -260,7 +263,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
 
   </li>
         
@@ -277,7 +280,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
         
@@ -294,7 +297,7 @@
 
     
 
-    <a href="/notes/" rel="section"><i class="menu-item-icon fa fa-fw fa-file-text"></i> <br>札记</a>
+    <a href="/notes/" rel="section"><i class="menu-item-icon fa fa-fw fa-file-text"></i> <br/>札记</a>
 
   </li>
         
@@ -311,7 +314,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
 
   </li>
         
@@ -328,7 +331,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
 
   </li>
         
@@ -345,7 +348,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
 
   </li>
 
@@ -356,7 +359,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -376,7 +379,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -426,16 +431,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://douxl5516.github.io/2019/05/12/SLAM之单目视觉里程计/">
+    <link itemprop="mainEntityOfPage" href="https://douxl5516.github.io/2019/05/12/SLAM%E4%B9%8B%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="窦星磊">
-      <meta itemprop="description" content="平崖远望，踽踽独行。">
-      <meta itemprop="image" content="/images/sky_lanterns.jpg">
+      <meta itemprop="name" content="窦星磊"/>
+      <meta itemprop="description" content="平崖远望，踽踽独行。"/>
+      <meta itemprop="image" content="/images/sky_lanterns.jpg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="平崖">
+      <meta itemprop="name" content="平崖"/>
     </span>
 
     
@@ -522,8 +527,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/12/SLAM之单目视觉里程计/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/12/SLAM之单目视觉里程计/" itemprop="commentCount"></span>
+                <a href="/2019/05/12/SLAM%E4%B9%8B%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/12/SLAM%E4%B9%8B%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -531,7 +536,7 @@
 
           
           
-            <span id="/2019/05/12/SLAM之单目视觉里程计/" class="leancloud_visitors" data-flag-title="SLAM之单目视觉里程计">
+            <span id="/2019/05/12/SLAM%E4%B9%8B%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1/" class="leancloud_visitors" data-flag-title="SLAM之单目视觉里程计">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -564,7 +569,10 @@
       
 
       
-        <h1 id="SLAM之单目视觉里程计"><a href="#SLAM之单目视觉里程计" class="headerlink" title="SLAM之单目视觉里程计"></a>SLAM之单目视觉里程计</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="旋转矩阵和位移矩阵"><a href="#旋转矩阵和位移矩阵" class="headerlink" title="旋转矩阵和位移矩阵"></a>旋转矩阵和位移矩阵</h3><p>建议参考计算机图形学教材，学习“图形变换”章节。重点掌握以下概念：</p>
+        <h1>SLAM之单目视觉里程计</h1>
+<h2>基础知识</h2>
+<h3>旋转矩阵和位移矩阵</h3>
+<p>建议参考计算机图形学教材，学习“图形变换”章节。重点掌握以下概念：</p>
 <ul>
 <li>旋转矩阵</li>
 <li>平移向量</li>
@@ -576,31 +584,44 @@
 <li><a href="https://blog.csdn.net/csxiaoshui/article/details/65446125#" target="_blank" rel="noopener">旋转变换（一）旋转矩阵</a></li>
 <li><a href="https://www.cnblogs.com/flyinggod/p/8144100.html" target="_blank" rel="noopener">旋转矩阵、欧拉角、四元数理论及其转换关系</a></li>
 </ul>
-<h3 id="三个坐标系"><a href="#三个坐标系" class="headerlink" title="三个坐标系"></a>三个坐标系</h3><p><strong>图像坐标系</strong>： 一般来说，图像坐标系包括像素坐标系以及物理坐标系。</p>
-<p><img src="/2019/05/12/SLAM之单目视觉里程计/01.jpg" alt="图像坐标系"></p>
-<p>对于图像直角坐标系上的坐标$(u,v)$，分别能从像素的行数和列数得到，叫做像素坐标系。为表示像素点在图像中的位置我们需要借助物理坐标系，以图像中某一点$O<em>{1}$当作原点建立坐标系，其中$x$轴，$y$轴分别与像素坐标系的横、竖轴平行，方向一致。其中$(x, y)$坐标单位为毫米，$O</em>{1}$在$(u, v)$坐标系下的坐标为$\left(u<em>{0}, v</em>{0}\right)$，$d_{x}$和$d_y$表示每个像素点在$x$,$y$轴上的尺寸大小，则有：</p>
-<script type="math/tex; mode=display">
-\left\{\begin{array}{l}{u=\frac{x}{d x}+u_{0}} \\ {v=\frac{y}{d y}+v_{0}}\end{array}\right.</script><p>即：</p>
-<script type="math/tex; mode=display">
-\left[ \begin{array}{c}{u} \\ {v} \\ {1}\end{array}\right]=\left[ \begin{array}{ccc}{\frac{1}{d x}} & {0} & {u_{0}} \\ {0} & {\frac{1}{d y}} & {v_{0}} \\ {0} & {0} & {1}\end{array}\right] \left[ \begin{array}{l}{x} \\ {y} \\ {1}\end{array}\right]</script><p><strong>相机坐标系</strong>：相机坐标系原点位于光心。如图所示，相机光心为点$O$，$Z<em>{c}$与像平面垂直，为相机的光轴，$X</em>{c}, Y<em>{c}$分别与$x,y$轴相平行，焦距大小为线段$O O</em>{1}$的长度，则将$O-X<em>{c} Y</em>{c} Z_{c}$坐标系称作相机坐标系。</p>
-<p><img src="/2019/05/12/SLAM之单目视觉里程计/02.jpg" alt="相机坐标系"></p>
-<p><strong>世界坐标系</strong>:世界坐标系可以对场景的中的任何物体进行描述，同时能表示出相机坐标。如上图中，将坐标系$O<em>{w}-X</em>{w} Y<em>{w} Z</em>{w}$称为世界坐标系，其与相机坐标系的相互变换可以通过$3 \times 1$的平移向量$t$以及$3\times 3$的旋转矩阵$R$来表示，设点$P$在世界坐标系中的齐次坐标为$\left(X<em>{w}, Y</em>{w}, Z<em>{w}, 1\right)^{T}$，在相机坐标系中的齐次坐标为$\left(X</em>{c}, Y<em>{c}, Z</em>{c}, 1\right)^{T}$，那么二者的转换关系为： </p>
-<script type="math/tex; mode=display">
-\left[ \begin{array}{c}{X_{c}} \\ {Y_{c}} \\ {Z_{c}} \\ {1}\end{array}\right]=\left[ \begin{array}{cc}{R} & {t} \\ {0^{T}} & {1}\end{array}\right] \left[ \begin{array}{c}{X_{w}} \\ {Y_{w}} \\ {Z_{w}} \\ {1}\end{array}\right]=M_{1} \left[ \begin{array}{c}{X_{w}} \\ {Y_{w}} \\ {Z_{w}} \\ {1}\end{array}\right]</script><h2 id="针孔相机模型"><a href="#针孔相机模型" class="headerlink" title="针孔相机模型"></a>针孔相机模型</h2><p>针孔相机模型是将空间坐标映射到图像点的模型。</p>
+<h3>三个坐标系</h3>
+<p><strong>图像坐标系</strong>： 一般来说，图像坐标系包括像素坐标系以及物理坐标系。</p>
+<p><img src="/2019/05/12/SLAM%E4%B9%8B%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1/01.jpg" alt="图像坐标系"></p>
+<p>对于图像直角坐标系上的坐标$(u,v)$，分别能从像素的行数和列数得到，叫做像素坐标系。为表示像素点在图像中的位置我们需要借助物理坐标系，以图像中某一点$O_{1}$当作原点建立坐标系，其中$x$轴，$y$轴分别与像素坐标系的横、竖轴平行，方向一致。其中$(x, y)$坐标单位为毫米，$O_{1}$在$(u, v)$坐标系下的坐标为$\left(u_{0}, v_{0}\right)$，$d_{x}$和$d_y$表示每个像素点在$x$,$y$轴上的尺寸大小，则有：
+$$
+\left{\begin{array}{l}{u=\frac{x}{d x}+u_{0}} \ {v=\frac{y}{d y}+v_{0}}\end{array}\right.
+$$
+即：
+$$
+\left[ \begin{array}{c}{u} \ {v} \ {1}\end{array}\right]=\left[ \begin{array}{ccc}{\frac{1}{d x}} &amp; {0} &amp; {u_{0}} \ {0} &amp; {\frac{1}{d y}} &amp; {v_{0}} \ {0} &amp; {0} &amp; {1}\end{array}\right] \left[ \begin{array}{l}{x} \ {y} \ {1}\end{array}\right]
+$$
+<strong>相机坐标系</strong>：相机坐标系原点位于光心。如图所示，相机光心为点$O$，$Z_{c}$与像平面垂直，为相机的光轴，$X_{c}, Y_{c}$分别与$x,y$轴相平行，焦距大小为线段$O O_{1}$的长度，则将$O-X_{c} Y_{c} Z_{c}$坐标系称作相机坐标系。</p>
+<p><img src="/2019/05/12/SLAM%E4%B9%8B%E5%8D%95%E7%9B%AE%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1/02.jpg" alt="相机坐标系"></p>
+<p><strong>世界坐标系</strong>:世界坐标系可以对场景的中的任何物体进行描述，同时能表示出相机坐标。如上图中，将坐标系$O_{w}-X_{w} Y_{w} Z_{w}$称为世界坐标系，其与相机坐标系的相互变换可以通过$3 \times 1$的平移向量$t$以及$3\times 3$的旋转矩阵$R$来表示，设点$P$在世界坐标系中的齐次坐标为$\left(X_{w}, Y_{w}, Z_{w}, 1\right)^{T}$，在相机坐标系中的齐次坐标为$\left(X_{c}, Y_{c}, Z_{c}, 1\right)^{T}$，那么二者的转换关系为：
+$$
+\left[ \begin{array}{c}{X_{c}} \ {Y_{c}} \ {Z_{c}} \ {1}\end{array}\right]=\left[ \begin{array}{cc}{R} &amp; {t} \ {0^{T}} &amp; {1}\end{array}\right] \left[ \begin{array}{c}{X_{w}} \ {Y_{w}} \ {Z_{w}} \ {1}\end{array}\right]=M_{1} \left[ \begin{array}{c}{X_{w}} \ {Y_{w}} \ {Z_{w}} \ {1}\end{array}\right]
+$$</p>
+<h2>针孔相机模型</h2>
+<p>针孔相机模型是将空间坐标映射到图像点的模型。</p>
 <p>请阅读: 视觉SLAM十四讲 5.1.1</p>
 <p>对于使用的数据集，一般会提供拍摄照片所用的相机的内参和畸变系数。如果使用自己的相机，则需要采用张正友标定法进行相机标定，以获取相机内参及畸变系数。</p>
-<p>最终有：</p>
-<script type="math/tex; mode=display">
-Z \boldsymbol{P}_{u v}=Z \left[ \begin{array}{c}{u} \\ {v} \\ {1}\end{array}\right]=\boldsymbol{K}\left(\boldsymbol{R} \boldsymbol{P}_{w}+\boldsymbol{t}\right)=\boldsymbol{K} T \boldsymbol{P}_{w}</script><p>其中$Z$为空间点三维坐标中的$Z$坐标值，$P_{uv}$代表空间点投影到像平面，在像平面上的坐标，$K$为相机内参，$R$为相机外参中的旋转矩阵，$t$为相机外参中的位移向量，$P_w$为空间点在世界坐标系下的三维坐标。其中：</p>
-<script type="math/tex; mode=display">
-K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\ {0} & {0} & {1}\end{array}\right)</script><h2 id="单目视觉里程计"><a href="#单目视觉里程计" class="headerlink" title="单目视觉里程计"></a>单目视觉里程计</h2><p>单目视觉里程计主要需要了解<strong>对极约束</strong>、<strong>三角化</strong>和<strong>PnP</strong>。</p>
+<p>最终有：
+$$
+Z \boldsymbol{P}<em>{u v}=Z \left[ \begin{array}{c}{u} \ {v} \ {1}\end{array}\right]=\boldsymbol{K}\left(\boldsymbol{R} \boldsymbol{P}</em>{w}+\boldsymbol{t}\right)=\boldsymbol{K} T \boldsymbol{P}_{w}
+$$</p>
+<p>其中$Z$为空间点三维坐标中的$Z$坐标值，$P_{uv}$代表空间点投影到像平面，在像平面上的坐标，$K$为相机内参，$R$为相机外参中的旋转矩阵，$t$为相机外参中的位移向量，$P_w$为空间点在世界坐标系下的三维坐标。其中：
+$$
+K=\left( \begin{array}{ccc}{f_{x}} &amp; {0} &amp; {c_{x}} \ {0} &amp; {f_{y}} &amp; {c_{y}} \ {0} &amp; {0} &amp; {1}\end{array}\right)
+$$</p>
+<h2>单目视觉里程计</h2>
+<p>单目视觉里程计主要需要了解<strong>对极约束</strong>、<strong>三角化</strong>和<strong>PnP</strong>。</p>
 <p><strong>对极约束</strong></p>
 <p>对极约束用于通过二维点之间的匹配关系，求解相邻两张图像之间的运动。关于对极约束的内容，请阅读视觉SLAM十四讲7.3，7.4。</p>
 <p>使用对极约束求解本质矩阵可以通过调用opencv中的findEssentialMat函数完成。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数原型</span></span><br><span class="line"><span class="function">Mat <span class="title">findEssentialMat</span><span class="params">( </span></span></span><br><span class="line"><span class="function"><span class="params">    InputArray points1, </span></span></span><br><span class="line"><span class="function"><span class="params">    InputArray points2,</span></span></span><br><span class="line"><span class="function"><span class="params">    InputArray cameraMatrix, </span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">int</span> method = RANSAC,</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">double</span> prob = <span class="number">0.999</span>, </span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">double</span> threshold = <span class="number">1.0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">    OutputArray mask = noArray())</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//示例调用</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line">Mat E = findEssentialMat(p1, p2, M);</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数原型</span></span><br><span class="line"><span class="function">Mat <span class="title">findEssentialMat</span><span class="params">( </span></span></span><br><span class="line"><span class="function"><span class="params">    InputArray points1, </span></span></span><br><span class="line"><span class="function"><span class="params">    InputArray points2,</span></span></span><br><span class="line"><span class="function"><span class="params">    InputArray cameraMatrix, </span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">int</span> method = RANSAC,</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">double</span> prob = <span class="number">0.999</span>, </span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">double</span> threshold = <span class="number">1.0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">    OutputArray mask = noArray())</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//示例调用</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line">Mat E = findEssentialMat(p1, p2, M);</span><br></pre></td></tr></table></figure></p>
 <p>其中：</p>
 <ul>
-<li>points1与points2是vector<point2f>类型，两vector的size相同，对应位置上的Point2f互相匹配。</point2f></li>
+<li>points1与points2是vector&lt;Point2f&gt;类型，两vector的size相同，对应位置上的Point2f互相匹配。</li>
 <li>cameraMatrix是相机内参矩阵</li>
 <li>method是计算方法，RANSAC是openCV中被define的常量，表示采用RANSAC方法进行本征矩阵计算</li>
 <li>prob是估计矩阵正确的可信度</li>
@@ -608,7 +629,7 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
 <li>参数mask输出N个元素的数组，其中每个元素对于异常值设置为0，对其他点设置为1。</li>
 </ul>
 <p>求解出本征矩阵E后，调用recoverPose求解旋转矩阵和位移向量。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数原型</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">recoverPose</span><span class="params">(Mat E,</span></span></span><br><span class="line"><span class="function"><span class="params">                InputArray points1,</span></span></span><br><span class="line"><span class="function"><span class="params">                InputArray points2,</span></span></span><br><span class="line"><span class="function"><span class="params">                InputArray cameraMatrix,</span></span></span><br><span class="line"><span class="function"><span class="params">                OutputArray R,</span></span></span><br><span class="line"><span class="function"><span class="params">                OutputArray t,</span></span></span><br><span class="line"><span class="function"><span class="params">                OutputArray mask = noArray())</span></span>; </span><br><span class="line"><span class="comment">//示例调用</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">int</span> pass_count = recoverPose(E,p1, p2, M, R, t,mask);</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数原型</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">recoverPose</span><span class="params">(Mat E,</span></span></span><br><span class="line"><span class="function"><span class="params">                InputArray points1,</span></span></span><br><span class="line"><span class="function"><span class="params">                InputArray points2,</span></span></span><br><span class="line"><span class="function"><span class="params">                InputArray cameraMatrix,</span></span></span><br><span class="line"><span class="function"><span class="params">                OutputArray R,</span></span></span><br><span class="line"><span class="function"><span class="params">                OutputArray t,</span></span></span><br><span class="line"><span class="function"><span class="params">                OutputArray mask = noArray())</span></span>; </span><br><span class="line"><span class="comment">//示例调用</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">int</span> pass_count = recoverPose(E,p1, p2, M, R, t,mask);</span><br></pre></td></tr></table></figure></p>
 <p>其中：</p>
 <ul>
 <li>E是经过findEssentialMat求解出的本征矩阵</li>
@@ -619,22 +640,28 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
 <p>R和t组成变换矩阵T，这里的T是是第一张图到第二张图的坐标变换矩阵。或者可以理解为第一张图相机相对于相机初始位置的变换矩阵是X。因为第一张图相机所处的位置是初始位置，所以有：$X = eye(4)$，其中$eye(4)$是四阶单位矩阵。那么T左乘X是第二个图的相机的坐标变换矩阵。</p>
 <p>对极约束可以求解出两张图像之间的相机变换矩阵，但是它是2D和2D之间求解的变换矩阵，t的尺度无法确定，t可能是1米，可能是1cm。</p>
 <p><strong>三角化</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reconstruct</span><span class="params">(Mat&amp; K, Mat&amp; R1, Mat&amp; T1, Mat&amp; R2, Mat&amp; T2, <span class="built_in">vector</span>&lt;Point2f&gt;&amp; p1, <span class="built_in">vector</span>&lt;Point2f&gt;&amp; p2, <span class="built_in">vector</span>&lt;Point3f&gt;&amp; structure)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//两个相机的投影矩阵[R T]，triangulatePoints只支持float型</span></span><br><span class="line">	<span class="function">Mat <span class="title">proj1</span><span class="params">(<span class="number">3</span>, <span class="number">4</span>, CV_32FC1)</span></span>;</span><br><span class="line">	<span class="function">Mat <span class="title">proj2</span><span class="params">(<span class="number">3</span>, <span class="number">4</span>, CV_32FC1)</span></span>;</span><br><span class="line"></span><br><span class="line">	R1.convertTo(proj1(Range(<span class="number">0</span>, <span class="number">3</span>), Range(<span class="number">0</span>, <span class="number">3</span>)), CV_32FC1);</span><br><span class="line">	T1.convertTo(proj1.col(<span class="number">3</span>), CV_32FC1);</span><br><span class="line"></span><br><span class="line">	R2.convertTo(proj2(Range(<span class="number">0</span>, <span class="number">3</span>), Range(<span class="number">0</span>, <span class="number">3</span>)), CV_32FC1);</span><br><span class="line">	T2.convertTo(proj2.col(<span class="number">3</span>), CV_32FC1);</span><br><span class="line"></span><br><span class="line">	Mat fK;</span><br><span class="line">	K.convertTo(fK, CV_32FC1);</span><br><span class="line">	proj1 = fK*proj1;</span><br><span class="line">	proj2 = fK*proj2;</span><br><span class="line">	<span class="comment">//三角重建</span></span><br><span class="line">	Mat s;</span><br><span class="line">	triangulatePoints(proj1, proj2, p1, p2, s);</span><br><span class="line"></span><br><span class="line">	structure.clear();</span><br><span class="line">	structure.reserve(s.cols);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.cols; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		Mat_&lt;<span class="keyword">float</span>&gt; col = s.col(i);</span><br><span class="line">		col /= col(<span class="number">3</span>);  <span class="comment">//齐次坐标，需要除以最后一个元素才是真正的坐标值</span></span><br><span class="line">		structure.push_back(Point3f(col(<span class="number">0</span>), col(<span class="number">1</span>), col(<span class="number">2</span>)));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reconstruct</span><span class="params">(Mat&amp; K, Mat&amp; R1, Mat&amp; T1, Mat&amp; R2, Mat&amp; T2, <span class="built_in">vector</span>&lt;Point2f&gt;&amp; p1, <span class="built_in">vector</span>&lt;Point2f&gt;&amp; p2, <span class="built_in">vector</span>&lt;Point3f&gt;&amp; structure)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//两个相机的投影矩阵[R T]，triangulatePoints只支持float型</span></span><br><span class="line">	<span class="function">Mat <span class="title">proj1</span><span class="params">(<span class="number">3</span>, <span class="number">4</span>, CV_32FC1)</span></span>;</span><br><span class="line">	<span class="function">Mat <span class="title">proj2</span><span class="params">(<span class="number">3</span>, <span class="number">4</span>, CV_32FC1)</span></span>;</span><br><span class="line"></span><br><span class="line">	R1.convertTo(proj1(Range(<span class="number">0</span>, <span class="number">3</span>), Range(<span class="number">0</span>, <span class="number">3</span>)), CV_32FC1);</span><br><span class="line">	T1.convertTo(proj1.col(<span class="number">3</span>), CV_32FC1);</span><br><span class="line"></span><br><span class="line">	R2.convertTo(proj2(Range(<span class="number">0</span>, <span class="number">3</span>), Range(<span class="number">0</span>, <span class="number">3</span>)), CV_32FC1);</span><br><span class="line">	T2.convertTo(proj2.col(<span class="number">3</span>), CV_32FC1);</span><br><span class="line"></span><br><span class="line">	Mat fK;</span><br><span class="line">	K.convertTo(fK, CV_32FC1);</span><br><span class="line">	proj1 = fK*proj1;</span><br><span class="line">	proj2 = fK*proj2;</span><br><span class="line">	<span class="comment">//三角重建</span></span><br><span class="line">	Mat s;</span><br><span class="line">	triangulatePoints(proj1, proj2, p1, p2, s);</span><br><span class="line"></span><br><span class="line">	structure.<span class="built_in">clear</span>();</span><br><span class="line">	structure.reserve(s.cols);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.cols; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		Mat_&lt;<span class="keyword">float</span>&gt; col = s.col(i);</span><br><span class="line">		col /= col(<span class="number">3</span>);  <span class="comment">//齐次坐标，需要除以最后一个元素才是真正的坐标值</span></span><br><span class="line">		structure.push_back(Point3f(col(<span class="number">0</span>), col(<span class="number">1</span>), col(<span class="number">2</span>)));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>三角化在得到两个相机的旋转矩阵、位移向量后，可以根据匹配的特征点进行三角化，最终能够求得特征点对应的空间点云的坐标。</p>
 <p><strong>PnP</strong></p>
 <p>PnP在得知了对应的空间点的三维坐标和新加入的图像中的特征点的二维坐标之后，可以求解新加入的图像的相机的旋转矩阵和位移向量。</p>
 <p>参考<a href="https://blog.csdn.net/jay463261929/article/details/53818611" target="_blank" rel="noopener">opencv中solvePnPRansac函数求解相机位姿</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数原型</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">solvePnPRansac</span><span class="params">(InputArray objectPoints,</span></span></span><br><span class="line"><span class="function"><span class="params">                    InputArray imagePoints,</span></span></span><br><span class="line"><span class="function"><span class="params">                    InputArray cameraMatrix,</span></span></span><br><span class="line"><span class="function"><span class="params">                    InputArray dist，</span></span></span><br><span class="line"><span class="function"><span class="params">                    OutputArray rvec,</span></span></span><br><span class="line"><span class="function"><span class="params">                    OutputArray tvec,</span></span></span><br><span class="line"><span class="function"><span class="params">                    ...)</span></span>;</span><br><span class="line"><span class="comment">//调用示例</span></span><br><span class="line">solvePnPRansac(object_points, image_points, K, noArray(), r, T);</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数原型</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">solvePnPRansac</span><span class="params">(InputArray objectPoints,</span></span></span><br><span class="line"><span class="function"><span class="params">                    InputArray imagePoints,</span></span></span><br><span class="line"><span class="function"><span class="params">                    InputArray cameraMatrix,</span></span></span><br><span class="line"><span class="function"><span class="params">                    InputArray dist，</span></span></span><br><span class="line"><span class="function"><span class="params">                    OutputArray rvec,</span></span></span><br><span class="line"><span class="function"><span class="params">                    OutputArray tvec,</span></span></span><br><span class="line"><span class="function"><span class="params">                    ...)</span></span>;</span><br><span class="line"><span class="comment">//调用示例</span></span><br><span class="line">solvePnPRansac(object_points, image_points, K, noArray(), r, T);</span><br></pre></td></tr></table></figure></p>
 <p>其中：</p>
 <ul>
-<li><p>objectPoints为三维坐标，imagePoints为二维坐标，对应位置的坐标互相匹配。</p>
+<li>
+<p>objectPoints为三维坐标，imagePoints为二维坐标，对应位置的坐标互相匹配。</p>
 </li>
-<li><p>cameraMatrix为相机内参。</p>
+<li>
+<p>cameraMatrix为相机内参。</p>
 </li>
-<li>dist为畸变参数矩阵。</li>
-<li>rvec为求解出的相机<strong><em>旋转向量</em></strong>，不是旋转矩阵。可经过罗德里格斯变换获取旋转矩阵。</li>
+<li>
+<p>dist为畸变参数矩阵。</p>
+</li>
+<li>
+<p>rvec为求解出的相机<strong><em>旋转向量</em></strong>，不是旋转矩阵。可经过罗德里格斯变换获取旋转矩阵。</p>
+</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rodrigues(r, R);</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rodrigues(r, R);</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>tvec为求解出的相机位移向量。</li>
 </ul>
@@ -643,7 +670,8 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
 <p>进行求解PnP需要构建已有空间点云三维坐标和新加入图像中的特征点二维坐标的匹配关系。那么这个关系是怎么建立的呢？是在图一、图二进行三角化生成空间点云时候，会生成空间点云中点与图二中特征点的匹配关系。图二与图三进行匹配，可获得图二与图三中特征点的匹配关系。由此可获得图三中特征点与原有空间点云中点的匹配关系。</p>
 <p>程序经过一次PnP，求解出第三张图像的相机的旋转矩阵和位移矩阵后，可以使用第三张图像的相机的旋转矩阵和位移向量与第二张图像的旋转矩阵和位移向量进行三角化，生成第二张图像和第三张图像共同构建的空间点云$C_{23}$。</p>
 <p>之后，空间点云可以进行点的添加和旧点的消除，每次新加入的一张图像的相机位姿可以通过PnP求解出来。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>【1】《视觉SLAM十四讲》 —— 高翔</p>
+<h2>参考资料</h2>
+<p>【1】《视觉SLAM十四讲》 —— 高翔</p>
 <p>【2】 葛均强. 基于无人机航拍图像序列的三维重建研究与实现[D]. 电子科技大学,2015.</p>
 <p>【3】<a href="https://www.bilibili.com/video/av5987715?from=search&amp;seid=17088161877399053008" target="_blank" rel="noopener">线性代数的本质——3blue1brown</a></p>
 
@@ -671,11 +699,11 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
           
             <a href="/tags/SLAM/" rel="tag"># SLAM</a>
           
-            <a href="/tags/机器视觉/" rel="tag"># 机器视觉</a>
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" rel="tag"># 机器视觉</a>
           
-            <a href="/tags/单目/" rel="tag"># 单目</a>
+            <a href="/tags/%E5%8D%95%E7%9B%AE/" rel="tag"># 单目</a>
           
-            <a href="/tags/视觉里程计/" rel="tag"># 视觉里程计</a>
+            <a href="/tags/%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1/" rel="tag"># 视觉里程计</a>
           
         </div>
       
@@ -688,7 +716,7 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/10/OJ技巧/" rel="next" title="OJ技巧">
+              <a href="/2019/05/10/OJ%E6%8A%80%E5%B7%A7/" rel="next" title="OJ技巧">
                 <i class="fa fa-chevron-left"></i> OJ技巧
               </a>
             
@@ -698,7 +726,7 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/07/字符串匹配算法Sunday/" rel="prev" title="字符串匹配算法Sunday">
+              <a href="/2019/06/07/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95Sunday/" rel="prev" title="字符串匹配算法Sunday">
                 字符串匹配算法Sunday <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -762,7 +790,9 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/sky_lanterns.jpg" alt="窦星磊">
+              <img class="site-author-image" itemprop="image"
+                src="/images/sky_lanterns.jpg"
+                alt="窦星磊"/>
             
               <p class="site-author-name" itemprop="name">窦星磊</p>
               <div class="site-description motion-element" itemprop="description">平崖远望，踽踽独行。</div>
@@ -773,7 +803,7 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
@@ -787,7 +817,7 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -822,7 +852,9 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -834,7 +866,7 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -903,7 +935,9 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
                     
                       
                     
-                    <span class="site-state-item-count">32</span>
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -985,7 +1019,7 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SLAM之单目视觉里程计"><span class="nav-number">1.</span> <span class="nav-text">SLAM之单目视觉里程计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#旋转矩阵和位移矩阵"><span class="nav-number">1.1.1.</span> <span class="nav-text">旋转矩阵和位移矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三个坐标系"><span class="nav-number">1.1.2.</span> <span class="nav-text">三个坐标系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#针孔相机模型"><span class="nav-number">1.2.</span> <span class="nav-text">针孔相机模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单目视觉里程计"><span class="nav-number">1.3.</span> <span class="nav-text">单目视觉里程计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">1.4.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">SLAM之单目视觉里程计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.1.1.</span> <span class="nav-text">旋转矩阵和位移矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.1.2.</span> <span class="nav-text">三个坐标系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.2.</span> <span class="nav-text">针孔相机模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.3.</span> <span class="nav-text">单目视觉里程计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.4.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1018,7 +1052,7 @@ K=\left( \begin{array}{ccc}{f_{x}} & {0} & {c_{x}} \\ {0} & {f_{y}} & {c_{y}} \\
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1</div>
 
 
 
